@@ -1,0 +1,227 @@
+...F                                                                     [100%]
+================================== FAILURES ===================================
+___________ test_queued_modal_search_keys_do_not_edit_previous_cell ___________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/forms_green_tmp/test_queued_modal_search_keys_0')
+
+    
+    
+    async def test_queued_modal_search_keys_do_not_edit_previous_cell(tmp_path):
+>       app = TexelApp(tmp_path / "queued-search.texel", language="en")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_1_boundaries.py:459: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+contextlib.py:297: in __aexit__
+    ???
+.runtime\python315\Lib\site-packages\textual\app.py:2218: in run_test
+    raise self._exception
+.runtime\python315\Lib\site-packages\textual\message_pump.py:663: in _process_messages_loop
+    await self._dispatch_message(message)
+.runtime\python315\Lib\site-packages\textual\message_pump.py:727: in _dispatch_message
+    await self.on_event(message)
+.runtime\python315\Lib\site-packages\textual\app.py:4148: in on_event
+    await super().on_event(event)
+.runtime\python315\Lib\site-packages\textual\message_pump.py:808: in on_event
+    await self._on_message(event)
+.runtime\python315\Lib\site-packages\textual\message_pump.py:829: in _on_message
+    await invoke(method, message)
+.runtime\python315\Lib\site-packages\textual\_callback.py:96: in invoke
+    return await _invoke(callback, *params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.runtime\python315\Lib\site-packages\textual\_callback.py:58: in _invoke
+    result = await result
+             ^^^^^^^^^^^^
+.runtime\python315\Lib\site-packages\textual\app.py:4342: in _on_key
+    if not (await self._check_bindings(event.key)):
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.runtime\python315\Lib\site-packages\textual\app.py:3981: in _check_bindings
+    else self.screen._modal_binding_chain
+         ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'dark', 'nocolor', 'focus'})
+
+    @property
+    def screen(self) -> Screen[object]:
+        """The current active screen.
+    
+        Returns:
+            The currently active (visible) screen.
+    
+        Raises:
+            ScreenStackError: If there are no screens on the stack.
+        """
+        try:
+            return self._screen_stack[-1]
+        except KeyError:
+            raise UnknownModeError(f"No known mode {self._current_mode!r}") from None
+        except IndexError:
+>           raise ScreenStackError("No screens on stack") from None
+E           textual.app.ScreenStackError: No screens on stack
+
+.runtime\python315\Lib\site-packages\textual\app.py:1641: ScreenStackError
+---------------------------- Captured stderr call -----------------------------
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+
+│ C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py │
+
+│ :4342 in _on_key                                                             │
+
+│                                                                              │
+
+│   4339 │   │   message.stop()                                                │
+
+│   4340 │                                                                     │
+
+│   4341 │   async def _on_key(self, event: events.Key) -> None:               │
+
+│ ❱ 4342 │   │   if not (await self._check_bindings(event.key)):               │
+
+│   4343 │   │   │   await dispatch_key(self, event)                           │
+
+│   4344 │                                                                     │
+
+│   4345 │   async def _on_resize(self, event: events.Resize) -> None:         │
+
+│                                                                              │
+
+│ ╭──────────────────────── locals ─────────────────────────╮                  │
+
+│ │ event = Key(                                            │                  │
+
+│ │         │   key='enter',                                │                  │
+
+│ │         │   character='\r',                             │                  │
+
+│ │         │   name='enter',                               │                  │
+
+│ │         │   is_printable=False,                         │                  │
+
+│ │         │   aliases=['enter', 'ctrl+m']                 │                  │
+
+│ │         )                                               │                  │
+
+│ │  self = TexelApp(                                       │                  │
+
+│ │         │   title='Texel',                              │                  │
+
+│ │         │   classes={'-dark-mode'},                     │                  │
+
+│ │         │   pseudo_classes={                            │                  │
+
+│ │         │   │   'dark',                                 │                  │
+
+│ │         │   │   'nocolor',                              │                  │
+
+│ │         │   │   'focus'                                 │                  │
+
+│ │         │   }                                           │                  │
+
+│ │         )                                               │                  │
+
+│ ╰─────────────────────────────────────────────────────────╯                  │
+
+│                                                                              │
+
+│ C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py │
+
+│ :3981 in _check_bindings                                                     │
+
+│                                                                              │
+
+│   3978 │   │   for namespace, bindings in (                                  │
+
+│   3979 │   │   │   reversed(self.screen._binding_chain)                      │
+
+│   3980 │   │   │   if priority                                               │
+
+│ ❱ 3981 │   │   │   else self.screen._modal_binding_chain                     │
+
+│   3982 │   │   ):                                                            │
+
+│   3983 │   │   │   key_bindings = bindings.key_to_bindings.get(key, ())      │
+
+│   3984 │   │   │   for binding in key_bindings:                              │
+
+│                                                                              │
+
+│ ╭────────────────────────── locals ──────────────────────────╮               │
+
+│ │      key = 'enter'                                         │               │
+
+│ │ priority = False                                           │               │
+
+│ │     self = TexelApp(                                       │               │
+
+│ │            │   title='Texel',                              │               │
+
+│ │            │   classes={'-dark-mode'},                     │               │
+
+│ │            │   pseudo_classes={                            │               │
+
+│ │            │   │   'dark',                                 │               │
+
+│ │            │   │   'nocolor',                              │               │
+
+│ │            │   │   'focus'                                 │               │
+
+│ │            │   }                                           │               │
+
+│ │            )                                               │               │
+
+│ ╰────────────────────────────────────────────────────────────╯               │
+
+│                                                                              │
+
+│ C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py │
+
+│ :1641 in screen                                                              │
+
+│                                                                              │
+
+│   1638 │   │   except KeyError:                                              │
+
+│   1639 │   │   │   raise UnknownModeError(f"No known mode {self._current_mod │
+
+│   1640 │   │   except IndexError:                                            │
+
+│ ❱ 1641 │   │   │   raise ScreenStackError("No screens on stack") from None   │
+
+│   1642 │                                                                     │
+
+│   1643 │   @property                                                         │
+
+│   1644 │   def _background_screens(self) -> list[Screen]:                    │
+
+│                                                                              │
+
+│ ╭──────────────────────── locals ────────────────────────╮                   │
+
+│ │ self = TexelApp(                                       │                   │
+
+│ │        │   title='Texel',                              │                   │
+
+│ │        │   classes={'-dark-mode'},                     │                   │
+
+│ │        │   pseudo_classes={                            │                   │
+
+│ │        │   │   'dark',                                 │                   │
+
+│ │        │   │   'nocolor',                              │                   │
+
+│ │        │   │   'focus'                                 │                   │
+
+│ │        │   }                                           │                   │
+
+│ │        )                                               │                   │
+
+│ ╰────────────────────────────────────────────────────────╯                   │
+
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+ScreenStackError: No screens on stack
+
+=========================== short test summary info ===========================
+FAILED tests/test_audit_1_boundaries.py::test_queued_modal_search_keys_do_not_edit_previous_cell
+1 failed, 3 passed, 64 deselected in 25.15s

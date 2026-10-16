@@ -1,0 +1,17 @@
+C:\LocalDev\python\Texel\.runtime\python315\python.exe: No module named pip
+Traceback (most recent call last):
+  File "C:\LocalDev\python\Texel\scripts\verify_release.py", line 74, in <module>
+    main()
+    ~~~~^^
+  File "C:\LocalDev\python\Texel\scripts\verify_release.py", line 42, in main
+    subprocess.run(
+    ~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<10 lines>...
+        check=True,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "subprocess.py", line 692, in run
+subprocess.CalledProcessError: Command '['C:\\LocalDev\\python\\Texel\\.runtime\\python315\\python.exe', '-m', 'pip', 'install', '--no-deps', '--no-compile', '--target', 'C:\\LocalDev\\python\\Texel\\.cache\\release-wheel-check-0.3.1\\installed', 'C:\\LocalDev\\python\\Texel\\output\\texel_tui-0.3.1-py3-none-any.whl']' returned non-zero exit status 1.

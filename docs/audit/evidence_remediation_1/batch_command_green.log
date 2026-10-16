@@ -1,0 +1,49 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+___________ test_queued_modal_search_keys_do_not_edit_previous_cell ___________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/batch_command_green_tmp/test_queued_modal_search_keys_0')
+
+    async def test_queued_modal_search_keys_do_not_edit_previous_cell(tmp_path):
+        app = TexelApp(tmp_path / "queued-search.texel", language="en")
+        app.session.apply("seed", lambda w: set_matrix(w, 0, "A1", [["original"]]))
+        async with app.run_test(size=(80, 24)) as p:
+            app.action_commands()
+            for char in "borders":
+                app.grid.post_message(events.Key(char, char))
+            app.grid.post_message(events.Key("enter", "\r"))
+            await p.pause(0.5)
+            assert app.session.workbook.sheet().cell(0, 0).raw == "original"
+            assert app.editing is None
+>           assert type(app.screen).__name__ == "FormDialog"
+E           AssertionError: assert 'CommandDialog' == 'FormDialog'
+E             
+E             - FormDialog
+E             + CommandDialog
+
+tests\test_audit_1_boundaries.py:469: AssertionError
+________________ test_batched_command_shortcut_keeps_cell_raw _________________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/batch_command_green_tmp/test_batched_command_shortcut_0')
+
+    async def test_batched_command_shortcut_keeps_cell_raw(tmp_path):
+        app = TexelApp(tmp_path / "batch-command.texel", language="en")
+        app.session.apply("seed", lambda w: set_matrix(w, 0, "A1", [["original"]]))
+        async with app.run_test(size=(80, 24)) as p:
+            for key, char in [("ctrl+p", None), *[(c, c) for c in "borders"], ("enter", "\r")]:
+                app.post_message(events.Key(key, char))
+            await p.pause(0.5)
+            assert app.session.workbook.sheet().cell(0, 0).raw == "original"
+            assert app.session.revision == 1
+            assert app.editing is None
+>           assert type(app.screen).__name__ == "FormDialog"
+E           AssertionError: assert 'CommandDialog' == 'FormDialog'
+E             
+E             - FormDialog
+E             + CommandDialog
+
+tests\test_audit_1_boundaries.py:483: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_1_boundaries.py::test_queued_modal_search_keys_do_not_edit_previous_cell
+FAILED tests/test_audit_1_boundaries.py::test_batched_command_shortcut_keeps_cell_raw
+2 failed, 58 deselected in 2.22s

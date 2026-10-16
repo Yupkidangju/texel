@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\LocalDev\python\Texel\scripts\verify_release.py", line 12, in <module>
+    from check_release import check_release
+ModuleNotFoundError: No module named 'check_release'

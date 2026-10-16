@@ -1,0 +1,10 @@
+*.py text eol=lf
+*.ps1 text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.lock text eol=lf
+
+# 기존 증거는 줄바꿈까지 당시 바이트를 보존한다.
+docs/audit/** -text
+docs/upgrades/evidence_0_3_0/** -text
+docs/maintenance/evidence_consistency_20261015/** -text

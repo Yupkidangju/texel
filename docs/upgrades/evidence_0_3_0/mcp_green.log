@@ -1,0 +1,65 @@
+F.F...                                                                   [100%]
+================================== FAILURES ===================================
+_________ test_new_tool_schema_preview_partial_format_and_multi_read __________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 13, in test_new_tool_schema_preview_partial_format_and_multi_read
+  |     async with Client(create_server(path, tmp_path)) as client:
+  |                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\client.py", line 480, in __aexit__
+  |     await self._exit_stack.__aexit__(exc_type, exc_val, exc_tb)
+  |   File "contextlib.py", line 813, in __aexit__
+  |   File "contextlib.py", line 796, in __aexit__
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "contextlib.py", line 796, in __aexit__
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 17, in test_new_tool_schema_preview_partial_format_and_multi_read
+      |     assert lookup["preview_operations"].annotations.readOnlyHint
+      |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\pydantic\main.py", line 1105, in __getattr__
+      |     raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+      | AttributeError: 'ToolAnnotations' object has no attribute 'readOnlyHint'. Did you mean '.read_only_hint' instead of '.readOnlyHint'?
+      +------------------------------------
+_______________ test_invalid_batch_schema_and_failure_location ________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 70, in test_invalid_batch_schema_and_failure_location
+  |     async with Client(create_server(path, tmp_path)) as client:
+  |                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\client.py", line 480, in __aexit__
+  |     await self._exit_stack.__aexit__(exc_type, exc_val, exc_tb)
+  |   File "contextlib.py", line 813, in __aexit__
+  |   File "contextlib.py", line 796, in __aexit__
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "contextlib.py", line 796, in __aexit__
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+    | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 74, in test_invalid_batch_schema_and_failure_location
+      |     with pytest.raises(Exception):
+      |          ~~~~~~~~~~~~~^^^^^^^^^^^
+      |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\_pytest\raises.py", line 699, in __exit__
+      |     fail(f"DID NOT RAISE {self.expected_exceptions[0].__name__}")
+      |     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\_pytest\outcomes.py", line 162, in __call__
+      |     raise Failed(msg=reason, pytrace=pytrace)
+      | Failed: DID NOT RAISE Exception
+      +------------------------------------
+=========================== short test summary info ===========================
+FAILED tests/test_v030_mcp.py::test_new_tool_schema_preview_partial_format_and_multi_read
+FAILED tests/test_v030_mcp.py::test_invalid_batch_schema_and_failure_location
+2 failed, 4 passed in 7.83s

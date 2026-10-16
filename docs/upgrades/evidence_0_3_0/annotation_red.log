@@ -1,0 +1,32 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_new_tool_schema_preview_partial_format_and_multi_read __________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 13, in test_new_tool_schema_preview_partial_format_and_multi_read
+  |     async with Client(create_server(path, tmp_path)) as client:
+  |                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\client.py", line 480, in __aexit__
+  |     await self._exit_stack.__aexit__(exc_type, exc_val, exc_tb)
+  |   File "contextlib.py", line 813, in __aexit__
+  |   File "contextlib.py", line 796, in __aexit__
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "contextlib.py", line 796, in __aexit__
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 22, in test_new_tool_schema_preview_partial_format_and_multi_read
+      |     assert lookup["apply_operations"].annotations.destructive_hint
+      | AssertionError: assert False
+      |  +  where False = ToolAnnotations(title=None, read_only_hint=False, destructive_hint=False, idempotent_hint=None, open_world_hint=False).destructive_hint
+      |  +    where ToolAnnotations(title=None, read_only_hint=False, destructive_hint=False, idempotent_hint=None, open_world_hint=False) = Tool(name='apply_operations', title=None, description='Apply 1..50 ordered operations as ONE transaction and ONE undo ...ions(title=None, read_only_hint=False, destructive_hint=False, idempotent_hint=None, open_world_hint=False), meta=None).annotations
+      +------------------------------------
+=========================== short test summary info ===========================
+FAILED tests/test_v030_mcp.py::test_new_tool_schema_preview_partial_format_and_multi_read
+1 failed, 2 deselected in 1.04s

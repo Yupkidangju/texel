@@ -1,0 +1,67 @@
+start
+mounted
+clicked
+end
+Region(x=14, y=4, width=38, height=19) 22.0 38
+selected Screen
+<Task pending name='Task-1' coro=<wait_for() running at asyncio\tasks.py:495> wait_for=<Task pending name="run_test TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'focus', 'nocolor', 'dark'})" coro=<App.run_test.<locals>.run_app() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py:2191> wait_for=<_GatheringFuture pending cb=[_discard_awaited_by()() at asyncio\tasks.py:787, Task.task_wakeup()]> cb=[Task.task_wakeup()]> cb=[_run_until_complete_cb() at asyncio\base_events.py:183]>
+Stack for <Task pending name='Task-1' coro=<wait_for() running at asyncio\tasks.py:495> wait_for=<Task pending name="run_test TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'focus', 'nocolor', 'dark'})" coro=<App.run_test.<locals>.run_app() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py:2191> wait_for=<_GatheringFuture pending cb=[_discard_awaited_by()() at asyncio\tasks.py:787, Task.task_wakeup()]> cb=[Task.task_wakeup()]> cb=[_run_until_complete_cb() at asyncio\base_events.py:183]> (most recent call last):
+AWAIT <coroutine object wait_for at 0x000002183FF597A0>
+  File "asyncio\tasks.py", line 495, in wait_for
+AWAIT <coroutine object main at 0x000002183FEF70A0>
+AWAIT <coroutine object _AsyncGeneratorContextManager.__aexit__ at 0x00000218400FBD40>
+AWAIT <async_generator_asend object at 0x00000218400954C0>
+<Task pending name="run_test TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'focus', 'nocolor', 'dark'})" coro=<App.run_test.<locals>.run_app() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py:2191> wait_for=<_GatheringFuture pending cb=[_discard_awaited_by()() at asyncio\tasks.py:787, Task.task_wakeup()]> cb=[Task.task_wakeup()]>
+Stack for <Task pending name="run_test TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'focus', 'nocolor', 'dark'})" coro=<App.run_test.<locals>.run_app() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py:2191> wait_for=<_GatheringFuture pending cb=[_discard_awaited_by()() at asyncio\tasks.py:787, Task.task_wakeup()]> cb=[Task.task_wakeup()]> (most recent call last):
+  File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py", line 2191, in run_app
+    await app._process_messages(
+AWAIT <coroutine object App.run_test.<locals>.run_app at 0x0000021840040EE0>
+AWAIT <coroutine object App._process_messages at 0x00000218400E1840>
+AWAIT <coroutine object App._process_messages.<locals>.run_process_messages at 0x000002184009B890>
+AWAIT <coroutine object MessagePump._process_messages_loop at 0x000002183FF62E90>
+AWAIT <coroutine object MessagePump._flush_next_callbacks at 0x000002184017A9B0>
+AWAIT <coroutine object invoke at 0x0000021840158A90>
+AWAIT <coroutine object _invoke at 0x00000218400FBC40>
+AWAIT <coroutine object AwaitComplete.__call__ at 0x000002184004DE50>
+AWAIT <_asyncio.FutureIter object at 0x000002184008A3B0>
+<Task pending name='Animator' coro=<Timer._run_timer() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\timer.py:146> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Stack for <Task pending name='Animator' coro=<Timer._run_timer() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\timer.py:146> wait_for=<Future pending cb=[Task.task_wakeup()]>> (most recent call last):
+  File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\timer.py", line 146, in _run_timer
+    await self._run()
+AWAIT <coroutine object Timer._run_timer at 0x0000021840288110>
+AWAIT <coroutine object Timer._run at 0x00000218401797A0>
+AWAIT <coroutine object Event.wait at 0x00000218401D1C40>
+AWAIT <_asyncio.FutureIter object at 0x00000218400B9030>
+<Task pending name='Task-41' coro=<App.pop_screen.<locals>.do_pop() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py:3119> wait_for=<_GatheringFuture pending cb=[_discard_awaited_by()() at asyncio\tasks.py:787, Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at asyncio\tasks.py:834]>
+Stack for <Task pending name='Task-41' coro=<App.pop_screen.<locals>.do_pop() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py:3119> wait_for=<_GatheringFuture pending cb=[_discard_awaited_by()() at asyncio\tasks.py:787, Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at asyncio\tasks.py:834]> (most recent call last):
+  File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\app.py", line 3119, in do_pop
+    await self._replace_screen(previous_screen)
+AWAIT <coroutine object App.pop_screen.<locals>.do_pop at 0x00000218403C73E0>
+AWAIT <coroutine object App._replace_screen at 0x00000218401C0D60>
+AWAIT <coroutine_wrapper object at 0x0000021840395180>
+<Task pending name='screen_update' coro=<Timer._run_timer() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\timer.py:146> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+Stack for <Task pending name='screen_update' coro=<Timer._run_timer() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\timer.py:146> wait_for=<Future pending cb=[Task.task_wakeup()]>> (most recent call last):
+  File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\timer.py", line 146, in _run_timer
+    await self._run()
+AWAIT <coroutine object Timer._run_timer at 0x000002184014FB90>
+AWAIT <coroutine object Timer._run at 0x0000021840179580>
+AWAIT <coroutine object Event.wait at 0x0000021840280BA0>
+AWAIT <_asyncio.FutureIter object at 0x000002184020CD30>
+<Task pending name='message pump ContextMenu()' coro=<MessagePump._process_messages() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\message_pump.py:571> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at asyncio\tasks.py:834]>
+  File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\message_pump.py", line 571, in _process_messages
+    await self._process_messages_loop()
+Stack for <Task pending name='message pump ContextMenu()' coro=<MessagePump._process_messages() running at C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\textual\message_pump.py:571> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at asyncio\tasks.py:834]> (most recent call last):
+AWAIT <coroutine object MessagePump._process_messages at 0x00000218401E5740>
+AWAIT <coroutine object MessagePump._process_messages_loop at 0x000002184025E3E0>
+AWAIT <coroutine object MessagePump._get_message at 0x00000218403C7920>
+AWAIT <coroutine object Queue.get at 0x00000218403651C0>
+AWAIT <coroutine object Event.wait at 0x00000218401B5460>
+AWAIT <_asyncio.FutureIter object at 0x000002183FFA8490>
+<Task pending name='Task-2' coro=<main.<locals>.watchdog() running at C:\LocalDev\python\Texel\docs\audit\evidence_remediation_1\debug_context.py:14>>
+Stack for <Task pending name='Task-2' coro=<main.<locals>.watchdog() running at C:\LocalDev\python\Texel\docs\audit\evidence_remediation_1\debug_context.py:15>> (most recent call last):
+  File "asyncio\base_events.py", line 2071, in _run_once
+  File "asyncio\events.py", line 94, in _run
+  File "C:\LocalDev\python\Texel\docs\audit\evidence_remediation_1\debug_context.py", line 15, in watchdog
+    task.print_stack(limit=3)
+AWAIT <coroutine object main.<locals>.watchdog at 0x000002183FF599C0>
+done

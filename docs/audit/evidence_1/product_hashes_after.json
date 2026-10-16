@@ -1,0 +1,194 @@
+[
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\__init__.py",
+    "Hash": "7AD2BBA6326E9BC5FD1B58BFD51E22A62C3E7F7698893F3E64EA51A7E3F746E7"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\__main__.py",
+    "Hash": "8C51C86EF4F08495C5437A5B46332092EF6788D86B93DEC7EF5D95A19D318B16"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\addresses.py",
+    "Hash": "FF93B74DE1094F4D28B7D321A02E334B54603EB4C2FF2324A2AB3F1218B59A87"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\analysis.py",
+    "Hash": "EDF387F27A5154F0E8892CC89F1F5ACB18B8E9BE31425113B2EEE12AC5947327"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\clipboard.py",
+    "Hash": "206C65850C82453D05682B055F5851ABA3EBEB2018F629605951B39EA87CDD78"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\demo.py",
+    "Hash": "A265C64570C60409F0F1D1BA295A6D12EC1992A19DD0B7AF3C57F3FA525D03F4"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\editing.py",
+    "Hash": "311FA52AD49440EA37F88C576D0965C99F1B3DE6E79BBBD10CF1D07EC989E500"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\exchange.py",
+    "Hash": "DEC3905F88568F33625EBA9D143C170450AF7A0CF018335AEF349EBE96330C8F"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\formula.py",
+    "Hash": "DB43F4CEDB0055FAC209950DE4F7D2E9E679B0F2E8A001773FBDB00B9E9C2816"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\functions.py",
+    "Hash": "13ED7B7B69AACC71F7F1CC28EDB8A64D4700FE7225ABCE7715CE541E1CE46627"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\google_sheets.py",
+    "Hash": "28663AC4DF5813372E96A3C173020E7FD88D07D95C6BA7B2FF0CFB1D40F46E5A"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\i18n.py",
+    "Hash": "E05B486FA3EB37CAD91E18B5307C01A426F5058CBBC02B4D82B9768448F8FDB1"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\legacy_excel.py",
+    "Hash": "1D6986575C65C1B45CF5B26671A4B93CE41BAD25FB5220CBC587CCC926966801"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\mcp_server.py",
+    "Hash": "B5486860EC04A4F1F72C9B43A9C86EE69B771A7807FBC4D93D9578C45CDF0F12"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\model.py",
+    "Hash": "ACD3FAADC6246BA30214F2523987F87A5EA8DFE7D5AA03D3B70663C86C163E53"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\session.py",
+    "Hash": "9094930C4BDE3E69E5EB33BCF8D72C02B87ABC483F488E3ADFB5FCAAD73F9E9F"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\store.py",
+    "Hash": "8F9C52E53DBED75A9755A1EBC71CA76DE6B443B9137C0961A4323C1A2E65C04C"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\values.py",
+    "Hash": "84D2BF0CAAAD6B15345F33CEF2590388DFA670D80E75DC00DCE8F56553D51714"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\__init__.py",
+    "Hash": "8D6D323FD70BF136A178E276A3CBF6071414E337C4BC131DCD86D26EF0AE4126"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\actions.py",
+    "Hash": "5AEA0478D2F292C898E404900AD3B4DD9E6B4A5BA9A1A60087B2909305448155"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\app.py",
+    "Hash": "D536FF523939A0C3E2CE95D9F7E2319AC7882D1141C39F336CA29725FD87265A"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\commands.py",
+    "Hash": "8784C49496C1181541664226F4EFC60F7417D59D260EB2BD89846D9DFD546B4E"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\context_menu.py",
+    "Hash": "9D11E36BBE8F448914DD6DF71ADB3551C4C153EE2B4FA5CE273A31DE3EA10FF2"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\dialogs.py",
+    "Hash": "71F41DF5D7EE15213794080492F92FA7E485F46DC39803F3219A0CD89AA767FC"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\file_dialog.py",
+    "Hash": "3B63DA78E69AB30BB53C4011686FA94B59C3C1226536B207E5016929277BAC07"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\grid_render.py",
+    "Hash": "C8E88F5D113932FDCE7B14887E51604EAB74564305EB05892DC2DE701B84D3F7"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\grid.py",
+    "Hash": "5A64A023D78BF1694EB6D3F7A0273C1ACE51C4C0A00A16F5D2F69210105558AE"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\texel\\ui\\safe_text.py",
+    "Hash": "6CE5CE482589367B2B1CEF83FB27B631AB811AC3CFB615B7C77AA3CFAE4CB7F8"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_cell_formatting.py",
+    "Hash": "1CA3BD6D262026830F79219BDBD4159EDF8A2EA0B014E2D7100125428AF49095"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_context_files_merges.py",
+    "Hash": "F2884A33E071800FD4DB3BF475E768F0BAB129FF8C37D9FBC364DBD94B871F02"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_editing.py",
+    "Hash": "49F534C4841672A7D8D9E080CB4224A5A3E55B14D1B77EFEB35FE1559658B085"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_exchange_analysis.py",
+    "Hash": "7C9540DE7AFDAEF7F4699645A30CCEA4B6AAF54BB8BF9D66C08E8B7C70ED24F5"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_formatting_workflows.py",
+    "Hash": "66D7069D5A3F198A33F1803F22384D0FB325C60E2F869E719A1D014F38405403"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_formula.py",
+    "Hash": "FD4BEEBA1D901DBF7B66C3447CEFB6F24103E612C5DEFC3DC2E7C0308862D014"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_legacy_import.py",
+    "Hash": "C8D146C172C0B28E0A23B87B35BDA2FAB96D59AB37BCCBAB7656514B5C07EFFE"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_mcp.py",
+    "Hash": "2BE3D4AC087BF33B1653C851BB6267592DCED983AED5B1B57F452179CA148FB5"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_model.py",
+    "Hash": "A37C950816090091CB210D24EA7614974AA422310A3D3E63431C3C798992C0A8"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_regressions.py",
+    "Hash": "8223B8C412BEE155D0E6FF9D997238EB421810E6E099FCC1E50AA0495E87B719"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_review_fixes.py",
+    "Hash": "B55AF38985E26A55BB51ABE244B4EBDBF7B7BD2DC841085292E9FBF9A4E5066D"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_review_tui.py",
+    "Hash": "D73A4F9B9D42367F0153C2480F31270FA220299143363EC651EF861D8B67106D"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_shared_mcp_tui.py",
+    "Hash": "82F91C21327571E7DBE5584AB879AE8058B4A626D8E662192E49CFA07617CA29"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_store.py",
+    "Hash": "5C9260801037744CE096AAAE6A0E880DEF451C4BD649C2D96A04AEE203F06F4B"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_tui_commands.py",
+    "Hash": "3A3BC85C68F0BCDCD35A30FA907CDE7C577C35B96AE3E6B9B4A03FAC00EBA352"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_tui.py",
+    "Hash": "B5644A4A872AAB085F3701924045ECF43BC9F83CFCBB23A788D5CD6A86453B93"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\tests\\test_turn2_review_fixes.py",
+    "Hash": "ED75074A14AC6C750B0D63A05C28388E889F5528BC128554851AF84F2FA72632"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\scripts\\benchmark.py",
+    "Hash": "A688FFF5E38AB98A1B6B9FB2FF7CDE30DE84926C0C2A3FC34D69BD2911A5D3E0"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\scripts\\capture_preview.py",
+    "Hash": "04981CDE879C7060ED9385BA357853017F5E67B36175A387743724018C467212"
+  },
+  {
+    "Path": "C:\\LocalDev\\python\\Texel\\scripts\\package.py",
+    "Hash": "0C54BEC130DE2649D237CCE9489E043884DF993BD876C57325B05D945A8EAF74"
+  }
+]

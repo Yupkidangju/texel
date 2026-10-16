@@ -1,0 +1,142 @@
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+______ test_native_metadata_integer_types_rejected[active_sheet-Sheet1] _______
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/review_red_tmp/test_native_metadata_integer_t0')
+field = 'active_sheet', value = 'Sheet1'
+
+    @pytest.mark.parametrize("field,value", [("active_sheet", "Sheet1"), ("freeze_rows", 1.5), ("freeze_columns", 1.5)])
+    def test_native_metadata_integer_types_rejected(tmp_path, field, value):
+        path = tmp_path / "bad-type.texel"
+        s = Session(path)
+        with s.store.connect() as db:
+            data = json.loads(db.execute("SELECT metadata FROM texel_state").fetchone()[0])
+            target = data if field == "active_sheet" else data["sheets"][0]
+            target[field] = value
+            db.execute("UPDATE texel_state SET metadata=?", (json.dumps(data),))
+        before = path.read_bytes()
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_audit_1_boundaries.py:417: Failed
+________ test_native_metadata_integer_types_rejected[freeze_rows-1.5] _________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/review_red_tmp/test_native_metadata_integer_t1')
+field = 'freeze_rows', value = 1.5
+
+    @pytest.mark.parametrize("field,value", [("active_sheet", "Sheet1"), ("freeze_rows", 1.5), ("freeze_columns", 1.5)])
+    def test_native_metadata_integer_types_rejected(tmp_path, field, value):
+        path = tmp_path / "bad-type.texel"
+        s = Session(path)
+        with s.store.connect() as db:
+            data = json.loads(db.execute("SELECT metadata FROM texel_state").fetchone()[0])
+            target = data if field == "active_sheet" else data["sheets"][0]
+            target[field] = value
+            db.execute("UPDATE texel_state SET metadata=?", (json.dumps(data),))
+        before = path.read_bytes()
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_audit_1_boundaries.py:417: Failed
+_______ test_native_metadata_integer_types_rejected[freeze_columns-1.5] _______
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/review_red_tmp/test_native_metadata_integer_t2')
+field = 'freeze_columns', value = 1.5
+
+    @pytest.mark.parametrize("field,value", [("active_sheet", "Sheet1"), ("freeze_rows", 1.5), ("freeze_columns", 1.5)])
+    def test_native_metadata_integer_types_rejected(tmp_path, field, value):
+        path = tmp_path / "bad-type.texel"
+        s = Session(path)
+        with s.store.connect() as db:
+            data = json.loads(db.execute("SELECT metadata FROM texel_state").fetchone()[0])
+            target = data if field == "active_sheet" else data["sheets"][0]
+            target[field] = value
+            db.execute("UPDATE texel_state SET metadata=?", (json.dumps(data),))
+        before = path.read_bytes()
+>       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_audit_1_boundaries.py:417: Failed
+_______ test_discontinuous_visible_border_keeps_previous_right[hidden] ________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/review_red_tmp/test_discontinuous_visible_bor0')
+gap = 'hidden'
+
+    @pytest.mark.parametrize("gap", ["hidden", "frozen"])
+    async def test_discontinuous_visible_border_keeps_previous_right(tmp_path, gap):
+        app = TexelApp(tmp_path / "gap.texel")
+    
+        def seed(w):
+            apply_borders(w, 0, "A1", "right", "thick")
+            apply_borders(w, 0, "D1", "top", "thin")
+            if gap == "hidden":
+                w.sheet().hidden_columns.add(1)
+            else:
+                w.sheet().freeze_columns = 1
+    
+        app.session.apply("seed", seed)
+        async with app.run_test(size=(80, 24)):
+            if gap == "frozen":
+                app.grid.left = 2
+            x = app.grid.visible_columns()[1][1]
+>           assert app.grid.render_line(2).text[x] == "┃"
+E           AssertionError: assert '│' == '┃'
+E             
+E             - ┃
+E             + │
+
+tests\test_audit_1_boundaries.py:439: AssertionError
+_______ test_discontinuous_visible_border_keeps_previous_right[frozen] ________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/review_red_tmp/test_discontinuous_visible_bor1')
+gap = 'frozen'
+
+    @pytest.mark.parametrize("gap", ["hidden", "frozen"])
+    async def test_discontinuous_visible_border_keeps_previous_right(tmp_path, gap):
+        app = TexelApp(tmp_path / "gap.texel")
+    
+        def seed(w):
+            apply_borders(w, 0, "A1", "right", "thick")
+            apply_borders(w, 0, "D1", "top", "thin")
+            if gap == "hidden":
+                w.sheet().hidden_columns.add(1)
+            else:
+                w.sheet().freeze_columns = 1
+    
+        app.session.apply("seed", seed)
+        async with app.run_test(size=(80, 24)):
+            if gap == "frozen":
+                app.grid.left = 2
+            x = app.grid.visible_columns()[1][1]
+>           assert app.grid.render_line(2).text[x] == "┃"
+E           AssertionError: assert '│' == '┃'
+E             
+E             - ┃
+E             + │
+
+tests\test_audit_1_boundaries.py:439: AssertionError
+______________ test_frozen_cursor_requires_four_visible_columns _______________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/review_red_tmp/test_frozen_cursor_requires_fo0')
+
+    async def test_frozen_cursor_requires_four_visible_columns(tmp_path):
+        app = TexelApp(tmp_path / "last-pixel.texel")
+        app.session.apply("freeze", lambda w: setattr(w.sheet(), "freeze_columns", 1))
+        async with app.run_test(size=(80, 24)) as p:
+            await p.press(*(["right"] * 5))
+>           assert next(width for c, _, width in app.grid.visible_columns() if c == 5) >= 4
+E           assert 1 >= 4
+E            +  where 1 = next(<generator object test_frozen_cursor_requires_four_visible_columns.<locals>.<genexpr> at 0x0000015E01F34040>)
+
+tests\test_audit_1_boundaries.py:448: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_1_boundaries.py::test_native_metadata_integer_types_rejected[active_sheet-Sheet1]
+FAILED tests/test_audit_1_boundaries.py::test_native_metadata_integer_types_rejected[freeze_rows-1.5]
+FAILED tests/test_audit_1_boundaries.py::test_native_metadata_integer_types_rejected[freeze_columns-1.5]
+FAILED tests/test_audit_1_boundaries.py::test_discontinuous_visible_border_keeps_previous_right[hidden]
+FAILED tests/test_audit_1_boundaries.py::test_discontinuous_visible_border_keeps_previous_right[frozen]
+FAILED tests/test_audit_1_boundaries.py::test_frozen_cursor_requires_four_visible_columns
+6 failed, 52 deselected in 1.84s

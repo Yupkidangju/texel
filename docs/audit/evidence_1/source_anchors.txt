@@ -1,0 +1,406 @@
+texel/ui/dialogs.py
+36:     FormDialog { align: center middle; background: $background 65%; }
+37:     FormDialog > Vertical { width: 72; max-width: 95%; max-height: 92%; height: auto; border: round $accent; background: $surface; padding: 1 2; }
+38:     FormDialog .form-title { text-style: bold; color: $accent; margin-bottom: 1; }
+39:     FormDialog VerticalScroll { height: auto; max-height: 24; }
+40:     FormDialog Input, FormDialog Select { margin-bottom: 1; }
+41:     FormDialog .error { color: $error; height: auto; }
+42:     FormDialog Horizontal { height: 3; align-horizontal: right; }
+43:     FormDialog Button { margin-left: 1; }
+44:     FormDialog DirectoryTree { height: 8; border: solid $panel; }
+45:     """
+46: 
+47:     def __init__(self, title, fields, submit, language="ko", notice="", browse=None):
+48:         super().__init__()
+49:         self.title_text, self.fields, self.submit = title, fields, submit
+50:         self.language, self.notice, self.browse = language, notice, browse
+51: 
+texel/ui/grid.py
+98:     def visible_columns(self):
+99:         width, x, columns = self.size.width, GUTTER_WIDTH, []
+100:         frozen = [
+101:             c
+102:             for c in range(min(self.sheet.freeze_columns, 32))
+103:             if c not in self.sheet.hidden_columns
+104:         ]
+105:         ordered = iter(
+106:             frozen
+107:             + list(
+108:                 range(
+109:                     max(self.left, self.sheet.freeze_columns),
+110:                     min(MAX_COLUMNS, max(self.left, self.sheet.freeze_columns) + max(1, width)),
+111:                 )
+112:             )
+113:         )
+114:         for column in ordered:
+115:             if column in self.sheet.hidden_columns:
+116:                 continue
+117:             cell_width = (
+118:                 self._resize_width
+119:                 if self._resizing and self._resizing[0] == column
+120:                 else self.sheet.column_widths.get(column, 14)
+121:             )
+122:             if x >= width:
+123:                 break
+124:             cell_width = max(4, min(60, cell_width))
+125:             columns.append((column, x, cell_width))
+126:             x += cell_width
+127:         return columns
+128: 
+129:     def move(self, row, column, extend=False):
+216:     def on_mouse_down(self, event: events.MouseDown):
+217:         if event.button == 3:
+218:             self.focus()
+219:             context = "cell"
+220:             if event.y == 0:
+221:                 for column, x, width in self.visible_columns():
+222:                     if x <= event.x < x + width:
+223:                         self.anchor = (0, column)
+224:                         self.move(self.sheet.used_range.bottom, column, True)
+225:                         context = "column"
+226:                         break
+227:             elif event.x < GUTTER_WIDTH and 1 <= event.y <= len(self.row_slots()):
+228:                 row = self.row_slots()[event.y - 1].row
+229:                 self.anchor = (row, 0)
+230:                 self.move(row, self.sheet.used_range.right, True)
+231:                 context = "row"
+232:             else:
+233:                 position = self.cell_at(event.x, event.y)
+234:                 if position and not self.selection.contains(*position):
+235:                     self.move(*position)
+236:             self.app.open_context_menu(
+237:                 event.screen_x or self.region.x + event.x,
+238:                 event.screen_y or self.region.y + event.y,
+239:                 context,
+240:             )
+241:             event.stop()
+242:             event.prevent_default()
+243:             return
+244:         if event.button != 1:
+245:             return
+246:         self.focus()
+247:         event.stop()
+248:         if event.y == 0:
+249:             for column, x, cell_width in self.visible_columns():
+250:                 if abs(event.x - (x + cell_width - 1)) <= 1:
+251:                     self._resizing = column, event.x, cell_width
+252:                     self._resize_width = cell_width
+253:                     self.capture_mouse()
+254:                     return
+255:                 if x <= event.x < x + cell_width:
+256:                     self.anchor = (0, column)
+257:                     self.move(self.sheet.used_range.bottom, column, True)
+258:                     return
+259:         position = self.cell_at(event.x, event.y)
+260:         if event.x < GUTTER_WIDTH and 1 <= event.y <= len(self.row_slots()):
+261:             row = self.row_slots()[event.y - 1].row
+262:             self.anchor = (row, 0)
+263:             self.move(row, self.sheet.used_range.right, True)
+264:             return
+265:         if position:
+266:             self.move(*position, extend=event.shift)
+267:             self._dragging = True
+268:             self.capture_mouse()
+269: 
+270:     def on_mouse_move(self, event: events.MouseMove):
+271:         if self._resizing:
+320:     def on_key(self, event: events.Key):
+321:         # App can already have queued several keys for the old focused widget.
+322:         if self.app.editing is not None:
+323:             self.app.formula_input.post_message(events.Key(event.key, event.character))
+324:             event.stop()
+325:             event.prevent_default()
+326:             return
+327:         key = event.key
+328:         extend = key.startswith("shift+")
+329:         plain = key.removeprefix("shift+")
+330:         row, column = self.cursor
+331:         steps = {
+332:             "up": (-1, 0),
+333:             "down": (1, 0),
+334:             "left": (0, -1),
+335:             "right": (0, 1),
+336:             "pageup": (-max(1, self.size.height - 3), 0),
+texel/ui/app.py
+311:     def commit_edit(self, movement=None, fill=False):
+312:         if self.editing is None:
+313:             return True
+314:         sheet, row, column, revision = self.editing
+315:         raw = self.formula_input.value
+316: 
+317:         def edit(book):
+318:             if fill:
+319:                 for r, c in self.edit_selection.coordinates(limit=10000):
+320:                     book.sheet(sheet).set_raw(r, c, translate_formula(raw, r - row, c - column))
+321:             else:
+322:                 set_matrix(book, sheet, address(row, column), [[raw]])
+323: 
+324:         try:
+325:             self.session.apply("edit cells", edit, revision)
+326:         except ConflictError:
+327:             self.session.reload()
+328:             self._pending_revision = self.session.revision
+329:             self.refresh_workbook()
+330:             self.notify(self.text("draft_conflict"), severity="error", timeout=8)
+331:             return False
+332:         except (ValueError, OSError, sqlite3.DatabaseError) as exc:
+333:             self.notify(str(exc), title=self.text("error"), severity="error", timeout=6)
+334:             return False
+335:         self.editing = self.edit_selection = None
+336:         self._pending_revision = None
+337:         self.refresh_workbook()
+338:         self.grid.focus()
+339:         if movement:
+340:             self.grid.move(row + movement[0], column + movement[1])
+341:         return True
+342: 
+343:     def cancel_edit(self):
+texel/editing.py
+124: def fill_range(book, sheet, region, direction="down"):
+125:     target = book.sheet(sheet)
+126:     span = CellRange.parse(region)
+127:     span.coordinates(limit=10000)
+128:     if direction == "series":
+129:         evaluator = Evaluator(book)
+130:         for c in range(span.left, span.right + 1):
+131:             first = evaluator.value(sheet, span.top, c)
+132:             second = evaluator.value(sheet, span.top + 1, c) if span.height > 1 else None
+133:             if not isinstance(first, (int, float)):
+134:                 raise ValueError("Series starts with a number")
+135:             step = second - first if isinstance(second, (int, float)) else 1
+136:             for r in range(span.top, span.bottom + 1):
+137:                 target.set_raw(r, c, display_value(first + (r - span.top) * step))
+138:         return
+139:     originals = {
+140:         (r, c): deepcopy(target.cell(r, c, False)) for r, c in span.coordinates(limit=10000)
+141:     }
+142:     for r, c in span.coordinates(limit=10000):
+143:         origin = (span.top, c) if direction == "down" else (r, span.left)
+316:     for other in book.sheets:
+317:         for cell in other.cells.values():
+318:             if not cell.raw.startswith("="):
+319:                 continue
+320:             try:
+321:                 tokens = tokenize(cell.raw[1:])
+322:             except FormulaFault:
+323:                 continue
+324:             source, result, previous = cell.raw[1:], "=", 0
+325:             for i, token in enumerate(tokens):
+326:                 value = token.value
+327:                 if i + 1 < len(tokens) and tokens[i + 1].value == "!":
+328:                     candidate = value[1:-1].replace("''", "'") if token.kind == "SHEET" else value
+329:                     if candidate.casefold() == old.casefold():
+330:                         value = "'" + name.replace("'", "''") + "'"
+331:                 result += source[previous : token.start] + value
+332:                 previous = token.end
+333:             cell.raw = result
+334:     target.name = name
+335:     book.named_ranges = {
+336:         k: (name if n.casefold() == old.casefold() else n, r)
+337:         for k, (n, r) in book.named_ranges.items()
+texel/session.py
+23:             return True
+24:         return False
+25: 
+26:     def apply(self, label, mutation, expected_revision=None):
+27:         expected = self.revision if expected_revision is None else expected_revision
+28:         if expected != self.revision:
+29:             raise ConflictError(expected, self.revision)
+30:         candidate = deepcopy(self.workbook)
+31:         result = mutation(candidate)
+32:         candidate.validate()
+33:         evaluator = Evaluator(candidate)
+34:         for index, sheet in enumerate(candidate.sheets):
+35:             old = self.workbook.sheets[index] if index < len(self.workbook.sheets) else None
+36:             if old is not None and old.protected:
+37:                 for (r, c), previous in old.cells.items():
+38:                     if previous.locked and previous != sheet.cell(r, c, False):
+39:                         raise ValueError(f"Cell {r + 1},{c + 1} is protected")
+40:             for (r, c), cell in sheet.cells.items():
+41:                 rule = cell.validation
+42:                 if rule is not None and not rule.check(evaluator.value(index, r, c)):
+43:                     raise ValueError(f"Cell {r + 1},{c + 1} violates its validation rule")
+44:         revision = self.store.commit(self.workbook, candidate, expected, label, self.source)
+texel/ui/actions.py
+86:     def switch_workbook(self, session):
+87:         self.session = session
+88:         self.source_path = None
+89:         self.sheet_index = session.workbook.active_sheet
+90:         self.clipboard_data = None
+91:         self.grid.top = self.grid.left = 0
+92:         self.grid.cursor = self.grid.anchor = (0, 0)
+93:         self.refresh_workbook()
+94: 
+95:     def fresh_path(self, stem="Untitled"):
+121:             def open_document(v):
+122:                 path = Path(v["path"]).expanduser().resolve()
+123:                 imported = load_file(path, v.get("encoding", "auto"))
+124:                 if path.suffix.lower() == ".texel":
+125:                     session = Session(path)
+126:                 else:
+127:                     session = Session(self.fresh_path(path.stem))
+128:                     session.apply("import file", lambda w: replace_workbook(w, imported))
+129:                 self.switch_workbook(session)
+130:                 self.source_path = path
+131:                 if path.suffix.lower() == ".xlsx":
+132:                     self.notify(XLSX_NOTICE, timeout=10)
+133:                 elif path.suffix.lower() == ".xls":
+134:                     from ..legacy_excel import XLS_NOTICE
+135: 
+136:                     self.notify(XLS_NOTICE, timeout=12)
+137:                 elif path.suffix.lower() == ".gsheet":
+138:                     from ..google_sheets import GSHEET_NOTICE
+139: 
+140:                     self.notify(GSHEET_NOTICE, timeout=12)
+141: 
+142:             self.file_form(command, open_document)
+143:         elif command in {"save", "export"}:
+144: 
+145:             def save_document(v):
+texel/model.py
+215:         self.active_sheet = min(self.active_sheet, len(self.sheets) - 1)
+216: 
+217:     def validate(self) -> None:
+218:         if not self.sheets or len(self.sheets) > 256:
+219:             raise ValueError("Workbook requires 1..256 sheets")
+220:         if sum(len(s.cells) for s in self.sheets) > MAX_CELLS:
+221:             raise ValueError(f"Workbook exceeds {MAX_CELLS:,} stored cells")
+222:         names = set()
+223:         for sheet in self.sheets:
+224:             validate_sheet_name(sheet.name)
+225:             if sheet.name.casefold() in names:
+226:                 raise ValueError("Duplicate sheet name")
+227:             names.add(sheet.name.casefold())
+228:             if not 0 <= sheet.freeze_rows < MAX_ROWS or not 0 <= sheet.freeze_columns < MAX_COLUMNS:
+229:                 raise ValueError("Invalid freeze bounds")
+230:             if any(
+231:                 not 0 <= r < MAX_ROWS or not isinstance(h, int) or not 1 <= h <= 12
+232:                 for r, h in sheet.row_heights.items()
+233:             ):
+273:                         and rule.minimum > rule.maximum
+274:                     ):
+275:                         raise ValueError("Validation minimum exceeds maximum")
+276:             for merge in sheet.merges:
+277:                 span = CellRange.parse(merge)
+278:                 for r, c in span.coordinates(limit=10000):
+279:                     if (r, c) != (span.top, span.left) and sheet.cell(r, c, False).raw:
+280:                         raise ValueError("Merged cells contain non-anchor data")
+281:         self.sheet(self.active_sheet)
+282: 
+283:     def to_dict(self) -> dict:
+284:         return {
+285:             "sheets": [s.to_dict() for s in self.sheets],
+286:             "active_sheet": self.active_sheet,
+287:             "named_ranges": self.named_ranges,
+288:         }
+289: 
+290:     @classmethod
+291:     def from_dict(cls, data: dict) -> Workbook:
+292:         book = cls(
+293:             [Sheet.from_dict(s) for s in data["sheets"]],
+294:             data.get("active_sheet", 0),
+295:             {k: tuple(v) for k, v in data.get("named_ranges", {}).items()},
+texel/exchange.py
+46:     if suffix == ".gsheet":
+47:         from .google_sheets import load_gsheet
+48: 
+49:         return load_gsheet(path)
+50:     if suffix == ".texel":
+51:         from .store import Store
+52: 
+53:         return Store(path).load()[0]
+54:     if suffix in {".csv", ".tsv"}:
+55:         book, count = Workbook(), 0
+56:         csv.field_size_limit(32767)
+57:         if encoding not in {"auto", "utf-8", "utf-8-sig", "utf-16", "cp949"}:
+58:             raise ValueError("CSV encoding must be auto/utf-8-sig/utf-16/cp949")
+59:         data = path.read_bytes()
+60:         if encoding == "auto":
+61:             if data.startswith((b"\xff\xfe", b"\xfe\xff")):
+62:                 decoded = data.decode("utf-16")
+texel/store.py
+49:         with self.connect() as db:
+50:             tables = {
+51:                 row[0] for row in db.execute("SELECT name FROM sqlite_master WHERE type='table'")
+52:             }
+53:             if tables and "texel_state" not in tables:
+54:                 raise ValueError("This SQLite file is not a Texel workbook")
+55:             if "texel_state" not in tables:
+56:                 db.executescript("""
+57:                     CREATE TABLE texel_state (
+58:                         singleton INTEGER PRIMARY KEY CHECK(singleton=1), schema_version INTEGER,
+59:                         revision INTEGER, cursor INTEGER, metadata TEXT NOT NULL
+60:                     );
+61:                     CREATE TABLE cells (
+62:                         sheet INTEGER, row INTEGER, col INTEGER, data TEXT NOT NULL,
+63:                         PRIMARY KEY(sheet,row,col)
+64:                     );
+65:                     CREATE TABLE history (
+66:                         id INTEGER PRIMARY KEY AUTOINCREMENT, label TEXT, source TEXT,
+67:                         created TEXT DEFAULT CURRENT_TIMESTAMP, patch BLOB NOT NULL
+68:                     );
+69:                 """)
+70:                 db.execute(
+71:                     "INSERT INTO texel_state VALUES (1,1,0,0,?)", (encode(metadata(Workbook())),)
+72:                 )
+73:             version = db.execute(
+74:                 "SELECT schema_version FROM texel_state WHERE singleton=1"
+75:             ).fetchone()[0]
+76:             if version != 1:
+77:                 raise ValueError(f"Unsupported Texel schema: {version}")
+78:             db.execute("PRAGMA journal_mode=WAL")
+79: 
+80:     @contextmanager
+81:     def connect(self):
+82:         db = sqlite3.connect(self.path, timeout=5)
+83:         try:
+84:             db.execute("PRAGMA busy_timeout=5000")
+85:             yield db
+86:             db.commit()
+87:         except BaseException:
+88:             db.rollback()
+texel/__main__.py
+44:         elif path.suffix.lower() != ".texel":
+45:             imported = load_file(path)
+46:             path = path.parent / f"{path.stem}-{uuid4().hex[:8]}.texel"
+47:             Session(path).apply("import", lambda w: replace_workbook(w, imported))
+48:         TexelApp(path, language).run(mouse=True)
+49:         return 0
+50:     except (ValueError, OSError, sqlite3.DatabaseError) as exc:
+51:         print(f"Texel: {exc}", file=sys.stderr)
+52:         return 2
+53: 
+54: 
+55: if __name__ == "__main__":
+56:     raise SystemExit(main())
+texel/ui/grid_render.py
+202:                         )
+203:                     )
+204:         return Strip(segments).adjust_cell_length(width, base).crop(0, width)
+205: 
+206:     def render_rule(self, row, columns, segments, base):
+207:         for i, (column, _, width) in enumerate(columns):
+208:             edge = self.horizontal_edge(row, column)
+209:             style = (
+210:                 Style(color=edge.color or self.app.palette["text"], bgcolor=base.bgcolor)
+211:                 if edge
+212:                 else base
+213:             )
+214:             merged = self.sheet.merged_range(row, column)
+215:             above = self.sheet.merged_range(row - 1, column) if row else None
+216:             internal_left = bool(
+217:                 i
+218:                 and (
+219:                     (merged and merged.contains(row, columns[i - 1][0]))
+220:                     or (above and above.contains(row - 1, columns[i - 1][0]))
+221:                 )
+222:             )
+223:             if edge:
+224:                 glyph = HORIZONTAL[edge.style]
+225:                 joint = (
+226:                     glyph
+227:                     if internal_left
+228:                     else "╬"
+229:                     if edge.style == "double"
+230:                     else "╋"
+231:                     if WEIGHT[edge.style] >= 2

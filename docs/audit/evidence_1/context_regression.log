@@ -1,0 +1,28 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____________ test_IMP_F001_context_last_command_clickable_at_80x24 ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_1/context_regression_temp/test_IMP_F001_context_last_com0')
+
+    async def test_IMP_F001_context_last_command_clickable_at_80x24(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel',language='en')
+        app.session.apply('freeze',lambda w:(setattr(w.sheet(),'freeze_rows',1),setattr(w.sheet(),'freeze_columns',1)))
+        async with app.run_test(size=(80,24)) as p:
+            await p.click('#grid',offset=(12,1),button=3)
+            await p.press('end');await p.pause(0.6)
+            options=app.screen.query_one(OptionList)
+            line=options._line_cache.index_to_line[options.highlighted]
+            x=options.content_region.x+2
+            y=options.content_region.y+line-int(options.scroll_y)
+            await p.click(offset=(x,y))
+            assert type(app.screen).__name__=='Screen', '마지막 우클릭 명령이 메뉴 박스에 가려짐'
+>           assert (app.grid.sheet.freeze_rows,app.grid.sheet.freeze_columns)==(0,0)
+E           assert (1, 1) == (0, 0)
+E             
+E             At index 0 diff: 1 != 0
+E             Use -v to get more diff
+
+docs\audit\evidence_1\test_audit_regressions.py:38: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_IMP_F001_context_last_command_clickable_at_80x24
+1 failed, 10 deselected in 1.47s

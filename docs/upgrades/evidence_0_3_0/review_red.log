@@ -1,0 +1,74 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+___________ test_replace_rejects_expansion_before_large_allocation ____________
+
+    def test_replace_rejects_expansion_before_large_allocation():
+        w = Workbook()
+        w.sheet().set_raw(0, 0, "a" * 1024)
+        replacement = "x" * 32767
+        tracemalloc.start()
+        try:
+            with pytest.raises(ValueError, match="limit"):
+                replace_matches(w, "a", replacement)
+            _, peak = tracemalloc.get_traced_memory()
+        finally:
+            tracemalloc.stop()
+>       assert peak < 2_000_000
+E       assert 33564169 < 2000000
+
+tests\test_v030_review_fixes.py:24: AssertionError
+_ test_sumif_obeys_common_aggregate_contract[=SUMIF(A1:B1,">0",C1:C2)-#VALUE!] _
+
+formula = '=SUMIF(A1:B1,">0",C1:C2)', code = '#VALUE!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=SUMIF(A1:B1,">0",C1:C2)', "#VALUE!"),
+        ('=SUMIF(A1:A2,">0",B1:B2)', "#DIV/0!"),
+    ])
+    def test_sumif_obeys_common_aggregate_contract(formula, code):
+        w = Workbook()
+        set_matrix(w, 0, "A1", [["1", "TRUE", "10"], ["1", "=1/0", "20"]])
+        w.sheet().set_raw(0, 3, formula)
+        result = Evaluator(w).value(0, 0, 3)
+>       assert isinstance(result, Error) and result.code == code
+E       assert (False)
+E        +  where False = isinstance(10, Error)
+
+tests\test_v030_review_fixes.py:37: AssertionError
+_ test_sumif_obeys_common_aggregate_contract[=SUMIF(A1:A2,">0",B1:B2)-#DIV/0!] _
+
+formula = '=SUMIF(A1:A2,">0",B1:B2)', code = '#DIV/0!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=SUMIF(A1:B1,">0",C1:C2)', "#VALUE!"),
+        ('=SUMIF(A1:A2,">0",B1:B2)', "#DIV/0!"),
+    ])
+    def test_sumif_obeys_common_aggregate_contract(formula, code):
+        w = Workbook()
+        set_matrix(w, 0, "A1", [["1", "TRUE", "10"], ["1", "=1/0", "20"]])
+        w.sheet().set_raw(0, 3, formula)
+        result = Evaluator(w).value(0, 0, 3)
+>       assert isinstance(result, Error) and result.code == code
+E       assert (False)
+E        +  where False = isinstance(1, Error)
+
+tests\test_v030_review_fixes.py:37: AssertionError
+__________________ test_workday_accepts_exact_calendar_limit __________________
+
+    def test_workday_accepts_exact_calendar_limit():
+        w = Workbook()
+        w.sheet().set_raw(0, 0, "=WORKDAY(DATE(2026,1,7),71428)")
+>       assert Evaluator(w).value(0, 0, 0) == date(2299, 10, 23)
+E       AssertionError: assert Error(code='#LIMIT!', detail='Calendar span exceeds 100000 days') == datetime.date(2299, 10, 23)
+E        +  where Error(code='#LIMIT!', detail='Calendar span exceeds 100000 days') = value(0, 0, 0)
+E        +    where value = <texel.formula.Evaluator object at 0x0000023666F434D0>.value
+E        +      where <texel.formula.Evaluator object at 0x0000023666F434D0> = Evaluator(Workbook(sheets=[Sheet(name='Sheet1', cells={(0, 0): Cell(raw='=WORKDAY(DATE(2026,1,7),71428)', style=CellStyle(number...ns=0, merges=[], conditional_rules=[], protected=False, filter_spec=None, charts=[])], active_sheet=0, named_ranges={}))
+E        +  and   datetime.date(2299, 10, 23) = date(2299, 10, 23)
+
+tests\test_v030_review_fixes.py:43: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_v030_review_fixes.py::test_replace_rejects_expansion_before_large_allocation
+FAILED tests/test_v030_review_fixes.py::test_sumif_obeys_common_aggregate_contract[=SUMIF(A1:B1,">0",C1:C2)-#VALUE!]
+FAILED tests/test_v030_review_fixes.py::test_sumif_obeys_common_aggregate_contract[=SUMIF(A1:A2,">0",B1:B2)-#DIV/0!]
+FAILED tests/test_v030_review_fixes.py::test_workday_accepts_exact_calendar_limit
+4 failed in 0.36s

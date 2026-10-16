@@ -1,0 +1,23 @@
+....F...........................                                         [100%]
+================================== FAILURES ===================================
+___________ test_batched_tab_typing_stays_in_intended_filter_fields ___________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/upgrades/evidence_0_3_0/tab_green_tmp/test_batched_tab_typing_stays_0')
+
+    async def test_batched_tab_typing_stays_in_intended_filter_fields(tmp_path):
+        app = TexelApp(tmp_path / "tab-input.texel", language="en")
+        async with app.run_test(size=(80, 24)) as p:
+            await command(p, "advanced_filter")
+            for key in ["tab", "tab", "tab", "a", "tab", "2", "tab", ">", "1"]:
+                app.post_message(events.Key(key, key if len(key) == 1 else None))
+            await p.pause(0.3)
+>           assert app.screen.query_one("#field-range").value == "A1"
+E           AssertionError: assert 'a2>1' == 'A1'
+E             
+E             - A1
+E             + a2>1
+
+tests\test_v030_tui.py:87: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_v030_tui.py::test_batched_tab_typing_stays_in_intended_filter_fields
+1 failed, 31 passed in 29.96s

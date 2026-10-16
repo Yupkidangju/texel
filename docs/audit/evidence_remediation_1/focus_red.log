@@ -1,0 +1,20 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____________ test_commit_focus_does_not_reopen_stale_formula_draft ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/focus_red_tmp/test_commit_focus_does_not_reo0')
+
+    async def test_commit_focus_does_not_reopen_stale_formula_draft(tmp_path):
+        app = TexelApp(tmp_path / "focus-order.texel")
+        async with app.run_test(size=(80, 24)) as p:
+            app.begin_edit("7")
+>           assert app.screen.focused is app.formula_input
+E           AssertionError: assert SpreadsheetGrid(id='grid') is FormulaInput(id='formula', classes='-valid')
+E            +  where SpreadsheetGrid(id='grid') = Screen(id='_default').focused
+E            +    where Screen(id='_default') = TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'dark', 'nocolor', 'focus'}).screen
+E            +  and   FormulaInput(id='formula', classes='-valid') = TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'dark', 'nocolor', 'focus'}).formula_input
+
+tests\test_audit_1_boundaries.py:491: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_1_boundaries.py::test_commit_focus_does_not_reopen_stale_formula_draft
+1 failed, 60 deselected in 1.27s

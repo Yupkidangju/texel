@@ -1,0 +1,96 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_________ test_new_tool_schema_preview_partial_format_and_multi_read __________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 13, in test_new_tool_schema_preview_partial_format_and_multi_read
+  |     async with Client(create_server(path, tmp_path)) as client:
+  |                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\client.py", line 480, in __aexit__
+  |     await self._exit_stack.__aexit__(exc_type, exc_val, exc_tb)
+  |   File "contextlib.py", line 813, in __aexit__
+  |   File "contextlib.py", line 796, in __aexit__
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "contextlib.py", line 796, in __aexit__
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 15, in test_new_tool_schema_preview_partial_format_and_multi_read
+      |     assert len(tools) == 39
+      | AssertionError: assert 30 == 39
+      |  +  where 30 = len([Tool(name='workbook_info', title=None, description='Inspect sheets, used ranges, names, supported functions and recen...itle=None, read_only_hint=False, destructive_hint=False, idempotent_hint=None, open_world_hint=False), meta=None), ...])
+      +------------------------------------
+________ test_stdio_batch_sort_filter_diagnostics_and_tui_observation _________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 45, in test_stdio_batch_sort_filter_diagnostics_and_tui_observation
+  |     async with Client(StdioServerParameters(command=sys.executable, args=["-m", "texel", "mcp", "--workbook", str(path), "--root", str(tmp_path)])) as client:
+  |                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\client.py", line 480, in __aexit__
+  |     await self._exit_stack.__aexit__(exc_type, exc_val, exc_tb)
+  |   File "contextlib.py", line 813, in __aexit__
+  |   File "contextlib.py", line 796, in __aexit__
+  |   File "contextlib.py", line 297, in __aexit__
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\stdio.py", line 201, in stdio_client
+  |     async with anyio.create_task_group() as tg:
+  |                ~~~~~~~~~~~~~~~~~~~~~~~^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\stdio.py", line 205, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "contextlib.py", line 796, in __aexit__
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 49, in test_stdio_batch_sort_filter_diagnostics_and_tui_observation
+      |     assert result["ok"] and result["revision"] == 1
+      |            ~~~~~~^^^^^^
+      | TypeError: 'NoneType' object is not subscriptable
+      +------------------------------------
+---------------------------- Captured stderr call -----------------------------
+[10/15/26 14:48:47] INFO     Tool 'apply_operations' failed:      server.py:453
+
+                             'Unknown tool: apply_operations'                  
+
+_______________ test_invalid_batch_schema_and_failure_location ________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 70, in test_invalid_batch_schema_and_failure_location
+  |     async with Client(create_server(path, tmp_path)) as client:
+  |                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\client.py", line 480, in __aexit__
+  |     await self._exit_stack.__aexit__(exc_type, exc_val, exc_tb)
+  |   File "contextlib.py", line 813, in __aexit__
+  |   File "contextlib.py", line 796, in __aexit__
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "contextlib.py", line 796, in __aexit__
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\LocalDev\python\Texel\tests\test_v030_mcp.py", line 72, in test_invalid_batch_schema_and_failure_location
+      |     assert not result["ok"] and result["error"]["operation_index"] == 1
+      |                ~~~~~~^^^^^^
+      | TypeError: 'NoneType' object is not subscriptable
+      +------------------------------------
+=========================== short test summary info ===========================
+FAILED tests/test_v030_mcp.py::test_new_tool_schema_preview_partial_format_and_multi_read
+FAILED tests/test_v030_mcp.py::test_stdio_batch_sort_filter_diagnostics_and_tui_observation
+FAILED tests/test_v030_mcp.py::test_invalid_batch_schema_and_failure_location
+3 failed in 5.12s

@@ -1,0 +1,800 @@
+--- 0.2.0/texel\__init__.py
++++ 0.2.1/texel\__init__.py
+@@ -1,3 +1,3 @@
+ """Texel: 로컬 TUI 및 MCP 스프레드시트."""
+ 
+-__version__ = "0.2.0"
++__version__ = "0.2.1"
+--- 0.2.0/texel\__main__.py
++++ 0.2.1/texel\__main__.py
+@@ -38,14 +38,16 @@
+ 
+         path = arguments.workbook if arguments.mode == "tui" else Path("data/Workbook.texel")
+         language = arguments.language if arguments.mode == "tui" else "ko"
++        source_path = None
+         if arguments.mode == "tui" and arguments.demo:
+             path = path.parent / f"Demo-{uuid4().hex[:8]}.texel"
+             Session(path).apply("demo", lambda w: replace_workbook(w, demo_workbook()))
+         elif path.suffix.lower() != ".texel":
+             imported = load_file(path)
++            source_path = path.resolve()
+             path = path.parent / f"{path.stem}-{uuid4().hex[:8]}.texel"
+             Session(path).apply("import", lambda w: replace_workbook(w, imported))
+-        TexelApp(path, language).run(mouse=True)
++        TexelApp(path, language, source_path=source_path).run(mouse=True)
+         return 0
+     except (ValueError, OSError, sqlite3.DatabaseError) as exc:
+         print(f"Texel: {exc}", file=sys.stderr)
+--- 0.2.0/texel\editing.py
++++ 0.2.1/texel\editing.py
+@@ -1,5 +1,6 @@
+ from __future__ import annotations
+ 
++import math
+ import re
+ from copy import deepcopy
+ 
+@@ -130,11 +131,19 @@
+         for c in range(span.left, span.right + 1):
+             first = evaluator.value(sheet, span.top, c)
+             second = evaluator.value(sheet, span.top + 1, c) if span.height > 1 else None
+-            if not isinstance(first, (int, float)):
++            if isinstance(first, bool) or not isinstance(first, (int, float)):
+                 raise ValueError("Series starts with a number")
+-            step = second - first if isinstance(second, (int, float)) else 1
+-            for r in range(span.top, span.bottom + 1):
+-                target.set_raw(r, c, display_value(first + (r - span.top) * step))
++            second_is_number = not isinstance(second, bool) and isinstance(second, (int, float))
++            step = second - first if second_is_number else 1
++            start = span.top + (2 if second_is_number else 1)
++            for value in (first, step):
++                if isinstance(value, float) and not math.isfinite(value):
++                    raise ValueError("Series values must be finite")
++            for r in range(start, span.bottom + 1):
++                value = first + (r - span.top) * step
++                if isinstance(value, float) and not math.isfinite(value):
++                    raise ValueError("Series values must be finite")
++                target.set_raw(r, c, exact_text(value))
+         return
+     originals = {
+         (r, c): deepcopy(target.cell(r, c, False)) for r, c in span.coordinates(limit=10000)
+--- 0.2.0/texel\exchange.py
++++ 0.2.1/texel\exchange.py
+@@ -50,7 +50,7 @@
+     if suffix == ".texel":
+         from .store import Store
+ 
+-        return Store(path).load()[0]
++        return Store(path, read_only=True).load()[0]
+     if suffix in {".csv", ".tsv"}:
+         book, count = Workbook(), 0
+         csv.field_size_limit(32767)
+--- 0.2.0/texel\model.py
++++ 0.2.1/texel\model.py
+@@ -208,7 +208,8 @@
+         return len(self.sheets) - 1
+ 
+     def delete_sheet(self, index: int) -> None:
+-        self.sheet(index)
++        if self.sheet(index).protected:
++            raise ValueError("Unprotect the sheet before deleting it")
+         if len(self.sheets) == 1:
+             raise ValueError("Cannot delete the final sheet")
+         del self.sheets[index]
+@@ -217,6 +218,8 @@
+     def validate(self) -> None:
+         if not self.sheets or len(self.sheets) > 256:
+             raise ValueError("Workbook requires 1..256 sheets")
++        if type(self.active_sheet) is not int or not 0 <= self.active_sheet < len(self.sheets):
++            raise ValueError("Invalid active sheet index")
+         if sum(len(s.cells) for s in self.sheets) > MAX_CELLS:
+             raise ValueError(f"Workbook exceeds {MAX_CELLS:,} stored cells")
+         names = set()
+@@ -225,7 +228,13 @@
+             if sheet.name.casefold() in names:
+                 raise ValueError("Duplicate sheet name")
+             names.add(sheet.name.casefold())
+-            if not 0 <= sheet.freeze_rows < MAX_ROWS or not 0 <= sheet.freeze_columns < MAX_COLUMNS:
++            validate_sheet_metadata(sheet)
++            if (
++                type(sheet.freeze_rows) is not int
++                or type(sheet.freeze_columns) is not int
++                or not 0 <= sheet.freeze_rows < MAX_ROWS
++                or not 0 <= sheet.freeze_columns < MAX_COLUMNS
++            ):
+                 raise ValueError("Invalid freeze bounds")
+             if any(
+                 not 0 <= r < MAX_ROWS or not isinstance(h, int) or not 1 <= h <= 12
+@@ -279,6 +288,12 @@
+                     if (r, c) != (span.top, span.left) and sheet.cell(r, c, False).raw:
+                         raise ValueError("Merged cells contain non-anchor data")
+         self.sheet(self.active_sheet)
++        for name, target in self.named_ranges.items():
++            if not isinstance(name, str) or not name or len(target) != 2:
++                raise ValueError("Invalid named range")
++            sheet_name, region = target
++            self.sheet(sheet_name)
++            CellRange.parse(region)
+ 
+     def to_dict(self) -> dict:
+         return {
+@@ -296,6 +311,50 @@
+         )
+         book.validate()
+         return book
++
++
++def validate_sheet_metadata(sheet):
++    def bounded(value, limit):
++        return type(value) is int and 0 <= value < limit
++
++    if any(not bounded(r, MAX_ROWS) for r in sheet.hidden_rows) or any(
++        not bounded(c, MAX_COLUMNS) for c in sheet.hidden_columns
++    ):
++        raise ValueError("Invalid hidden row or column")
++    if any(
++        not bounded(c, MAX_COLUMNS) or type(width) is not int or not 4 <= width <= 60
++        for c, width in sheet.column_widths.items()
++    ):
++        raise ValueError("Column width must be 4..60 terminal columns")
++    spec = sheet.filter_spec
++    if spec is not None:
++        span = CellRange.parse(spec["range"])
++        if span.height > 200000 or not bounded(spec["column"], span.width):
++            raise ValueError("Filter column/range outside limits")
++        if not isinstance(spec["criterion"], str) or type(spec.get("header", True)) is not bool:
++            raise ValueError("Invalid filter criterion or header")
++    for rule in sheet.conditional_rules:
++        CellRange.parse(rule["range"])
++        value = rule["value"]
++        if (
++            isinstance(value, bool)
++            or not isinstance(value, (int, float))
++            or not math.isfinite(value)
++        ):
++            raise ValueError("Conditional value must be a finite number")
++        if rule.get("operator", "greaterThan") not in {
++            "greaterThan",
++            "lessThan",
++            "equal",
++            "greaterThanOrEqual",
++        }:
++            raise ValueError("Invalid conditional operator")
++        if not re.fullmatch(r"#[0-9a-fA-F]{6}", rule.get("color", "#0f766e")):
++            raise ValueError("Invalid conditional color")
++    for chart in sheet.charts:
++        CellRange.parse(chart["range"])
++        if chart["kind"] not in {"bar", "line"} or not isinstance(chart.get("title", ""), str):
++            raise ValueError("Invalid chart metadata")
+ 
+ 
+ def literal(raw: str) -> Any:
+--- 0.2.0/texel\session.py
++++ 0.2.1/texel\session.py
+@@ -27,16 +27,21 @@
+         expected = self.revision if expected_revision is None else expected_revision
+         if expected != self.revision:
+             raise ConflictError(expected, self.revision)
+-        candidate = deepcopy(self.workbook)
++        copies = {}
++        candidate = deepcopy(self.workbook, copies)
+         result = mutation(candidate)
+         candidate.validate()
+         evaluator = Evaluator(candidate)
++        for old in self.workbook.sheets:
++            if not old.protected:
++                continue
++            sheet = copies[id(old)]
++            if not any(sheet is current for current in candidate.sheets):
++                raise ValueError("Unprotect the sheet before deleting it")
++            for (r, c), previous in old.cells.items():
++                if previous.locked and previous != sheet.cell(r, c, False):
++                    raise ValueError(f"Cell {r + 1},{c + 1} is protected")
+         for index, sheet in enumerate(candidate.sheets):
+-            old = self.workbook.sheets[index] if index < len(self.workbook.sheets) else None
+-            if old is not None and old.protected:
+-                for (r, c), previous in old.cells.items():
+-                    if previous.locked and previous != sheet.cell(r, c, False):
+-                        raise ValueError(f"Cell {r + 1},{c + 1} is protected")
+             for (r, c), cell in sheet.cells.items():
+                 rule = cell.validation
+                 if rule is not None and not rule.check(evaluator.value(index, r, c)):
+--- 0.2.0/texel\store.py
++++ 0.2.1/texel\store.py
+@@ -43,9 +43,15 @@
+ 
+ 
+ class Store:
+-    def __init__(self, path: Path | str):
++    def __init__(self, path: Path | str, *, read_only=False):
+         self.path = Path(path).resolve()
+-        self.path.parent.mkdir(parents=True, exist_ok=True)
++        self.read_only = read_only
++        existing = self.path.exists()
++        if existing and not read_only:
++            # 기존 입력은 WAL 설정이나 생성 전에 읽기 전용으로 검사한다.
++            Store(self.path, read_only=True).load()
++        if not read_only:
++            self.path.parent.mkdir(parents=True, exist_ok=True)
+         with self.connect() as db:
+             tables = {
+                 row[0] for row in db.execute("SELECT name FROM sqlite_master WHERE type='table'")
+@@ -53,6 +59,8 @@
+             if tables and "texel_state" not in tables:
+                 raise ValueError("This SQLite file is not a Texel workbook")
+             if "texel_state" not in tables:
++                if existing or read_only:
++                    raise ValueError("This SQLite file is not a Texel workbook")
+                 db.executescript("""
+                     CREATE TABLE texel_state (
+                         singleton INTEGER PRIMARY KEY CHECK(singleton=1), schema_version INTEGER,
+@@ -70,16 +78,24 @@
+                 db.execute(
+                     "INSERT INTO texel_state VALUES (1,1,0,0,?)", (encode(metadata(Workbook())),)
+                 )
+-            version = db.execute(
++            state = db.execute(
+                 "SELECT schema_version FROM texel_state WHERE singleton=1"
+-            ).fetchone()[0]
++            ).fetchone()
++            if state is None or not {"cells", "history"} <= tables and existing:
++                raise ValueError("Incomplete Texel workbook schema")
++            version = state[0]
+             if version != 1:
+                 raise ValueError(f"Unsupported Texel schema: {version}")
+-            db.execute("PRAGMA journal_mode=WAL")
++            if not read_only:
++                db.execute("PRAGMA journal_mode=WAL")
+ 
+     @contextmanager
+     def connect(self):
+-        db = sqlite3.connect(self.path, timeout=5)
++        db = sqlite3.connect(
++            self.path.as_uri() + "?mode=ro" if self.read_only else self.path,
++            timeout=5,
++            uri=self.read_only,
++        )
+         try:
+             db.execute("PRAGMA busy_timeout=5000")
+             yield db
+@@ -96,6 +112,12 @@
+             return db.execute("SELECT revision FROM texel_state WHERE singleton=1").fetchone()[0]
+ 
+     def load(self) -> tuple[Workbook, int]:
++        try:
++            return self._load()
++        except (TypeError, KeyError, IndexError, AttributeError) as exc:
++            raise ValueError(f"Invalid workbook metadata: {exc}") from exc
++
++    def _load(self) -> tuple[Workbook, int]:
+         with self.connect() as db:
+             db.execute("BEGIN")
+             revision, raw = db.execute(
+--- 0.2.0/texel\ui\actions.py
++++ 0.2.1/texel\ui\actions.py
+@@ -96,6 +96,19 @@
+         directory = self.session.store.path.parent
+         return directory / f"{stem}-{uuid4().hex[:8]}.texel"
+ 
++    def show_import_notice(self):
++        suffix = self.source_path.suffix.lower() if self.source_path else ""
++        if suffix == ".xlsx":
++            self.notify(XLSX_NOTICE, timeout=10)
++        elif suffix == ".xls":
++            from ..legacy_excel import XLS_NOTICE
++
++            self.notify(XLS_NOTICE, timeout=12)
++        elif suffix == ".gsheet":
++            from ..google_sheets import GSHEET_NOTICE
++
++            self.notify(GSHEET_NOTICE, timeout=12)
++
+     def dispatch_command(self, command):
+         sheet = self.sheet_index
+         span = self.grid.selection
+@@ -128,16 +141,7 @@
+                     session.apply("import file", lambda w: replace_workbook(w, imported))
+                 self.switch_workbook(session)
+                 self.source_path = path
+-                if path.suffix.lower() == ".xlsx":
+-                    self.notify(XLSX_NOTICE, timeout=10)
+-                elif path.suffix.lower() == ".xls":
+-                    from ..legacy_excel import XLS_NOTICE
+-
+-                    self.notify(XLS_NOTICE, timeout=12)
+-                elif path.suffix.lower() == ".gsheet":
+-                    from ..google_sheets import GSHEET_NOTICE
+-
+-                    self.notify(GSHEET_NOTICE, timeout=12)
++                self.show_import_notice()
+ 
+             self.file_form(command, open_document)
+         elif command in {"save", "export"}:
+--- 0.2.0/texel\ui\app.py
++++ 0.2.1/texel\ui\app.py
+@@ -4,6 +4,7 @@
+ import io
+ import sqlite3
+ from copy import deepcopy
++from pathlib import Path
+ 
+ from rich.text import Text
+ from textual import on
+@@ -141,7 +142,7 @@
+     BINDINGS = [
+         Binding("shift+f10", "context_menu", "Context menu"),
+         Binding("menu", "context_menu", "Context menu"),
+-        Binding("ctrl+p", "commands", "Commands"),
++        Binding("ctrl+p", "commands", "Commands", priority=True),
+         Binding("f10", "commands", "Menu"),
+         *[
+             Binding(key, f"command('{command}')", command, show=False)
+@@ -170,7 +171,7 @@
+         ],
+     ]
+ 
+-    def __init__(self, workbook, language="ko"):
++    def __init__(self, workbook, language="ko", source_path=None):
+         super().__init__()
+         self.session = Session(workbook)
+         self.language = language
+@@ -181,8 +182,8 @@
+         self.clipboard_data = None
+         self._tabs_signature = None
+         self._pending_revision = None
+-        self.last_folder = self.session.store.path.parent
+-        self.source_path = None
++        self.source_path = Path(source_path).resolve() if source_path is not None else None
++        self.last_folder = (self.source_path or self.session.store.path).parent
+         self.theme = "textual-dark"
+ 
+     @property
+@@ -229,6 +230,7 @@
+         self.refresh_workbook()
+         self.grid.focus()
+         self.set_interval(0.75, self.poll_external)
++        self.show_import_notice()
+ 
+     def refresh_workbook(self):
+         self.sheet_index = min(self.sheet_index, len(self.session.workbook.sheets) - 1)
+@@ -300,7 +302,7 @@
+         self.edit_selection = self.grid.selection
+         raw = self.session.workbook.sheet(self.sheet_index).cell(*anchor, False).raw
+         self.formula_input.value = raw if replacement is None else replacement
+-        self.formula_input.focus()
++        self.formula_input.screen.set_focus(self.formula_input, scroll_visible=False)
+         self.formula_input.cursor_position = len(self.formula_input.value)
+         self.update_status()
+ 
+@@ -335,9 +337,9 @@
+         self.editing = self.edit_selection = None
+         self._pending_revision = None
+         self.refresh_workbook()
+-        self.grid.focus()
++        self.grid.screen.set_focus(self.grid, scroll_visible=False)
+         if movement:
+-            self.grid.move(row + movement[0], column + movement[1])
++            self.grid.advance(*movement, origin=(row, column))
+         return True
+ 
+     def cancel_edit(self):
+@@ -345,7 +347,7 @@
+         self._pending_revision = None
+         self.session.sync()
+         self.refresh_workbook()
+-        self.grid.focus()
++        self.grid.screen.set_focus(self.grid, scroll_visible=False)
+ 
+     @on(Input.Submitted, "#address")
+     def address_submitted(self, event):
+--- 0.2.0/texel\ui\context_menu.py
++++ 0.2.1/texel\ui\context_menu.py
+@@ -12,14 +12,15 @@
+     BINDINGS = [("escape", "close", "Close")]
+     DEFAULT_CSS = """
+     ContextMenu { background: transparent; align: left top; }
+-    ContextMenu > Vertical { width: 42; max-width: 96%; height: auto; max-height: 90%; border: round $accent; background: $surface; padding: 0 1; }
++    ContextMenu > Vertical { width: 42; max-width: 96%; height: auto; max-height: 100%; border: round $accent; background: $surface; padding: 0 1; }
+     ContextMenu Label { height: 1; color: $accent; text-style: bold; }
+-    ContextMenu OptionList { height: auto; max-height: 20; border: none; }
++    ContextMenu OptionList { height: 1fr; min-height: 1; border: none; }
+     """
+ 
+     def __init__(self, commands, x, y, language="ko"):
+         super().__init__()
+         self.commands, self.x, self.y, self.language = commands, x, y, language
++        self._dismiss_requested = False
+ 
+     def compose(self):
+         with Vertical(id="context-box"):
+@@ -36,6 +37,12 @@
+             )
+ 
+     def on_mount(self):
++        self.fit_menu()
++        options = self.query_one(OptionList)
++        options.highlighted = 0
++        options.focus()
++
++    def fit_menu(self):
+         box = self.query_one("#context-box")
+         height = min(len(self.commands) + 3, 23, max(6, self.app.size.height - 2))
+         box.styles.height = height
+@@ -43,17 +50,25 @@
+             max(0, min(self.x, self.app.size.width - 42)),
+             max(0, min(self.y, self.app.size.height - height)),
+         )
+-        options = self.query_one(OptionList)
+-        options.highlighted = 0
+-        options.focus()
++
++    def on_resize(self):
++        if self.is_mounted:
++            self.fit_menu()
++
++    def close_menu(self, result=None):
++        if not self._dismiss_requested and self.is_active:
++            self._dismiss_requested = True
++            self.dismiss(result)
+ 
+     @on(OptionList.OptionSelected)
+     def selected(self, event):
+-        self.dismiss(event.option.id)
++        event.stop()
++        self.close_menu(event.option.id)
+ 
+     def on_click(self, event):
+-        if event.widget is self:
+-            self.dismiss(None)
++        if not self.query_one("#context-box").region.contains(event.screen_x, event.screen_y):
++            self.close_menu()
++        event.stop()
+ 
+     def action_close(self):
+-        self.dismiss(None)
++        self.close_menu()
+--- 0.2.0/texel\ui\dialogs.py
++++ 0.2.1/texel\ui\dialogs.py
+@@ -34,11 +34,12 @@
+     BINDINGS = [("escape", "cancel", "Cancel")]
+     DEFAULT_CSS = """
+     FormDialog { align: center middle; background: $background 65%; }
+-    FormDialog > Vertical { width: 72; max-width: 95%; max-height: 92%; height: auto; border: round $accent; background: $surface; padding: 1 2; }
++    FormDialog > Vertical { width: 72; max-width: 95%; max-height: 92%; height: 34; border: round $accent; background: $surface; padding: 1 2; }
+     FormDialog .form-title { text-style: bold; color: $accent; margin-bottom: 1; }
+-    FormDialog VerticalScroll { height: auto; max-height: 24; }
++    FormDialog VerticalScroll { height: 1fr; min-height: 1; }
++    FormDialog .form-notice { height: auto; max-height: 3; overflow-y: auto; }
+     FormDialog Input, FormDialog Select { margin-bottom: 1; }
+-    FormDialog .error { color: $error; height: auto; }
++    FormDialog .error { color: $error; height: auto; max-height: 2; overflow-y: auto; }
+     FormDialog Horizontal { height: 3; align-horizontal: right; }
+     FormDialog Button { margin-left: 1; }
+     FormDialog DirectoryTree { height: 8; border: solid $panel; }
+@@ -53,7 +54,7 @@
+         with Vertical():
+             yield Label(tr(self.title_text, self.language), classes="form-title")
+             if self.notice:
+-                yield Static(Text(safe_text(self.notice, multiline=True)))
++                yield Static(Text(safe_text(self.notice, multiline=True)), classes="form-notice")
+             with VerticalScroll():
+                 for field in self.fields:
+                     if isinstance(field.value, bool):
+@@ -126,6 +127,8 @@
+     def __init__(self, commands, language="ko", title="search_commands"):
+         super().__init__()
+         self.commands, self.language, self.title_key = commands, language, title
++        self._search_key_queue = []
++        self._search_flush_scheduled = False
+ 
+     def compose(self):
+         with Vertical():
+@@ -165,10 +168,33 @@
+         self.dismiss(event.option.id)
+ 
+     def on_key(self, event):
++        if event.is_printable or event.key == "enter":
++            # 첫 layout 전에 화면으로 전달된 키도 검색 입력의 순서를 유지한다.
++            self._search_key_queue.append((event.key, event.character))
++            if not self._search_flush_scheduled:
++                self._search_flush_scheduled = True
++                self.call_after_refresh(self.flush_search_keys)
++            event.stop()
++            event.prevent_default()
++            return
+         if event.key in {"down", "up"} and self.query_one(Input).has_focus:
+             self.query_one(OptionList).focus()
+             event.stop()
+             event.prevent_default()
++
++    def flush_search_keys(self):
++        queued, self._search_key_queue = self._search_key_queue, []
++        self._search_flush_scheduled = False
++        if not self.is_active:
++            return
++        search = self.query_one(Input)
++        for key, character in queued:
++            if key == "enter":
++                self.rebuild(search.value)
++                self.submit_search()
++                break
++            if character is not None:
++                search.insert_text_at_cursor(character)
+ 
+     def action_cancel(self):
+         self.dismiss(None)
+--- 0.2.0/texel\ui\grid.py
++++ 0.2.1/texel\ui\grid.py
+@@ -97,34 +97,55 @@
+ 
+     def visible_columns(self):
+         width, x, columns = self.size.width, GUTTER_WIDTH, []
+-        frozen = [
+-            c
+-            for c in range(min(self.sheet.freeze_columns, 32))
+-            if c not in self.sheet.hidden_columns
+-        ]
+-        ordered = iter(
+-            frozen
+-            + list(
+-                range(
+-                    max(self.left, self.sheet.freeze_columns),
+-                    min(MAX_COLUMNS, max(self.left, self.sheet.freeze_columns) + max(1, width)),
+-                )
+-            )
+-        )
+-        for column in ordered:
+-            if column in self.sheet.hidden_columns:
+-                continue
+-            cell_width = (
++
++        def column_width(column):
++            configured = (
+                 self._resize_width
+                 if self._resizing and self._resizing[0] == column
+                 else self.sheet.column_widths.get(column, 14)
+             )
++            return max(4, min(60, configured))
++
++        # 동결 폭보다 스크롤 영역의 최소 폭을 먼저 예약한다.
++        budget = max(0, width - GUTTER_WIDTH - 4)
++        frozen = []
++        used = 0
++        active = self.cursor[1]
++        if (
++            active < self.sheet.freeze_columns
++            and active not in self.sheet.hidden_columns
++            and budget
++        ):
++            frozen.append((active, min(column_width(active), budget)))
++            used = frozen[0][1]
++        for column in range(self.sheet.freeze_columns):
++            if column in self.sheet.hidden_columns or column == active and frozen:
++                continue
++            cell_width = column_width(column)
++            if used + cell_width > budget:
++                break
++            frozen.append((column, cell_width))
++            used += cell_width
++        for column, cell_width in sorted(frozen):
++            columns.append((column, x, cell_width))
++            x += cell_width
++        for column in range(max(self.left, self.sheet.freeze_columns), MAX_COLUMNS):
+             if x >= width:
+                 break
+-            cell_width = max(4, min(60, cell_width))
++            if column in self.sheet.hidden_columns:
++                continue
++            cell_width = min(column_width(column), width - x)
+             columns.append((column, x, cell_width))
+             x += cell_width
+         return columns
++
++    def advance(self, dr, dc, extend=False, origin=None):
++        row, column = self.cursor if origin is None else origin
++        merged = self.sheet.merged_range(row, column)
++        if merged and not extend:
++            row = merged.bottom if dr > 0 else merged.top if dr < 0 else row
++            column = merged.right if dc > 0 else merged.left if dc < 0 else column
++        self.move(row + dr, column + dc, extend)
+ 
+     def move(self, row, column, extend=False):
+         row, column = max(0, min(MAX_ROWS - 1, row)), max(0, min(MAX_COLUMNS - 1, column))
+@@ -150,7 +171,8 @@
+                 )
+                 if row not in self.visible_rows():
+                     self.top = row
+-        if column not in [c for c, _, _ in self.visible_columns()]:
++        available = next((w for c, _, w in self.visible_columns() if c == column), 0)
++        if available < min(4, max(0, self.size.width - GUTTER_WIDTH)):
+             self.left = max(self.sheet.freeze_columns, column)
+         self.changed()
+ 
+@@ -163,7 +185,8 @@
+         self.post_message(self.SelectionChanged())
+ 
+     def on_resize(self):
+-        self.refresh()
++        if self.is_mounted:
++            self.move(*self.cursor, extend=True)
+ 
+     def color_style(self, row, column):
+         palette = self.app.palette
+@@ -214,8 +237,13 @@
+         return None
+ 
+     def on_mouse_down(self, event: events.MouseDown):
++        if event.button in {1, 3} and self.app.editing and not self.app.commit_edit():
++            self.app.formula_input.screen.set_focus(self.app.formula_input, scroll_visible=False)
++            event.stop()
++            event.prevent_default()
++            return
+         if event.button == 3:
+-            self.focus()
++            self.screen.set_focus(self, scroll_visible=False)
+             context = "cell"
+             if event.y == 0:
+                 for column, x, width in self.visible_columns():
+@@ -243,7 +271,7 @@
+             return
+         if event.button != 1:
+             return
+-        self.focus()
++        self.screen.set_focus(self, scroll_visible=False)
+         event.stop()
+         if event.y == 0:
+             for column, x, cell_width in self.visible_columns():
+@@ -290,6 +318,10 @@
+         event.stop()
+ 
+     def on_click(self, event: events.Click):
++        if self.app.editing is not None:
++            event.stop()
++            event.prevent_default()
++            return
+         if event.button != 1:
+             event.stop()
+             return
+@@ -318,6 +350,16 @@
+         event.stop()
+ 
+     def on_key(self, event: events.Key):
++        if self.screen is not self.app.screen:
++            # 모달이 mount되는 동안 이전 grid에 대기 중이던 키를 새 문맥으로 보낸다.
++            def deliver():
++                if self.app.screen_stack:
++                    self.app.post_message(events.Key(event.key, event.character))
++
++            self.app.call_after_refresh(deliver)
++            event.stop()
++            event.prevent_default()
++            return
+         # App can already have queued several keys for the old focused widget.
+         if self.app.editing is not None:
+             self.app.formula_input.post_message(events.Key(event.key, event.character))
+@@ -339,13 +381,7 @@
+         }
+         if plain in steps:
+             dr, dc = steps[plain]
+-            merged = self.sheet.merged_range(row, column)
+-            if merged and not extend:
+-                if plain in {"right", "tab"} and dc > 0:
+-                    column = merged.right
+-                elif plain == "down":
+-                    row = merged.bottom
+-            self.move(row + dr, column + dc, extend=extend and plain != "tab")
++            self.advance(dr, dc, extend=extend and plain != "tab")
+         elif plain == "home":
+             self.move(row, 0, extend)
+         elif plain == "end":
+--- 0.2.0/texel\ui\grid_render.py
++++ 0.2.1/texel\ui\grid_render.py
+@@ -131,7 +131,9 @@
+             if slot.kind == "rule":
+                 self.render_rule(row, columns, segments, base)
+             else:
+-                for column, _, cell_width, merged, last_column in self.content_groups(row):
++                groups = self.content_groups(row)
++                previous_right = None
++                for i, (column, _, cell_width, merged, last_column) in enumerate(groups):
+                     anchor = (merged.top, merged.left) if merged else (row, column)
+                     cell = self.sheet.cell(*anchor, False)
+                     value = self.app.session.evaluator.value(self.sheet_index, *anchor)
+@@ -147,7 +149,8 @@
+                         if isinstance(value, (int, float)) and not isinstance(value, bool)
+                         else "left"
+                     )
+-                    available = max(1, cell_width - 2)
++                    final = i == len(groups) - 1 and cell_width > 1
++                    available = max(0, cell_width - 1 - int(final))
+                     text = Text(content)
+                     lines = (
+                         text.wrap(self.app.console, available, overflow="fold")
+@@ -179,32 +182,38 @@
+                     line = lines[index].copy() if 0 <= index < len(lines) else Text("")
+                     line.truncate(available, overflow="ellipsis")
+                     line.align(align, available)
+-                    left_edge = self.vertical_edge(row, column)
++                    left_edge = strongest(previous_right, self.vertical_edge(row, column))
+                     right_edge = self.vertical_edge(row, last_column + 1)
++                    previous_right = right_edge
+                     segments.append(
+                         Segment(
+-                            VERTICAL[left_edge.style] if left_edge else " ",
++                            VERTICAL[left_edge.style] if left_edge else "│" if i else " ",
+                             Style(color=left_edge.color or palette["text"], bgcolor=style.bgcolor)
+                             if left_edge
++                            else Style(color=palette["grid"], bgcolor=style.bgcolor)
++                            if i
+                             else style,
+                         )
+                     )
+                     segments.extend(Segment.apply_style(line.render(self.app.console), style))
+-                    segments.append(
+-                        Segment(
+-                            VERTICAL[right_edge.style] if right_edge else "│",
+-                            Style(
+-                                color=right_edge.color or palette["text"]
+-                                if right_edge
+-                                else palette["grid"],
+-                                bgcolor=style.bgcolor,
+-                            ),
++                    if final:
++                        segments.append(
++                            Segment(
++                                VERTICAL[right_edge.style] if right_edge else "│",
++                                Style(
++                                    color=right_edge.color or palette["text"]
++                                    if right_edge
++                                    else palette["grid"],
++                                    bgcolor=style.bgcolor,
++                                ),
++                            )
+                         )
+-                    )
+         return Strip(segments).adjust_cell_length(width, base).crop(0, width)
+ 
+     def render_rule(self, row, columns, segments, base):
++        previous_right = None
+         for i, (column, _, width) in enumerate(columns):
++            final = i == len(columns) - 1 and width > 1
+             edge = self.horizontal_edge(row, column)
+             style = (
+                 Style(color=edge.color or self.app.palette["text"], bgcolor=base.bgcolor)
+@@ -222,18 +231,22 @@
+             )
+             if edge:
+                 glyph = HORIZONTAL[edge.style]
++                joint_edge = strongest(edge, previous_right, self.vertical_edge(row, column))
+                 joint = (
+                     glyph
+                     if internal_left
+                     else "╬"
+-                    if edge.style == "double"
++                    if joint_edge.style == "double"
+                     else "╋"
+-                    if WEIGHT[edge.style] >= 2
++                    if WEIGHT[joint_edge.style] >= 2
+                     else "┼"
+                 )
+-                segments.append(Segment(joint + glyph * (width - 2) + glyph, style))
++                segments.append(Segment(joint + glyph * (width - 1 - int(final)), style))
++                if final:
++                    segments.append(Segment(joint, style))
+             else:
+-                left, right = self.vertical_edge(row, column), self.vertical_edge(row, column + 1)
++                left = strongest(previous_right, self.vertical_edge(row, column))
++                right = self.vertical_edge(row, column + 1)
+                 left_style = (
+                     Style(color=left.color or self.app.palette["text"], bgcolor=base.bgcolor)
+                     if left
+@@ -245,5 +258,7 @@
+                     else style
+                 )
+                 segments.append(Segment(VERTICAL[left.style] if left else " ", left_style))
+-                segments.append(Segment(" " * (width - 2), style))
+-                segments.append(Segment(VERTICAL[right.style] if right else " ", right_style))
++                segments.append(Segment(" " * (width - 1 - int(final)), style))
++                if final:
++                    segments.append(Segment(VERTICAL[right.style] if right else " ", right_style))
++            previous_right = self.vertical_edge(row, column + 1)

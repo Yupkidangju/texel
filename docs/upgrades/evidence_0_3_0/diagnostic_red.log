@@ -1,0 +1,15 @@
+
+=================================== ERRORS ====================================
+_________ ERROR collecting tests/test_v030_diagnostics_navigation.py __________
+ImportError while importing test module 'C:\LocalDev\python\Texel\tests\test_v030_diagnostics_navigation.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+importlib\__init__.py:88: in import_module
+    ???
+tests\test_v030_diagnostics_navigation.py:3: in <module>
+    from texel.diagnostics import evaluate_formula, trace_dependencies
+E   ModuleNotFoundError: No module named 'texel.diagnostics'
+=========================== short test summary info ===========================
+ERROR tests/test_v030_diagnostics_navigation.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.17s

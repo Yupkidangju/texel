@@ -1,0 +1,125 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+___________ test_advanced_sort_filter_public_forms_and_undo[size0] ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/upgrades/evidence_0_3_0/tui_red_tmp/test_advanced_sort_filter_publ0')
+size = (80, 24)
+
+    @pytest.mark.parametrize("size", [(80, 24), (100, 30)])
+    async def test_advanced_sort_filter_public_forms_and_undo(tmp_path, size):
+        app = TexelApp(tmp_path / "tables.texel", language="en")
+        app.session.apply("seed", lambda w: set_matrix(w, 0, "A1", [["team", "n"], ["b", "2"], ["a", "1"], ["a", "4"]]))
+        async with app.run_test(size=size) as p:
+            await command(p, "advanced_sort")
+>           assert type(app.screen).__name__ == "FormDialog"
+E           AssertionError: assert 'CommandDialog' == 'FormDialog'
+E             
+E             - FormDialog
+E             + CommandDialog
+
+tests\test_v030_tui.py:18: AssertionError
+___________ test_advanced_sort_filter_public_forms_and_undo[size1] ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/upgrades/evidence_0_3_0/tui_red_tmp/test_advanced_sort_filter_publ1')
+size = (100, 30)
+
+    @pytest.mark.parametrize("size", [(80, 24), (100, 30)])
+    async def test_advanced_sort_filter_public_forms_and_undo(tmp_path, size):
+        app = TexelApp(tmp_path / "tables.texel", language="en")
+        app.session.apply("seed", lambda w: set_matrix(w, 0, "A1", [["team", "n"], ["b", "2"], ["a", "1"], ["a", "4"]]))
+        async with app.run_test(size=size) as p:
+            await command(p, "advanced_sort")
+>           assert type(app.screen).__name__ == "FormDialog"
+E           AssertionError: assert 'CommandDialog' == 'FormDialog'
+E             
+E             - FormDialog
+E             + CommandDialog
+
+tests\test_v030_tui.py:18: AssertionError
+_______________ test_keyboard_data_navigation_selection_and_f4 ________________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/upgrades/evidence_0_3_0/tui_red_tmp/test_keyboard_data_navigation_0')
+
+    async def test_keyboard_data_navigation_selection_and_f4(tmp_path):
+        app = TexelApp(tmp_path / "keys.texel")
+        app.session.apply("seed", lambda w: (set_matrix(w, 0, "A1", [["1", "2", "3"]]), set_matrix(w, 0, "G1", [["7", "8"]])))
+        async with app.run_test(size=(80, 24)) as p:
+            await p.press("ctrl+right")
+>           assert app.grid.cursor == (0, 2)
+E           assert (0, 0) == (0, 2)
+E             
+E             At index 1 diff: 0 != 2
+E             Use -v to get more diff
+
+tests\test_v030_tui.py:40: AssertionError
+________________ test_search_across_workbook_and_formula_trace ________________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/upgrades/evidence_0_3_0/tui_red_tmp/test_search_across_workbook_an0')
+
+    async def test_search_across_workbook_and_formula_trace(tmp_path):
+        app = TexelApp(tmp_path / "find.texel", language="en")
+        app.session.apply("seed", lambda w: (w.add_sheet("Other"), set_matrix(w, 1, "A1", [["=6*7", "=A1+1"]])))
+        async with app.run_test(size=(80, 24)) as p:
+            await p.press("ctrl+f")
+            app.screen.query_one("#field-query").value = "42"
+>           app.screen.query_one("#field-search_values").value = True
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_v030_tui.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = FormDialog(), selector = '#field-search_values', expect_type = None
+
+    def query_one(
+        self,
+        selector: str | type[QueryType],
+        expect_type: type[QueryType] | None = None,
+    ) -> QueryType | Widget:
+        """Get a widget from this widget's children that matches a selector or widget type.
+    
+        Args:
+            selector: A selector or widget type.
+            expect_type: Require the object be of the supplied type, or None for any type.
+    
+        Raises:
+            WrongType: If the wrong type was found.
+            NoMatches: If no node matches the query.
+    
+        Returns:
+            A widget matching the selector.
+        """
+        _rich_traceback_omit = True
+    
+        base_node = self._get_dom_base()
+    
+        if isinstance(selector, str):
+            query_selector = selector
+        else:
+            query_selector = selector.__name__
+    
+        if is_id_selector(query_selector):
+            cache_key = (base_node._nodes._updates, query_selector, expect_type)
+            cached_result = base_node._query_one_cache.get(cache_key)
+            if cached_result is not None:
+                return cached_result
+            if (
+                node := walk_breadth_search_id(
+                    base_node, query_selector[1:], with_root=False
+                )
+            ) is not None:
+                if expect_type is not None and not isinstance(node, expect_type):
+                    raise WrongType(
+                        f"Node matching {query_selector!r} is the wrong type; expected type {expect_type.__name__!r}, found {node}"
+                    )
+                base_node._query_one_cache[cache_key] = node
+                return node
+>           raise NoMatches(f"No nodes match {query_selector!r} on {base_node!r}")
+E           textual.css.query.NoMatches: No nodes match '#field-search_values' on FormDialog()
+
+.runtime\python315\Lib\site-packages\textual\dom.py:1505: NoMatches
+=========================== short test summary info ===========================
+FAILED tests/test_v030_tui.py::test_advanced_sort_filter_public_forms_and_undo[size0]
+FAILED tests/test_v030_tui.py::test_advanced_sort_filter_public_forms_and_undo[size1]
+FAILED tests/test_v030_tui.py::test_keyboard_data_navigation_selection_and_f4
+FAILED tests/test_v030_tui.py::test_search_across_workbook_and_formula_trace
+4 failed in 3.70s

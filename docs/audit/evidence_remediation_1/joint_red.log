@@ -1,0 +1,34 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___________ test_merged_outline_continues_on_other_column_rule_row ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/joint_red_tmp/test_merged_outline_continues_0')
+
+    @pytest.mark.asyncio
+    async def test_merged_outline_continues_on_other_column_rule_row(tmp_path):
+        app = TexelApp(tmp_path / "outline.texel")
+    
+        def seed(w):
+            merge_range(w, 0, "A1:B3")
+            apply_borders(w, 0, "A1:B3", "outer", "thick")
+            apply_borders(w, 0, "C2", "top", "thin")
+    
+        app.session.apply("seed", seed)
+        async with app.run_test(size=(100, 30)):
+            y = next(
+                i + 1
+                for i, slot in enumerate(app.grid.row_slots())
+                if slot.row == 1 and slot.kind == "rule"
+            )
+            assert app.grid.render_line(y).text[9] == "┃"
+            boundary = next(x for c, x, _ in app.grid.visible_columns() if c == 2)
+>           assert app.grid.render_line(y).text[boundary] == "╋"
+E           AssertionError: assert '┼' == '╋'
+E             
+E             - ╋
+E             + ┼
+
+tests\test_turn2_review_fixes.py:119: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_turn2_review_fixes.py::test_merged_outline_continues_on_other_column_rule_row
+1 failed, 8 deselected in 0.54s

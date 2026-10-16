@@ -1,0 +1,142 @@
+.....................................FFF................................ [ 32%]
+........................................................................ [ 64%]
+........................................................................ [ 96%]
+....F..                                                                  [100%]
+================================== FAILURES ===================================
+___________ test_problem_forms_actual_apply_and_resize_error[size0] ___________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/full_tmp/test_problem_forms_actual_appl0')
+size = (80, 24)
+
+    @pytest.mark.parametrize("size", [(80, 24), (100, 30), (120, 40)])
+    async def test_problem_forms_actual_apply_and_resize_error(tmp_path, size):
+        app = TexelApp(tmp_path / "forms.texel", language="en")
+        app.session.apply(
+            "seed", lambda w: set_matrix(w, 0, "A1", [["group", "n"], ["a", "2"], ["b", "1"]])
+        )
+        async with app.run_test(size=size) as p:
+            for command in ("borders", "style", "validation", "sort", "filter", "pivot", "conditional"):
+                app.grid.select_range(CellRange.parse("A1:B3"))
+                await p.press("ctrl+p")
+                await p.press(*command, "enter")
+                if command == "style":
+                    app.screen.query_one("#field-decimals").value = "3"
+                elif command == "validation":
+                    app.screen.query_one("#field-kind").value = "list"
+                    app.screen.query_one("#field-choices").value = "group,n,a,b,1,2"
+                elif command == "pivot":
+                    app.screen.query_one("#field-name").value = "Result"
+                assert await p.click("#apply", offset=(2, 1)), command
+                assert type(app.screen).__name__ == "Screen", command
+                assert app.session.store.revision == app.session.revision
+                if command == "pivot":
+>                   assert app.session.workbook.sheet("Result").cell(1, 1).raw == "2"
+E                   AssertionError: assert '0' == '2'
+E                     
+E                     - 2
+E                     + 0
+
+tests\test_audit_1_boundaries.py:281: AssertionError
+___________ test_problem_forms_actual_apply_and_resize_error[size1] ___________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/full_tmp/test_problem_forms_actual_appl1')
+size = (100, 30)
+
+    @pytest.mark.parametrize("size", [(80, 24), (100, 30), (120, 40)])
+    async def test_problem_forms_actual_apply_and_resize_error(tmp_path, size):
+        app = TexelApp(tmp_path / "forms.texel", language="en")
+        app.session.apply(
+            "seed", lambda w: set_matrix(w, 0, "A1", [["group", "n"], ["a", "2"], ["b", "1"]])
+        )
+        async with app.run_test(size=size) as p:
+            for command in ("borders", "style", "validation", "sort", "filter", "pivot", "conditional"):
+                app.grid.select_range(CellRange.parse("A1:B3"))
+                await p.press("ctrl+p")
+                await p.press(*command, "enter")
+                if command == "style":
+                    app.screen.query_one("#field-decimals").value = "3"
+                elif command == "validation":
+                    app.screen.query_one("#field-kind").value = "list"
+                    app.screen.query_one("#field-choices").value = "group,n,a,b,1,2"
+                elif command == "pivot":
+                    app.screen.query_one("#field-name").value = "Result"
+                assert await p.click("#apply", offset=(2, 1)), command
+                assert type(app.screen).__name__ == "Screen", command
+                assert app.session.store.revision == app.session.revision
+                if command == "pivot":
+>                   assert app.session.workbook.sheet("Result").cell(1, 1).raw == "2"
+E                   AssertionError: assert '0' == '2'
+E                     
+E                     - 2
+E                     + 0
+
+tests\test_audit_1_boundaries.py:281: AssertionError
+___________ test_problem_forms_actual_apply_and_resize_error[size2] ___________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/full_tmp/test_problem_forms_actual_appl2')
+size = (120, 40)
+
+    @pytest.mark.parametrize("size", [(80, 24), (100, 30), (120, 40)])
+    async def test_problem_forms_actual_apply_and_resize_error(tmp_path, size):
+        app = TexelApp(tmp_path / "forms.texel", language="en")
+        app.session.apply(
+            "seed", lambda w: set_matrix(w, 0, "A1", [["group", "n"], ["a", "2"], ["b", "1"]])
+        )
+        async with app.run_test(size=size) as p:
+            for command in ("borders", "style", "validation", "sort", "filter", "pivot", "conditional"):
+                app.grid.select_range(CellRange.parse("A1:B3"))
+                await p.press("ctrl+p")
+                await p.press(*command, "enter")
+                if command == "style":
+                    app.screen.query_one("#field-decimals").value = "3"
+                elif command == "validation":
+                    app.screen.query_one("#field-kind").value = "list"
+                    app.screen.query_one("#field-choices").value = "group,n,a,b,1,2"
+                elif command == "pivot":
+                    app.screen.query_one("#field-name").value = "Result"
+                assert await p.click("#apply", offset=(2, 1)), command
+                assert type(app.screen).__name__ == "Screen", command
+                assert app.session.store.revision == app.session.revision
+                if command == "pivot":
+>                   assert app.session.workbook.sheet("Result").cell(1, 1).raw == "2"
+E                   AssertionError: assert '0' == '2'
+E                     
+E                     - 2
+E                     + 0
+
+tests\test_audit_1_boundaries.py:281: AssertionError
+___________ test_merged_outline_continues_on_other_column_rule_row ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/full_tmp/test_merged_outline_continues_0')
+
+    @pytest.mark.asyncio
+    async def test_merged_outline_continues_on_other_column_rule_row(tmp_path):
+        app = TexelApp(tmp_path / "outline.texel")
+    
+        def seed(w):
+            merge_range(w, 0, "A1:B3")
+            apply_borders(w, 0, "A1:B3", "outer", "thick")
+            apply_borders(w, 0, "C2", "top", "thin")
+    
+        app.session.apply("seed", seed)
+        async with app.run_test(size=(100, 30)):
+            y = next(
+                i + 1
+                for i, slot in enumerate(app.grid.row_slots())
+                if slot.row == 1 and slot.kind == "rule"
+            )
+            assert app.grid.render_line(y).text[9] == "┃"
+>           assert app.grid.render_line(y).text[36] == "┃"
+E           AssertionError: assert ' ' == '┃'
+E             
+E             Strings contain only whitespace, escaping them using repr()
+E             - '┃'
+E             + ' '
+
+tests\test_turn2_review_fixes.py:118: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_1_boundaries.py::test_problem_forms_actual_apply_and_resize_error[size0]
+FAILED tests/test_audit_1_boundaries.py::test_problem_forms_actual_apply_and_resize_error[size1]
+FAILED tests/test_audit_1_boundaries.py::test_problem_forms_actual_apply_and_resize_error[size2]
+FAILED tests/test_turn2_review_fixes.py::test_merged_outline_continues_on_other_column_rule_row
+4 failed, 219 passed in 159.86s (0:02:39)

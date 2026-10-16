@@ -1,0 +1,191 @@
+FFFFFFFFFFF                                                              [100%]
+================================== FAILURES ===================================
+________________ test_IMP_F001_border_apply_reachable_at_80x24 ________________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_IMP_F001_border_apply_rea0')
+
+    async def test_IMP_F001_border_apply_reachable_at_80x24(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel')
+        async with app.run_test(size=(80,24)) as p:
+            await command(p,app,'borders')
+>           assert await p.click('#apply',offset=(2,1)), '적용 버튼이 다른 위젯에 가려짐'
+E           AssertionError: 적용 버튼이 다른 위젯에 가려짐
+E           assert False
+
+docs\audit\evidence_1\test_audit_regressions.py:22: AssertionError
+____________ test_DBG_F006_context_last_command_clickable_at_80x24 ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F006_context_last_com0')
+
+    async def test_DBG_F006_context_last_command_clickable_at_80x24(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel',language='en')
+        app.session.apply('freeze',lambda w:(setattr(w.sheet(),'freeze_rows',1),setattr(w.sheet(),'freeze_columns',1)))
+        async with app.run_test(size=(80,24)) as p:
+            await p.click('#grid',offset=(12,1),button=3)
+            await p.press('end');await p.pause(0.6)
+            options=app.screen.query_one(OptionList)
+            line=options._line_cache.index_to_line[options.highlighted]
+            x=options.content_region.x+2
+            y=options.content_region.y+line-int(options.scroll_y)
+            await p.click(offset=(x,y))
+            assert type(app.screen).__name__=='Screen', '마지막 우클릭 명령이 메뉴 박스에 가려짐'
+>           assert (app.grid.sheet.freeze_rows,app.grid.sheet.freeze_columns)==(0,0)
+E           assert (1, 1) == (0, 0)
+E             
+E             At index 0 diff: 1 != 0
+E             Use -v to get more diff
+
+docs\audit\evidence_1\test_audit_regressions.py:38: AssertionError
+______________ test_DBG_F001_clicking_new_cell_closes_old_draft _______________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F001_clicking_new_cel0')
+
+    async def test_DBG_F001_clicking_new_cell_closes_old_draft(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel')
+        async with app.run_test(size=(100,30)) as p:
+            await p.press('4','2');await p.click('#grid',offset=(26,3));await p.press('7','enter')
+>           assert app.session.evaluator.value(0,0,0)==42
+E           AssertionError: assert 427 == 42
+E            +  where 427 = value(0, 0, 0)
+E            +    where value = <texel.formula.Evaluator object at 0x0000017DD4D3E9E0>.value
+E            +      where <texel.formula.Evaluator object at 0x0000017DD4D3E9E0> = <texel.session.Session object at 0x0000017DD4DA2E90>.evaluator
+E            +        where <texel.session.Session object at 0x0000017DD4DA2E90> = TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'dark', 'nocolor', 'focus'}).session
+
+docs\audit\evidence_1\test_audit_regressions.py:44: AssertionError
+_____________ test_DBG_F002_series_preserves_exact_integer_values _____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F002_series_preserves0')
+
+    async def test_DBG_F002_series_preserves_exact_integer_values(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel')
+        app.session.apply('seed',lambda w:set_matrix(w,0,'A1',[['9007199254740993'],['9007199254740994']]))
+        async with app.run_test(size=(100,30)) as p:
+            await p.press('shift+down','shift+down');await command(p,app,'series')
+>           assert [app.session.evaluator.value(0,r,0) for r in range(3)]==[9007199254740993,9007199254740994,9007199254740995]
+E           assert [900719925474...7199254740000] == [900719925474...7199254740995]
+E             
+E             At index 0 diff: 9007199254740000 != 9007199254740993
+E             Use -v to get more diff
+
+docs\audit\evidence_1\test_audit_regressions.py:52: AssertionError
+_______________ test_IMP_F002_enter_advances_beyond_merged_cell _______________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_IMP_F002_enter_advances_b0')
+
+    async def test_IMP_F002_enter_advances_beyond_merged_cell(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel');app.session.apply('merge',lambda w:merge_range(w,0,'A1:B3'))
+        async with app.run_test(size=(100,30)) as p:
+            await p.press('4','2','enter')
+>           assert app.grid.cursor==(3,0)
+E           assert (0, 0) == (3, 0)
+E             
+E             At index 0 diff: 0 != 3
+E             Use -v to get more diff
+
+docs\audit\evidence_1\test_audit_regressions.py:58: AssertionError
+______________ test_IMP_F003_frozen_columns_leave_cursor_visible ______________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_IMP_F003_frozen_columns_l0')
+
+    async def test_IMP_F003_frozen_columns_leave_cursor_visible(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel')
+        async with app.run_test(size=(80,24)) as p:
+            await p.press('ctrl+g');await p.press(*'G2','enter');await command(p,app,'freeze')
+            await p.press('right','right')
+>           assert app.grid.cursor[1] in [c for c,_,_ in app.grid.visible_columns()]
+E           assert 8 in [0, 1, 2, 3, 4, 5]
+
+docs\audit\evidence_1\test_audit_regressions.py:65: AssertionError
+______________ test_DBG_F003_failed_open_keeps_current_workbook _______________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F003_failed_open_keep0')
+
+    async def test_DBG_F003_failed_open_keeps_current_workbook(tmp_path):
+        path=tmp_path/'bad.texel';s=Session(path)
+        with s.store.connect() as db:
+            m=json.loads(db.execute('SELECT metadata FROM texel_state').fetchone()[0])
+            m['sheets'][0]['filter_spec']={'range':'NOPE','column':0,'criterion':'>0'}
+            db.execute('UPDATE texel_state SET metadata=?',(json.dumps(m),))
+        app=TexelApp(tmp_path/'original.texel');before=app.session.store.path
+        app.session.apply('seed',lambda w:set_matrix(w,0,'A1',[['original']]))
+        async with app.run_test(size=(120,40)) as p:
+            await p.press('ctrl+o');await p.press(*str(path),'enter')
+>           assert app.session.store.path==before
+E           AssertionError: assert WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F003_failed_open_keep0/bad.texel') == WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F003_failed_open_keep0/original.texel')
+E            +  where WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F003_failed_open_keep0/bad.texel') = <texel.store.Store object at 0x0000017DD4E28C50>.path
+E            +    where <texel.store.Store object at 0x0000017DD4E28C50> = <texel.session.Session object at 0x0000017DD4E29150>.store
+E            +      where <texel.session.Session object at 0x0000017DD4E29150> = TexelApp(title='Texel', classes={'-dark-mode'}, pseudo_classes={'dark', 'nocolor', 'focus'}).session
+
+docs\audit\evidence_1\test_audit_regressions.py:77: AssertionError
+_______________ test_SEC_F001_protected_sheet_cannot_be_deleted _______________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_SEC_F001_protected_sheet_0')
+
+    def test_SEC_F001_protected_sheet_cannot_be_deleted(tmp_path):
+        s=Session(tmp_path/'doc.texel')
+        def seed(w):
+            w.add_sheet('Locked');w.sheet(1).set_raw(0,0,'protected');w.sheet(1).cell(0,0).locked=True;w.sheet(1).protected=True
+        s.apply('seed',seed)
+>       with pytest.raises(ValueError):s.apply('delete',lambda w:delete_sheet(w,1))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+docs\audit\evidence_1\test_audit_regressions.py:85: Failed
+_____________ test_DBG_F004_cli_import_retains_original_save_path _____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F004_cli_import_retai0')
+
+    def test_DBG_F004_cli_import_retains_original_save_path(tmp_path):
+        source=tmp_path/'source.csv';source.write_text('a,42\n',encoding='utf-8');observed=[]
+        def capture(self,**kwargs):observed.append(self.source_path)
+        with patch.object(TexelApp,'run',capture):assert cli_main(['tui','--workbook',str(source)])==0
+>       assert observed==[source.resolve()]
+E       AssertionError: assert [None] == [WindowsPath(.../source.csv')]
+E         
+E         At index 0 diff: None != WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F004_cli_import_retai0/source.csv')
+E         Use -v to get more diff
+
+docs\audit\evidence_1\test_audit_regressions.py:91: AssertionError
+____________ test_DBG_F005_open_empty_native_does_not_mutate_input ____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_DBG_F005_open_empty_nativ0')
+
+    def test_DBG_F005_open_empty_native_does_not_mutate_input(tmp_path):
+        source=tmp_path/'zero.texel';source.write_bytes(b'')
+        try:load_file(source)
+        except ValueError:pass
+>       assert source.read_bytes()==b''
+E       AssertionError: assert b'SQLite form...0\x00\x00\x00' == b''
+E         
+E         Use -v to get more diff
+
+docs\audit\evidence_1\test_audit_regressions.py:97: AssertionError
+____________ test_IMP_F004_adjacent_cell_borders_use_one_boundary _____________
+
+tmp_path = WindowsPath('C:/LocalDev/python/Texel/docs/audit/evidence_remediation_1/red_tmp/test_IMP_F004_adjacent_cell_bo0')
+
+    async def test_IMP_F004_adjacent_cell_borders_use_one_boundary(tmp_path):
+        app=TexelApp(tmp_path/'doc.texel');app.session.apply('border',lambda w:apply_borders(w,0,'A1:B2','all','thick'))
+        async with app.run_test(size=(100,30)):
+>           assert '┃┃' not in app.grid.render_line(2).text
+E           AssertionError: assert '┃┃' not in '      1 ▸┃ ...    │       '
+E             
+E             '┃┃' is contained here:
+E             ?                       ------------
+E                     1 ▸┃            ┃┃            ┃┃            │             │             │             │       
+E             ?                                     ++++++++++++++
+
+docs\audit\evidence_1\test_audit_regressions.py:102: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_IMP_F001_border_apply_reachable_at_80x24
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_DBG_F006_context_last_command_clickable_at_80x24
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_DBG_F001_clicking_new_cell_closes_old_draft
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_DBG_F002_series_preserves_exact_integer_values
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_IMP_F002_enter_advances_beyond_merged_cell
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_IMP_F003_frozen_columns_leave_cursor_visible
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_DBG_F003_failed_open_keeps_current_workbook
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_SEC_F001_protected_sheet_cannot_be_deleted
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_DBG_F004_cli_import_retains_original_save_path
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_DBG_F005_open_empty_native_does_not_mutate_input
+FAILED docs/audit/evidence_1/test_audit_regressions.py::test_IMP_F004_adjacent_cell_borders_use_one_boundary
+11 failed in 13.33s

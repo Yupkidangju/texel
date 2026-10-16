@@ -1,0 +1,21 @@
+[
+  {
+    "case": "cli_import_source",
+    "result": {
+      "exit_code": 0,
+      "source_path": "None",
+      "workbook": "C:\\LocalDev\\python\\Texel\\docs\\audit\\evidence_1\\extra-0a1a9830\\source-62060f3a.texel",
+      "value": 42
+    }
+  },
+  {
+    "case": "invalid_native_open",
+    "result": {
+      "before": "C:\\LocalDev\\python\\Texel\\docs\\audit\\evidence_1\\extra-0a1a9830\\original.texel",
+      "after": "C:\\LocalDev\\python\\Texel\\docs\\audit\\evidence_1\\extra-0a1a9830\\bad.texel",
+      "screen": "FileDialog",
+      "value": null,
+      "error": "Invalid cell address: NOPE"
+    }
+  }
+]

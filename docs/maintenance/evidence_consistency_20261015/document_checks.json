@@ -1,0 +1,70 @@
+{
+  "runtime": "3.15.0 (tags/v3.15.0:d220409, Oct  9 2026, 11:55:56) [MSC v.1951 64 bit (AMD64)]",
+  "summary_current_version": "0.3.0",
+  "historical_counts_explicit": true,
+  "distribution_index_matches_files": true,
+  "local_document_links": [
+    {
+      "file": "README.md",
+      "link": "docs/distributions.md"
+    },
+    {
+      "file": "README.md",
+      "link": "MCP_GUIDE.md"
+    },
+    {
+      "file": "README.md",
+      "link": "spec.md"
+    },
+    {
+      "file": "README.md",
+      "link": "IMPLEMENTATION_SUMMARY.md"
+    },
+    {
+      "file": "README.md",
+      "link": "BUILD_GUIDE.md"
+    },
+    {
+      "file": "spec.md",
+      "link": "docs/upgrades/0.3.0-plan.md"
+    },
+    {
+      "file": "spec.md",
+      "link": "docs/maintenance/2026-10-15-consistency.md"
+    },
+    {
+      "file": "spec.md",
+      "link": "docs/distributions.md"
+    },
+    {
+      "file": "IMPLEMENTATION_SUMMARY.md",
+      "link": "docs/maintenance/2026-10-15-consistency.md"
+    },
+    {
+      "file": "IMPLEMENTATION_SUMMARY.md",
+      "link": "docs/distributions.md"
+    },
+    {
+      "file": "docs/distributions.md",
+      "link": "upgrades/0.3.0-results.md"
+    },
+    {
+      "file": "docs/distributions.md",
+      "link": "maintenance/2026-10-15-consistency.md"
+    },
+    {
+      "file": "docs/distributions.md",
+      "link": "audit/feature_matrix_1.md"
+    },
+    {
+      "file": "docs/distributions.md",
+      "link": "upgrades/0.3.0-plan.md"
+    },
+    {
+      "file": "output/README.md",
+      "link": "../docs/distributions.md"
+    }
+  ],
+  "product_markers": [],
+  "line_endings_preserved": true
+}

@@ -1,0 +1,758 @@
+[
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "open",
+    "apply_region": "Region(x=59, y=17, width=16, height=3)",
+    "center": [
+      67,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "save",
+    "apply_region": "Region(x=59, y=17, width=16, height=3)",
+    "center": [
+      67,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "new",
+    "apply_region": "Region(x=59, y=17, width=16, height=3)",
+    "center": [
+      67,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "backup",
+    "apply_region": "Region(x=59, y=17, width=16, height=3)",
+    "center": [
+      67,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "borders",
+    "apply_region": "Region(x=57, y=21, width=16, height=3)",
+    "center": [
+      65,
+      22
+    ],
+    "hit": "Vertical()",
+    "clickable": false
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "style",
+    "apply_region": "Region(x=57, y=30, width=16, height=3)",
+    "center": [
+      65,
+      31
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "validation",
+    "apply_region": "Region(x=57, y=29, width=16, height=3)",
+    "center": [
+      65,
+      30
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "sort",
+    "apply_region": "Region(x=57, y=22, width=16, height=3)",
+    "center": [
+      65,
+      23
+    ],
+    "hit": "FormDialog()",
+    "clickable": false
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "filter",
+    "apply_region": "Region(x=57, y=24, width=16, height=3)",
+    "center": [
+      65,
+      25
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "pivot",
+    "apply_region": "Region(x=57, y=30, width=16, height=3)",
+    "center": [
+      65,
+      31
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "chart",
+    "apply_region": "Region(x=57, y=19, width=16, height=3)",
+    "center": [
+      65,
+      20
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "conditional",
+    "apply_region": "Region(x=57, y=26, width=16, height=3)",
+    "center": [
+      65,
+      27
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "note",
+    "apply_region": "Region(x=57, y=14, width=16, height=3)",
+    "center": [
+      65,
+      15
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "width",
+    "apply_region": "Region(x=57, y=14, width=16, height=3)",
+    "center": [
+      65,
+      15
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "row_height",
+    "apply_region": "Region(x=57, y=14, width=16, height=3)",
+    "center": [
+      65,
+      15
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "find",
+    "apply_region": "Region(x=57, y=16, width=16, height=3)",
+    "center": [
+      65,
+      17
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "replace",
+    "apply_region": "Region(x=57, y=19, width=16, height=3)",
+    "center": [
+      65,
+      20
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      80,
+      24
+    ],
+    "command": "named_range",
+    "apply_region": "Region(x=57, y=17, width=16, height=3)",
+    "center": [
+      65,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "open",
+    "apply_region": "Region(x=76, y=23, width=16, height=3)",
+    "center": [
+      84,
+      24
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "save",
+    "apply_region": "Region(x=76, y=23, width=16, height=3)",
+    "center": [
+      84,
+      24
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "new",
+    "apply_region": "Region(x=76, y=23, width=16, height=3)",
+    "center": [
+      84,
+      24
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "backup",
+    "apply_region": "Region(x=76, y=23, width=16, height=3)",
+    "center": [
+      84,
+      24
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "borders",
+    "apply_region": "Region(x=67, y=22, width=16, height=3)",
+    "center": [
+      75,
+      23
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "style",
+    "apply_region": "Region(x=67, y=30, width=16, height=3)",
+    "center": [
+      75,
+      31
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "validation",
+    "apply_region": "Region(x=67, y=29, width=16, height=3)",
+    "center": [
+      75,
+      30
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "sort",
+    "apply_region": "Region(x=67, y=23, width=16, height=3)",
+    "center": [
+      75,
+      24
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "filter",
+    "apply_region": "Region(x=67, y=24, width=16, height=3)",
+    "center": [
+      75,
+      25
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "pivot",
+    "apply_region": "Region(x=67, y=30, width=16, height=3)",
+    "center": [
+      75,
+      31
+    ],
+    "hit": "None",
+    "clickable": false
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "chart",
+    "apply_region": "Region(x=67, y=21, width=16, height=3)",
+    "center": [
+      75,
+      22
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "conditional",
+    "apply_region": "Region(x=67, y=26, width=16, height=3)",
+    "center": [
+      75,
+      27
+    ],
+    "hit": "Vertical()",
+    "clickable": false
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "note",
+    "apply_region": "Region(x=67, y=17, width=16, height=3)",
+    "center": [
+      75,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "width",
+    "apply_region": "Region(x=67, y=17, width=16, height=3)",
+    "center": [
+      75,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "row_height",
+    "apply_region": "Region(x=67, y=17, width=16, height=3)",
+    "center": [
+      75,
+      18
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "find",
+    "apply_region": "Region(x=67, y=19, width=16, height=3)",
+    "center": [
+      75,
+      20
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "replace",
+    "apply_region": "Region(x=67, y=21, width=16, height=3)",
+    "center": [
+      75,
+      22
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "command": "named_range",
+    "apply_region": "Region(x=67, y=20, width=16, height=3)",
+    "center": [
+      75,
+      21
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "open",
+    "apply_region": "Region(x=86, y=33, width=16, height=3)",
+    "center": [
+      94,
+      34
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "save",
+    "apply_region": "Region(x=86, y=33, width=16, height=3)",
+    "center": [
+      94,
+      34
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "new",
+    "apply_region": "Region(x=86, y=33, width=16, height=3)",
+    "center": [
+      94,
+      34
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "backup",
+    "apply_region": "Region(x=86, y=33, width=16, height=3)",
+    "center": [
+      94,
+      34
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "borders",
+    "apply_region": "Region(x=77, y=27, width=16, height=3)",
+    "center": [
+      85,
+      28
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "style",
+    "apply_region": "Region(x=77, y=32, width=16, height=3)",
+    "center": [
+      85,
+      33
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "validation",
+    "apply_region": "Region(x=77, y=31, width=16, height=3)",
+    "center": [
+      85,
+      32
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "sort",
+    "apply_region": "Region(x=77, y=28, width=16, height=3)",
+    "center": [
+      85,
+      29
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "filter",
+    "apply_region": "Region(x=77, y=29, width=16, height=3)",
+    "center": [
+      85,
+      30
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "pivot",
+    "apply_region": "Region(x=77, y=32, width=16, height=3)",
+    "center": [
+      85,
+      33
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "chart",
+    "apply_region": "Region(x=77, y=26, width=16, height=3)",
+    "center": [
+      85,
+      27
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "conditional",
+    "apply_region": "Region(x=77, y=30, width=16, height=3)",
+    "center": [
+      85,
+      31
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "note",
+    "apply_region": "Region(x=77, y=22, width=16, height=3)",
+    "center": [
+      85,
+      23
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "width",
+    "apply_region": "Region(x=77, y=22, width=16, height=3)",
+    "center": [
+      85,
+      23
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "row_height",
+    "apply_region": "Region(x=77, y=22, width=16, height=3)",
+    "center": [
+      85,
+      23
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "find",
+    "apply_region": "Region(x=77, y=24, width=16, height=3)",
+    "center": [
+      85,
+      25
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "replace",
+    "apply_region": "Region(x=77, y=26, width=16, height=3)",
+    "center": [
+      85,
+      27
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  },
+  {
+    "size": [
+      120,
+      40
+    ],
+    "command": "named_range",
+    "apply_region": "Region(x=77, y=25, width=16, height=3)",
+    "center": [
+      85,
+      26
+    ],
+    "hit": "Button(id='apply', classes='-style-default -primary', variant='primary')",
+    "clickable": true
+  }
+]

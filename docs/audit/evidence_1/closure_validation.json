@@ -1,0 +1,26 @@
+{
+  "report_exists": true,
+  "finding_ids": [
+    "IMP-F001",
+    "IMP-F002",
+    "IMP-F003",
+    "IMP-F004",
+    "DBG-F001",
+    "DBG-F002",
+    "DBG-F003",
+    "DBG-F004",
+    "DBG-F005",
+    "DBG-F006",
+    "SEC-F001"
+  ],
+  "findings": 11,
+  "critical": 1,
+  "major": 9,
+  "minor": 1,
+  "missing_links": [],
+  "product_files": 48,
+  "changed_product_files": [],
+  "baseline_160": true,
+  "audit_11_failures": true,
+  "native_exit": 0
+}

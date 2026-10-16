@@ -1,0 +1,17 @@
+{
+  "python": "C:\\LocalDev\\python\\Texel\\output\\Texel-0.2.1-win64-20261011-162957\\python\\python.exe",
+  "module": "C:\\LocalDev\\python\\Texel\\output\\Texel-0.2.1-win64-20261011-162957\\texel\\__init__.py",
+  "version": "0.2.1",
+  "cli_csv_source_and_save_default": true,
+  "draft_click": {
+    "A1": 42,
+    "B3": 7
+  },
+  "borders_actual_apply_80x24": true,
+  "context_tail_mouse_once": true,
+  "merged_enter": "A4",
+  "native_invalid_read_preserved": true,
+  "mcp_tools": 30,
+  "mcp_series_reopened": 9007199254740995,
+  "mcp_protected_delete_rejected": true
+}

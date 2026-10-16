@@ -1,0 +1,27 @@
+{
+  "files": 671,
+  "bytes": 6963584,
+  "extensions": {
+    "": 4,
+    ".md": 29,
+    ".yml": 2,
+    ".ps1": 4,
+    ".log": 114,
+    ".png": 5,
+    ".svg": 30,
+    ".py": 87,
+    ".json": 49,
+    ".xlsx": 88,
+    ".csv": 194,
+    ".gsheet": 25,
+    ".unknown": 8,
+    ".xls": 24,
+    ".txt": 1,
+    ".patch": 3,
+    ".whl": 1,
+    ".toml": 1,
+    ".lock": 2
+  },
+  "credential_pattern_findings": [],
+  "resolved_inside_project": true
+}

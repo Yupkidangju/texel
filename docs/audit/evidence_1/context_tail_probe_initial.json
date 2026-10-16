@@ -1,0 +1,32 @@
+[
+  {
+    "size": [
+      80,
+      24
+    ],
+    "last": "unfreeze",
+    "point": [
+      18,
+      22
+    ],
+    "hit": "Vertical(id='context-box')",
+    "options_region": "Region(x=14, y=4, width=38, height=20)",
+    "scroll_y": 21.0,
+    "keyboard_final": "Screen"
+  },
+  {
+    "size": [
+      100,
+      30
+    ],
+    "last": "unfreeze",
+    "point": [
+      18,
+      27
+    ],
+    "hit": "OptionList(id='context-options')",
+    "options_region": "Region(x=14, y=9, width=38, height=20)",
+    "scroll_y": 21.0,
+    "keyboard_final": "Screen"
+  }
+]

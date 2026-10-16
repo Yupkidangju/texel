@@ -1,0 +1,41 @@
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\LocalDev\python\Texel\docs\audit\evidence_1\mcp_sweep.py", line 54, in <module>
+  |     if __name__=='__main__':asyncio.run(main())
+  |                             ~~~~~~~~~~~^^^^^^^^
+  |   File "asyncio\runners.py", line 205, in run
+  |   File "asyncio\runners.py", line 128, in run
+  |   File "asyncio\base_events.py", line 724, in run_until_complete
+  |   File "C:\LocalDev\python\Texel\docs\audit\evidence_1\mcp_sweep.py", line 42, in main
+  |     async with Client(create_server(path,folder)) as c:
+  |                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\client.py", line 480, in __aexit__
+  |     await self._exit_stack.__aexit__(exc_type, exc_val, exc_tb)
+  |   File "contextlib.py", line 813, in __aexit__
+  |   File "contextlib.py", line 796, in __aexit__
+  |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "contextlib.py", line 796, in __aexit__
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\mcp\client\session.py", line 514, in __aexit__
+    |     result = await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\anyio\_backends\_asyncio.py", line 847, in __aexit__
+    |     raise BaseExceptionGroup(
+    |         "unhandled errors in a TaskGroup", self._exceptions
+    |     ) from None
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\LocalDev\python\Texel\docs\audit\evidence_1\mcp_sweep.py", line 45, in main
+      |     schema=next(t.inputSchema for t in tools if t.name==name)
+      |   File "C:\LocalDev\python\Texel\docs\audit\evidence_1\mcp_sweep.py", line 45, in <genexpr>
+      |     schema=next(t.inputSchema for t in tools if t.name==name)
+      |                 ^^^^^^^^^^^^^
+      |   File "C:\LocalDev\python\Texel\.runtime\python315\Lib\site-packages\pydantic\main.py", line 1105, in __getattr__
+      |     raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+      | AttributeError: 'Tool' object has no attribute 'inputSchema'. Did you mean '.input_schema' instead of '.inputSchema'?
+      +------------------------------------

@@ -1,0 +1,5 @@
+[sdist]
+output\texel_tui-0.3.1.tar.gz
+
+[wheel]
+output\texel_tui-0.3.1-py3-none-any.whl

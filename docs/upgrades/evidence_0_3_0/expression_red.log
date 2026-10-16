@@ -1,0 +1,14 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_____________ test_expression_context_does_not_shadow_source_cell _____________
+
+    def test_expression_context_does_not_shadow_source_cell():
+        w = Workbook()
+        set_matrix(w, 0, "A1", [["6"], ["7"]])
+>       assert evaluate_formula(w, "Sheet1", "=SUMPRODUCT(A1:A2,A1:A2)")["value"] == 85
+E       AssertionError: assert '#CYCLE!' == 85
+
+tests\test_v030_diagnostics_navigation.py:42: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_v030_diagnostics_navigation.py::test_expression_context_does_not_shadow_source_cell
+1 failed, 4 deselected in 0.12s

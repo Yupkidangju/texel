@@ -1,0 +1,32 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_______________ test_google_export_request_uses_package_version _______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001837E2BDA70>
+
+    def test_google_export_request_uses_package_version(monkeypatch):
+        url = "https://docs.google.com/spreadsheets/d/abcdEFGH1234567890/export?format=xlsx"
+        response = BytesIO(b"export data")
+        response.url = url
+        response.headers = {"Content-Length": "11"}
+        opener = Mock()
+        opener.open.return_value = response
+        build_opener = Mock(return_value=opener)
+        monkeypatch.setattr(google_sheets, "build_opener", build_opener)
+    
+        assert google_sheets.fetch_public_export(url) == b"export data"
+    
+        request = opener.open.call_args.args[0]
+        assert request.full_url == url
+>       assert request.get_header("User-agent") == f"Texel/{__version__}"
+E       AssertionError: assert 'Texel/0.2' == 'Texel/0.3.0'
+E         
+E         - Texel/0.3.0
+E         ?         ^^^
+E         + Texel/0.2
+E         ?         ^
+
+tests\test_version_metadata.py:23: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_version_metadata.py::test_google_export_request_uses_package_version
+1 failed in 0.12s

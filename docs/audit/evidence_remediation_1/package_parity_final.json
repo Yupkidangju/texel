@@ -1,0 +1,176 @@
+{
+  "version": "0.2.1",
+  "package_modules": 28,
+  "all_equal": true,
+  "modules": [
+    {
+      "path": "texel/__init__.py",
+      "sha256": "76c09e19c476cce5de0cd09b2f68f5e43c476ef305be74f422ea827a2a6509a2",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/__main__.py",
+      "sha256": "2e43d8f9a1b72c3475f8184c466bc3d02b2b9605ea811d9c620b23b52d1f8692",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/addresses.py",
+      "sha256": "ff93b74de1094f4d28b7d321a02e334b54603eb4c2ff2324a2ab3f1218b59a87",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/analysis.py",
+      "sha256": "edf387f27a5154f0e8892cc89f1f5acb18b8e9be31425113b2eee12ac5947327",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/clipboard.py",
+      "sha256": "206c65850c82453d05682b055f5851aba3ebeb2018f629605951b39ea87cdd78",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/demo.py",
+      "sha256": "a265c64570c60409f0f1d1ba295a6d12ec1992a19dd0b7af3c57f3fa525d03f4",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/editing.py",
+      "sha256": "20fc9c970630d97d34112591a5292d5fb0e075c8d563ffec6521ebcd30bcb475",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/exchange.py",
+      "sha256": "e0f6cc2737a2c201a8933fcfc5e5ad5dd53ac0a3e9aaccdb0855d20a5d915468",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/formula.py",
+      "sha256": "db43f4cedb0055fac209950de4f7d2e9e679b0f2e8a001773fbdb00b9e9c2816",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/functions.py",
+      "sha256": "13ed7b7b69aacc71f7f1cc28edb8a64d4700fe7225abce7715ce541e1ce46627",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/google_sheets.py",
+      "sha256": "28663ac4df5813372e96a3c173020e7fd88d07d95c6ba7b2ff0cfb1d40f46e5a",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/i18n.py",
+      "sha256": "e05b486fa3eb37cad91e18b5307c01a426f5058cbbc02b4d82b9768448f8fdb1",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/legacy_excel.py",
+      "sha256": "1d6986575c65c1b45cf5b26671a4b93ce41bad25fb5220cbc587ccc926966801",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/mcp_server.py",
+      "sha256": "b5486860ec04a4f1f72c9b43a9c86ee69b771a7807fbc4d93d9578c45cdf0f12",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/model.py",
+      "sha256": "df82951942358dc0e8107068005aae7ed446bd9d901a883075d1ffa3df1fe0cd",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/session.py",
+      "sha256": "3f1e8d94f109e7a128801df7651d3aa8a99a1633f476fecede3f196dd63096c8",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/store.py",
+      "sha256": "589d3bd480e6a12f52d669b6c576650eff5eeae1b1cd0624ccbbf9b774a405ad",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/__init__.py",
+      "sha256": "8d6d323fd70bf136a178e276a3cbf6071414e337c4bc131dcd86d26ef0ae4126",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/actions.py",
+      "sha256": "d3dff66562576133443a5348ede2327e729c4d5281af7f53595e835bf0d87a05",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/app.py",
+      "sha256": "e9227ceb7ccfe40253be1ec3520a5f571a0aba0c017858b3c6f5fc4160e5fb9e",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/commands.py",
+      "sha256": "8784c49496c1181541664226f4efc60f7417d59d260eb2bd89846d9dfd546b4e",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/context_menu.py",
+      "sha256": "2166ac126a1e2d7039f70222179ea36d1465161662a26a24c55b87bcf1689b2a",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/dialogs.py",
+      "sha256": "112adad6c97a62d9828f6db1b7dc38c634fa9317deb2cb1491ee927faf4d7bed",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/file_dialog.py",
+      "sha256": "3b63da78e69ab30bb53c4011686fa94b59c3c1226536b207e5016929277bac07",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/grid.py",
+      "sha256": "26159d322600ae2efd2ff594604caac30199c93b3807ea43ade5681328b5649b",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/grid_render.py",
+      "sha256": "1f991d6fe0bee19493a27cd3a146db39c5d4b4410e50d5d38a5063ad3a6a6076",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/ui/safe_text.py",
+      "sha256": "6ce5ce482589367b2b1cef83fb27b631ab811ac3cfb615b7c77aa3cfae4cb7f8",
+      "source_wheel_install_portable_zip_equal": true
+    },
+    {
+      "path": "texel/values.py",
+      "sha256": "84d2bf0caaad6b15345f33cef2590388dfa670d80e75dc00dce8f56553d51714",
+      "source_wheel_install_portable_zip_equal": true
+    }
+  ],
+  "original_report_sha256": "6fda0e5ba285a55201cc67b296f2be3b220c724848dd2ac0f67b18436acc64d1",
+  "original_report_preserved": true,
+  "changed_modules": [
+    "texel\\__init__.py",
+    "texel\\__main__.py",
+    "texel\\editing.py",
+    "texel\\exchange.py",
+    "texel\\model.py",
+    "texel\\session.py",
+    "texel\\store.py",
+    "texel\\ui\\actions.py",
+    "texel\\ui\\app.py",
+    "texel\\ui\\context_menu.py",
+    "texel\\ui\\dialogs.py",
+    "texel\\ui\\grid.py",
+    "texel\\ui\\grid_render.py"
+  ],
+  "artifacts": [
+    {
+      "path": "C:\\LocalDev\\python\\Texel\\output\\texel_tui-0.2.1-py3-none-any.whl",
+      "sha256": "588282a68c39193b313053c5de427643caa415487a6c35a96132c8acfdbea5d8",
+      "bytes": 79879
+    },
+    {
+      "path": "C:\\LocalDev\\python\\Texel\\output\\Texel-0.2.1-win64-20261011-162957.zip",
+      "sha256": "9fe9698ae5408b33cdea1f32534f1dd4dc8b4fd61fe169c3dc260a3a201d3959",
+      "bytes": 33197860
+    }
+  ]
+}

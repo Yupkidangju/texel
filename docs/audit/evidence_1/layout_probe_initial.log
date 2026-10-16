@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\LocalDev\python\Texel\docs\audit\evidence_1\layout_probe.py", line 27, in <module>
+    if __name__=='__main__':asyncio.run(main())
+                            ~~~~~~~~~~~^^^^^^^^
+  File "asyncio\runners.py", line 205, in run
+  File "asyncio\runners.py", line 128, in run
+  File "asyncio\base_events.py", line 724, in run_until_complete
+  File "C:\LocalDev\python\Texel\docs\audit\evidence_1\layout_probe.py", line 19, in main
+    visible=hit is b or (hit and hit.is_descendant_of(b))
+                                 ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Vertical' object has no attribute 'is_descendant_of'

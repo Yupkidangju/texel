@@ -1,0 +1,91 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  portable:
+    needs: ci
+    runs-on: windows-2025
+    timeout-minutes: 30
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.14'
+      - name: Install portable build tool
+        run: python -m pip install uv==0.11.33
+      - name: Build and test with embedded Python 3.15
+        shell: pwsh
+        run: ./build.ps1
+      - name: Verify portable installation and source parity
+        shell: pwsh
+        run: |
+          $bundles = @(Get-ChildItem output -Directory -Filter 'Texel-*-win64-*')
+          if ($bundles.Count -ne 1) { throw 'Expected exactly one portable folder' }
+          $bundle = $bundles[0]
+          & "$($bundle.FullName)/python/python.exe" scripts/verify_distribution.py --package-root $bundle.FullName --evidence .cache/portable-check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & ./.runtime/python315/python.exe scripts/check_portable.py --bundle $bundle.FullName
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: windows-portable
+          path: output/Texel-*-win64-*.zip
+          if-no-files-found: error
+          retention-days: 14
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: portable-report
+          path: .cache/portable-check/result.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
+
+  publish:
+    needs: [ci, portable]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.14'
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: packages-ubuntu-24.04-3.14
+          path: release-assets
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: windows-portable
+          path: release-assets
+      - name: Verify tag and write checksums
+        run: |
+          python scripts/check_release.py
+          python scripts/release_checksums.py release-assets
+      - name: Publish verified assets
+        run: gh release create "$RELEASE_TAG" release-assets/* --verify-tag --title "Texel $RELEASE_TAG" --notes-file .github/RELEASE_NOTES.md

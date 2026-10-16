@@ -1,0 +1,17 @@
+{
+  "version": "0.3.0",
+  "functions": 89,
+  "mcp_tools": 39,
+  "unchanged_sha256": {
+    "docs/audit/audit_report_1.md": "6fda0e5ba285a55201cc67b296f2be3b220c724848dd2ac0f67b18436acc64d1",
+    "docs/audit/feature_matrix_1.md": "f120a3871937b26464b63d6d3b42b3b96206888bc5b15f1eea3f53c57877bdb7",
+    "output/texel_tui-0.3.0-py3-none-any.whl": "7a9e8f7dccc8f217b6f0655d5e1e3d2b19418528e45d812d29145758a6c7e41c",
+    "output/Texel-0.3.0-win64-20261015-154810.zip": "db7ec7376489f4dc1162d676b69bf8d83ee1dcc523e1964f72b9dda9b11bd0a7"
+  },
+  "git_root": "C:/LocalDev/python/Texel",
+  "git_branch": "main",
+  "git_remotes": [],
+  "git_commits": 0,
+  "source_matches_previous_distribution": false,
+  "rebuilt": false
+}

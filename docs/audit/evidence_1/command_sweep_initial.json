@@ -1,0 +1,1478 @@
+[
+  {
+    "command": "new",
+    "menu": "file",
+    "entered": "FileDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 0,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1"
+    ],
+    "files": [
+      "created.xlsx"
+    ]
+  },
+  {
+    "command": "open",
+    "menu": "file",
+    "entered": "FileDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1"
+    ],
+    "files": [
+      "created.xlsx"
+    ]
+  },
+  {
+    "command": "save",
+    "menu": "file",
+    "entered": "FileDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "export",
+    "menu": "file",
+    "entered": "FileDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "backup",
+    "menu": "file",
+    "entered": "FileDialog",
+    "final": "FileDialog",
+    "error": "Backup destination must differ from the current workbook",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "demo",
+    "menu": "file",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "매출",
+      "요약",
+      "서식 예제"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "quit",
+    "menu": "file",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "undo",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 2,
+    "revision_after": 3,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "redo",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 3,
+    "revision_after": 4,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "copy",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "cut",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "paste",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "transpose",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "paste_special",
+    "menu": "edit",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "clear",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "clear_all",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "clear_formats",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "fill_down",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "fill_right",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "series",
+    "menu": "edit",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "find",
+    "menu": "edit",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "replace",
+    "menu": "edit",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "goto",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "freeze",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "unfreeze",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "hide_rows",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "hide_columns",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "unhide",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "width",
+    "menu": "view",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "autofit",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "row_height",
+    "menu": "view",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "autofit_rows",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "formulas",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "theme",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "language",
+    "menu": "view",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "add_sheet",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 2,
+    "sheets": [
+      "Sheet1",
+      "Other",
+      "Added"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "rename_sheet",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Renamed",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "duplicate_sheet",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 2,
+    "sheets": [
+      "Sheet1",
+      "Other",
+      "Duplicate"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "delete_sheet",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "insert_rows",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "delete_rows",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "insert_columns",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "delete_columns",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "named_range",
+    "menu": "insert",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "names",
+    "menu": "insert",
+    "entered": "TextDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "style",
+    "menu": "format",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "borders",
+    "menu": "format",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "bold",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "italic",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "strike",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "wrap",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "underline",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "note",
+    "menu": "format",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "merge",
+    "menu": "format",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "merge_center",
+    "menu": "format",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "unmerge",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "validation",
+    "menu": "format",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "clear_validation",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "conditional",
+    "menu": "format",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "clear_conditional",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "lock",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "protect",
+    "menu": "format",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "sort",
+    "menu": "data",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "filter",
+    "menu": "data",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "clear_filter",
+    "menu": "data",
+    "entered": "Screen",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "deduplicate",
+    "menu": "data",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "profile",
+    "menu": "analysis",
+    "entered": "TextDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "pivot",
+    "menu": "analysis",
+    "entered": "FormDialog",
+    "final": "Screen",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 2,
+    "sheets": [
+      "Sheet1",
+      "Other",
+      "Pivot2"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "chart",
+    "menu": "analysis",
+    "entered": "FormDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 2,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "help",
+    "menu": "help",
+    "entered": "TextDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "functions",
+    "menu": "help",
+    "entered": "TextDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "history",
+    "menu": "help",
+    "entered": "TextDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "inspect",
+    "menu": "help",
+    "entered": "TextDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  },
+  {
+    "command": "mcp_info",
+    "menu": "help",
+    "entered": "TextDialog",
+    "final": "TextDialog",
+    "error": "",
+    "revision_before": 1,
+    "revision_after": 1,
+    "persisted": true,
+    "active_sheet": 0,
+    "sheets": [
+      "Sheet1",
+      "Other"
+    ],
+    "files": [
+      "created.xlsx",
+      "export.xlsx",
+      "saved.xlsx"
+    ]
+  }
+]

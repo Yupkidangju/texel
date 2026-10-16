@@ -1,0 +1,1405 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                  [100%]
+================================== FAILURES ===================================
+_______ test_extended_function_examples[=AVERAGEIF(A1:A3,"a",B1:B3)-4] ________
+
+formula = '=AVERAGEIF(A1:A3,"a",B1:B3)', expected = 4
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='AVERAGEIF') == 4
+E        +  where Error(code='#NAME?', detail='AVERAGEIF') = calculate('=AVERAGEIF(A1:A3,"a",B1:B3)')
+
+tests\test_v030_functions.py:50: AssertionError
+_ test_extended_function_examples[=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")-6] __
+
+formula = '=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', expected = 6
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='AVERAGEIFS') == 6
+E        +  where Error(code='#NAME?', detail='AVERAGEIFS') = calculate('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")')
+
+tests\test_v030_functions.py:50: AssertionError
+_________ test_extended_function_examples[=MINIFS(B1:B3,A1:A3,"a")-2] _________
+
+formula = '=MINIFS(B1:B3,A1:A3,"a")', expected = 2
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='MINIFS') == 2
+E        +  where Error(code='#NAME?', detail='MINIFS') = calculate('=MINIFS(B1:B3,A1:A3,"a")')
+
+tests\test_v030_functions.py:50: AssertionError
+_________ test_extended_function_examples[=MAXIFS(B1:B3,A1:A3,"a")-6] _________
+
+formula = '=MAXIFS(B1:B3,A1:A3,"a")', expected = 6
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='MAXIFS') == 6
+E        +  where Error(code='#NAME?', detail='MAXIFS') = calculate('=MAXIFS(B1:B3,A1:A3,"a")')
+
+tests\test_v030_functions.py:50: AssertionError
+_______ test_extended_function_examples[=MINIFS(B1:B3,A1:A3,"none")-0] ________
+
+formula = '=MINIFS(B1:B3,A1:A3,"none")', expected = 0
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='MINIFS') == 0
+E        +  where Error(code='#NAME?', detail='MINIFS') = calculate('=MINIFS(B1:B3,A1:A3,"none")')
+
+tests\test_v030_functions.py:50: AssertionError
+________ test_extended_function_examples[=SUMPRODUCT(B1:B3,B1:B3)-56] _________
+
+formula = '=SUMPRODUCT(B1:B3,B1:B3)', expected = 56
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='SUMPRODUCT') == 56
+E        +  where Error(code='#NAME?', detail='SUMPRODUCT') = calculate('=SUMPRODUCT(B1:B3,B1:B3)')
+
+tests\test_v030_functions.py:50: AssertionError
+_____ test_extended_function_examples[=IFNA(MATCH("none",A1:A3,0),42)-42] _____
+
+formula = '=IFNA(MATCH("none",A1:A3,0),42)', expected = 42
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='IFNA') == 42
+E        +  where Error(code='#NAME?', detail='IFNA') = calculate('=IFNA(MATCH("none",A1:A3,0),42)')
+
+tests\test_v030_functions.py:50: AssertionError
+_______________ test_extended_function_examples[=IFNA(7,1/0)-7] _______________
+
+formula = '=IFNA(7,1/0)', expected = 7
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='IFNA') == 7
+E        +  where Error(code='#NAME?', detail='IFNA') = calculate('=IFNA(7,1/0)')
+
+tests\test_v030_functions.py:50: AssertionError
+____ test_extended_function_examples[=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)-42] _____
+
+formula = '=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', expected = 42
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='IFS') == 42
+E        +  where Error(code='#NAME?', detail='IFS') = calculate('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)')
+
+tests\test_v030_functions.py:50: AssertionError
+_____ test_extended_function_examples[=ISNA(MATCH("none",A1:A3,0))-True] ______
+
+formula = '=ISNA(MATCH("none",A1:A3,0))', expected = True
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='ISNA') == True
+E        +  where Error(code='#NAME?', detail='ISNA') = calculate('=ISNA(MATCH("none",A1:A3,0))')
+
+tests\test_v030_functions.py:50: AssertionError
+______________ test_extended_function_examples[=ISNA(1/0)-False] ______________
+
+formula = '=ISNA(1/0)', expected = False
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='ISNA') == False
+E        +  where Error(code='#NAME?', detail='ISNA') = calculate('=ISNA(1/0)')
+
+tests\test_v030_functions.py:50: AssertionError
+______________ test_extended_function_examples[=ISEVEN(-4)-True] ______________
+
+formula = '=ISEVEN(-4)', expected = True
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='ISEVEN') == True
+E        +  where Error(code='#NAME?', detail='ISEVEN') = calculate('=ISEVEN(-4)')
+
+tests\test_v030_functions.py:50: AssertionError
+______________ test_extended_function_examples[=ISODD(-3)-True] _______________
+
+formula = '=ISODD(-3)', expected = True
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='ISODD') == True
+E        +  where Error(code='#NAME?', detail='ISODD') = calculate('=ISODD(-3)')
+
+tests\test_v030_functions.py:50: AssertionError
+_______________ test_extended_function_examples[=SIGN(-20)--1] ________________
+
+formula = '=SIGN(-20)', expected = -1
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='SIGN') == -1
+E        +  where Error(code='#NAME?', detail='SIGN') = calculate('=SIGN(-20)')
+
+tests\test_v030_functions.py:50: AssertionError
+__________ test_extended_function_examples[=TRUNC(-12.345,2)--12.34] __________
+
+formula = '=TRUNC(-12.345,2)', expected = -12.34
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='TRUNC') == -12.34
+E        +  where Error(code='#NAME?', detail='TRUNC') = calculate('=TRUNC(-12.345,2)')
+
+tests\test_v030_functions.py:50: AssertionError
+_____________ test_extended_function_examples[=TRUNC(129,-1)-120] _____________
+
+formula = '=TRUNC(129,-1)', expected = 120
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='TRUNC') == 120
+E        +  where Error(code='#NAME?', detail='TRUNC') = calculate('=TRUNC(129,-1)')
+
+tests\test_v030_functions.py:50: AssertionError
+_____________ test_extended_function_examples[=QUOTIENT(-7,2)--3] _____________
+
+formula = '=QUOTIENT(-7,2)', expected = -3
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='QUOTIENT') == -3
+E        +  where Error(code='#NAME?', detail='QUOTIENT') = calculate('=QUOTIENT(-7,2)')
+
+tests\test_v030_functions.py:50: AssertionError
+___________ test_extended_function_examples[=EXACT("A","a")-False] ____________
+
+formula = '=EXACT("A","a")', expected = False
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='EXACT') == False
+E        +  where Error(code='#NAME?', detail='EXACT') = calculate('=EXACT("A","a")')
+
+tests\test_v030_functions.py:50: AssertionError
+___________ test_extended_function_examples[=CLEAN("a\tb\nc")-abc] ____________
+
+formula = '=CLEAN("a\tb\nc")', expected = 'abc'
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='CLEAN') == 'abc'
+E        +  where Error(code='#NAME?', detail='CLEAN') = calculate('=CLEAN("a\tb\nc")')
+
+tests\test_v030_functions.py:50: AssertionError
+_____ test_extended_function_examples[=REPLACE("abcdef",2,3,"XY")-aXYef] ______
+
+formula = '=REPLACE("abcdef",2,3,"XY")', expected = 'aXYef'
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       assert Error(code='#NAME?', detail='REPLACE') == 'aXYef'
+E        +  where Error(code='#NAME?', detail='REPLACE') = calculate('=REPLACE("abcdef",2,3,"XY")')
+
+tests\test_v030_functions.py:50: AssertionError
+____ test_extended_function_examples[=EDATE(DATE(2024,1,31),1)-expected20] ____
+
+formula = '=EDATE(DATE(2024,1,31),1)', expected = datetime.date(2024, 2, 29)
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='EDATE') == datetime.date(2024, 2, 29)
+E        +  where Error(code='#NAME?', detail='EDATE') = calculate('=EDATE(DATE(2024,1,31),1)')
+
+tests\test_v030_functions.py:50: AssertionError
+___ test_extended_function_examples[=EOMONTH(DATE(2024,1,5),1)-expected21] ____
+
+formula = '=EOMONTH(DATE(2024,1,5),1)', expected = datetime.date(2024, 2, 29)
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='EOMONTH') == datetime.date(2024, 2, 29)
+E        +  where Error(code='#NAME?', detail='EOMONTH') = calculate('=EOMONTH(DATE(2024,1,5),1)')
+
+tests\test_v030_functions.py:50: AssertionError
+_ test_extended_function_examples[=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))-5] _
+
+formula = '=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', expected = 5
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='NETWORKDAYS') == 5
+E        +  where Error(code='#NAME?', detail='NETWORKDAYS') = calculate('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))')
+
+tests\test_v030_functions.py:50: AssertionError
+_ test_extended_function_examples[=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))--5] _
+
+formula = '=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', expected = -5
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='NETWORKDAYS') == -5
+E        +  where Error(code='#NAME?', detail='NETWORKDAYS') = calculate('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))')
+
+tests\test_v030_functions.py:50: AssertionError
+_ test_extended_function_examples[=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))-4] _
+
+formula = '=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))'
+expected = 4
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='NETWORKDAYS') == 4
+E        +  where Error(code='#NAME?', detail='NETWORKDAYS') = calculate('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))')
+
+tests\test_v030_functions.py:50: AssertionError
+__ test_extended_function_examples[=WORKDAY(DATE(2026,10,16),1)-expected25] ___
+
+formula = '=WORKDAY(DATE(2026,10,16),1)', expected = datetime.date(2026, 10, 19)
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='WORKDAY') == datetime.date(2026, 10, 19)
+E        +  where Error(code='#NAME?', detail='WORKDAY') = calculate('=WORKDAY(DATE(2026,10,16),1)')
+
+tests\test_v030_functions.py:50: AssertionError
+__ test_extended_function_examples[=WORKDAY(DATE(2026,10,19),-1)-expected26] __
+
+formula = '=WORKDAY(DATE(2026,10,19),-1)'
+expected = datetime.date(2026, 10, 16)
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='WORKDAY') == datetime.date(2026, 10, 16)
+E        +  where Error(code='#NAME?', detail='WORKDAY') = calculate('=WORKDAY(DATE(2026,10,19),-1)')
+
+tests\test_v030_functions.py:50: AssertionError
+_ test_extended_function_examples[=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))-expected27] _
+
+formula = '=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))'
+expected = datetime.date(2026, 10, 20)
+
+    @pytest.mark.parametrize("formula,expected", [
+        ('=AVERAGEIF(A1:A3,"a",B1:B3)', 4),
+        ('=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"a")', 2),
+        ('=MAXIFS(B1:B3,A1:A3,"a")', 6),
+        ('=MINIFS(B1:B3,A1:A3,"none")', 0),
+        ('=SUMPRODUCT(B1:B3,B1:B3)', 56),
+        ('=IFNA(MATCH("none",A1:A3,0),42)', 42),
+        ('=IFNA(7,1/0)', 7),
+        ('=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)', 42),
+        ('=ISNA(MATCH("none",A1:A3,0))', True),
+        ('=ISNA(1/0)', False),
+        ('=ISEVEN(-4)', True),
+        ('=ISODD(-3)', True),
+        ('=SIGN(-20)', -1),
+        ('=TRUNC(-12.345,2)', -12.34),
+        ('=TRUNC(129,-1)', 120),
+        ('=QUOTIENT(-7,2)', -3),
+        ('=EXACT("A","a")', False),
+        ('=CLEAN("a\tb\nc")', 'abc'),
+        ('=REPLACE("abcdef",2,3,"XY")', 'aXYef'),
+        ('=EDATE(DATE(2024,1,31),1)', date(2024,2,29)),
+        ('=EOMONTH(DATE(2024,1,5),1)', date(2024,2,29)),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))', 5),
+        ('=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))', -5),
+        ('=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))', 4),
+        ('=WORKDAY(DATE(2026,10,16),1)', date(2026,10,19)),
+        ('=WORKDAY(DATE(2026,10,19),-1)', date(2026,10,16)),
+        ('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))', date(2026,10,20)),
+    ])
+    def test_extended_function_examples(formula, expected):
+>       assert calculate(formula) == expected
+E       AssertionError: assert Error(code='#NAME?', detail='WORKDAY') == datetime.date(2026, 10, 20)
+E        +  where Error(code='#NAME?', detail='WORKDAY') = calculate('=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))')
+
+tests\test_v030_functions.py:50: AssertionError
+_ test_extended_function_boundaries[=AVERAGEIFS(B1:B3,A1:A3,"none")-#DIV/0!] __
+
+formula = '=AVERAGEIFS(B1:B3,A1:A3,"none")', code = '#DIV/0!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#DIV/0!'
+E        +  where True = isinstance(Error(code='#NAME?', detail='AVERAGEIFS'), Error)
+E         
+E         - #DIV/0!
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+___ test_extended_function_boundaries[=AVERAGEIFS(B1:B2,A1:B1,"a")-#VALUE!] ___
+
+formula = '=AVERAGEIFS(B1:B2,A1:B1,"a")', code = '#VALUE!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#VALUE!'
+E        +  where True = isinstance(Error(code='#NAME?', detail='AVERAGEIFS'), Error)
+E         
+E         - #VALUE!
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+_____ test_extended_function_boundaries[=SUMPRODUCT(B1:B2,A1:B1)-#VALUE!] _____
+
+formula = '=SUMPRODUCT(B1:B2,A1:B1)', code = '#VALUE!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#VALUE!'
+E        +  where True = isinstance(Error(code='#NAME?', detail='SUMPRODUCT'), Error)
+E         
+E         - #VALUE!
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+_____ test_extended_function_boundaries[=SUMIFS(B1:B2,A1:B1,"a")-#VALUE!] _____
+
+formula = '=SUMIFS(B1:B2,A1:B1,"a")', code = '#VALUE!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       assert (False)
+E        +  where False = isinstance(2, Error)
+
+tests\test_v030_functions.py:66: AssertionError
+__________ test_extended_function_boundaries[=IFNA(1/0,42)-#DIV/0!] ___________
+
+formula = '=IFNA(1/0,42)', code = '#DIV/0!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#DIV/0!'
+E        +  where True = isinstance(Error(code='#NAME?', detail='IFNA'), Error)
+E         
+E         - #DIV/0!
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+____________ test_extended_function_boundaries[=IFS(FALSE,1)-#N/A] ____________
+
+formula = '=IFS(FALSE,1)', code = '#N/A'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#N/A'
+E        +  where True = isinstance(Error(code='#NAME?', detail='IFS'), Error)
+E         
+E         - #N/A
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+____________ test_extended_function_boundaries[=IFS(TRUE)-#VALUE!] ____________
+
+formula = '=IFS(TRUE)', code = '#VALUE!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#VALUE!'
+E        +  where True = isinstance(Error(code='#NAME?', detail='IFS'), Error)
+E         
+E         - #VALUE!
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+_ test_extended_function_boundaries[=WORKDAY(DATE(2026,1,1),100001)-#LIMIT!] __
+
+formula = '=WORKDAY(DATE(2026,1,1),100001)', code = '#LIMIT!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#LIMIT!'
+E        +  where True = isinstance(Error(code='#NAME?', detail='WORKDAY'), Error)
+E         
+E         - #LIMIT!
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+_____ test_extended_function_boundaries[=REPLACE("abc",0,1,"x")-#VALUE!] ______
+
+formula = '=REPLACE("abc",0,1,"x")', code = '#VALUE!'
+
+    @pytest.mark.parametrize("formula,code", [
+        ('=AVERAGEIFS(B1:B3,A1:A3,"none")', '#DIV/0!'),
+        ('=AVERAGEIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=SUMPRODUCT(B1:B2,A1:B1)', '#VALUE!'),
+        ('=SUMIFS(B1:B2,A1:B1,"a")', '#VALUE!'),
+        ('=IFNA(1/0,42)', '#DIV/0!'),
+        ('=IFS(FALSE,1)', '#N/A'),
+        ('=IFS(TRUE)', '#VALUE!'),
+        ('=WORKDAY(DATE(2026,1,1),100001)', '#LIMIT!'),
+        ('=REPLACE("abc",0,1,"x")', '#VALUE!'),
+    ])
+    def test_extended_function_boundaries(formula, code):
+        value = calculate(formula)
+>       assert isinstance(value, Error) and value.code == code
+E       AssertionError: assert (True and '#NAME?' == '#VALUE!'
+E        +  where True = isinstance(Error(code='#NAME?', detail='REPLACE'), Error)
+E         
+E         - #VALUE!
+E         + #NAME?)
+
+tests\test_v030_functions.py:66: AssertionError
+______________ test_criteria_precision_and_excel_wildcard_escape ______________
+
+    def test_criteria_precision_and_excel_wildcard_escape():
+>       assert criterion_matches(9007199254740993, "9007199254740993")
+E       AssertionError: assert False
+E        +  where False = criterion_matches(9007199254740993, '9007199254740993')
+
+tests\test_v030_functions.py:70: AssertionError
+___________________ test_registry_and_holiday_deduplication ___________________
+
+    def test_registry_and_holiday_deduplication():
+>       assert len(function_names()) == 89
+E       AssertionError: assert 69 == 89
+E        +  where 69 = len(['ABS', 'AND', 'AVERAGE', 'CEILING', 'COLUMN', 'CONCAT', ...])
+E        +    where ['ABS', 'AND', 'AVERAGE', 'CEILING', 'COLUMN', 'CONCAT', ...] = function_names()
+
+tests\test_v030_functions.py:79: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=AVERAGEIF(A1:A3,"a",B1:B3)-4]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=AVERAGEIFS(B1:B3,A1:A3,"a",B1:B3,">2")-6]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=MINIFS(B1:B3,A1:A3,"a")-2]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=MAXIFS(B1:B3,A1:A3,"a")-6]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=MINIFS(B1:B3,A1:A3,"none")-0]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=SUMPRODUCT(B1:B3,B1:B3)-56]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=IFNA(MATCH("none",A1:A3,0),42)-42]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=IFNA(7,1/0)-7]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=IFS(FALSE,1/0,TRUE,42,TRUE,1/0)-42]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=ISNA(MATCH("none",A1:A3,0))-True]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=ISNA(1/0)-False]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=ISEVEN(-4)-True]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=ISODD(-3)-True]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=SIGN(-20)--1]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=TRUNC(-12.345,2)--12.34]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=TRUNC(129,-1)-120]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=QUOTIENT(-7,2)--3]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=EXACT("A","a")-False]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=CLEAN("a\tb\nc")-abc]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=REPLACE("abcdef",2,3,"XY")-aXYef]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=EDATE(DATE(2024,1,31),1)-expected20]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=EOMONTH(DATE(2024,1,5),1)-expected21]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16))-5]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=NETWORKDAYS(DATE(2026,10,16),DATE(2026,10,12))--5]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=NETWORKDAYS(DATE(2026,10,12),DATE(2026,10,16),DATE(2026,10,14))-4]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=WORKDAY(DATE(2026,10,16),1)-expected25]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=WORKDAY(DATE(2026,10,19),-1)-expected26]
+FAILED tests/test_v030_functions.py::test_extended_function_examples[=WORKDAY(DATE(2026,10,16),1,DATE(2026,10,19))-expected27]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=AVERAGEIFS(B1:B3,A1:A3,"none")-#DIV/0!]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=AVERAGEIFS(B1:B2,A1:B1,"a")-#VALUE!]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=SUMPRODUCT(B1:B2,A1:B1)-#VALUE!]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=SUMIFS(B1:B2,A1:B1,"a")-#VALUE!]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=IFNA(1/0,42)-#DIV/0!]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=IFS(FALSE,1)-#N/A]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=IFS(TRUE)-#VALUE!]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=WORKDAY(DATE(2026,1,1),100001)-#LIMIT!]
+FAILED tests/test_v030_functions.py::test_extended_function_boundaries[=REPLACE("abc",0,1,"x")-#VALUE!]
+FAILED tests/test_v030_functions.py::test_criteria_precision_and_excel_wildcard_escape
+FAILED tests/test_v030_functions.py::test_registry_and_holiday_deduplication
+39 failed in 0.29s

@@ -1,0 +1,5 @@
+Using CPython 3.15.0 interpreter at: .runtime\python315\python.exe
+Resolved 1 package in 20ms
+Prepared 1 package in 56ms
+Installed 1 package in 107ms
+ + texel-tui==0.2.1 (from file:///C:/LocalDev/python/Texel/output/texel_tui-0.2.1-py3-none-any.whl)

@@ -1,0 +1,30 @@
+{
+  "IMPLEMENTATION_SUMMARY.md": {
+    "bytes": 17620,
+    "sha256": "57f51e8f90ead21644a427ecd1ae30ae6d43f63ad51a99b917542fe9c1f51cb4"
+  },
+  "texel/store.py": {
+    "bytes": 9378,
+    "sha256": "589d3bd480e6a12f52d669b6c576650eff5eeae1b1cd0624ccbbf9b774a405ad"
+  },
+  "texel/google_sheets.py": {
+    "bytes": 5603,
+    "sha256": "28663ac4df5813372e96a3c173020e7fd88d07d95c6ba7b2ff0cfb1d40f46e5a"
+  },
+  "docs/audit/audit_report_1.md": {
+    "bytes": 35255,
+    "sha256": "6fda0e5ba285a55201cc67b296f2be3b220c724848dd2ac0f67b18436acc64d1"
+  },
+  "docs/audit/feature_matrix_1.md": {
+    "bytes": 12104,
+    "sha256": "f120a3871937b26464b63d6d3b42b3b96206888bc5b15f1eea3f53c57877bdb7"
+  },
+  "output/texel_tui-0.3.0-py3-none-any.whl": {
+    "bytes": 98388,
+    "sha256": "7a9e8f7dccc8f217b6f0655d5e1e3d2b19418528e45d812d29145758a6c7e41c"
+  },
+  "output/Texel-0.3.0-win64-20261015-154810.zip": {
+    "bytes": 33220311,
+    "sha256": "db7ec7376489f4dc1162d676b69bf8d83ee1dcc523e1964f72b9dda9b11bd0a7"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "version": "0.3.0",
+  "package_modules": 37,
+  "all_equal": true,
+  "modules": [
+    {
+      "path": "texel/__init__.py",
+      "sha256": "c29c08ee9b42d2c691f652330f9ed2c14058a39b386196c24024f1ab67606f36"
+    },
+    {
+      "path": "texel/__main__.py",
+      "sha256": "2e43d8f9a1b72c3475f8184c466bc3d02b2b9605ea811d9c620b23b52d1f8692"
+    },
+    {
+      "path": "texel/addresses.py",
+      "sha256": "ff93b74de1094f4d28b7d321a02e334b54603eb4c2ff2324a2ab3f1218b59a87"
+    },
+    {
+      "path": "texel/analysis.py",
+      "sha256": "edf387f27a5154f0e8892cc89f1f5acb18b8e9be31425113b2eee12ac5947327"
+    },
+    {
+      "path": "texel/clipboard.py",
+      "sha256": "206c65850c82453d05682b055f5851aba3ebeb2018f629605951b39ea87cdd78"
+    },
+    {
+      "path": "texel/criteria.py",
+      "sha256": "e09929af2e0a103d31d1e212167f1db10ba525d9c52fdeea08a682e99e57a988"
+    },
+    {
+      "path": "texel/demo.py",
+      "sha256": "da175d35a4cfa47c65540ba9e7f6eff709a155f5801380fb47b465e5b6134a4d"
+    },
+    {
+      "path": "texel/diagnostics.py",
+      "sha256": "d21c16e2c7374f8d4d0d9ffbb1a8af19c5f6968452d2e827fe1dbf48801e73f4"
+    },
+    {
+      "path": "texel/editing.py",
+      "sha256": "3c974c01108e61910d2c2d693042e0e996c1f843de7cab3a3d9aaf1a27ef38ec"
+    },
+    {
+      "path": "texel/exchange.py",
+      "sha256": "e0f6cc2737a2c201a8933fcfc5e5ad5dd53ac0a3e9aaccdb0855d20a5d915468"
+    },
+    {
+      "path": "texel/formula.py",
+      "sha256": "a7626afb6fa45d70b762e4d9693d93c84c3e339ee50957f10ce4045ef8bce3d5"
+    },
+    {
+      "path": "texel/function_extensions.py",
+      "sha256": "e9109247f1c41f4c4707f47281902e8e5e03b1adda908b16d669a6d4d0ae8c24"
+    },
+    {
+      "path": "texel/functions.py",
+      "sha256": "44aadd0c337327cc8b69949e8778891783b1139c7e2428e03cd26b3f4c7a05ec"
+    },
+    {
+      "path": "texel/google_sheets.py",
+      "sha256": "28663ac4df5813372e96a3c173020e7fd88d07d95c6ba7b2ff0cfb1d40f46e5a"
+    },
+    {
+      "path": "texel/i18n.py",
+      "sha256": "475b62265742a805e46510d1ec1c20133ace7f5a8752987dd03c5947b592473b"
+    },
+    {
+      "path": "texel/legacy_excel.py",
+      "sha256": "1d6986575c65c1b45cf5b26671a4b93ce41bad25fb5220cbc587ccc926966801"
+    },
+    {
+      "path": "texel/mcp_extensions.py",
+      "sha256": "28662894832852bb8efbcf186a9558e6815c83cc8d60a1c8260eb4eebec7541c"
+    },
+    {
+      "path": "texel/mcp_server.py",
+      "sha256": "d4f0c7dc37c1b2d66b9b6a0313b58e868d116adacb78eff3e1a781a32d493e2e"
+    },
+    {
+      "path": "texel/model.py",
+      "sha256": "a88a49ee1788533c05ad062d1335ce699b18aab52ec8677c9ad56fd7a32896ce"
+    },
+    {
+      "path": "texel/navigation.py",
+      "sha256": "89410c091dca6ea44c5ef25878fdcb4de9b6c12468c7fcef78b318050f0f39f1"
+    },
+    {
+      "path": "texel/operations.py",
+      "sha256": "34309d4fe4c8eea02851ba8002c0aab3f7bf8650c5007cd80f395b217947313c"
+    },
+    {
+      "path": "texel/query.py",
+      "sha256": "ecd799c6cd2590f1fc01f77fb9b192a4656c61f6f687cf3294565e68a26975cd"
+    },
+    {
+      "path": "texel/session.py",
+      "sha256": "05b4aec1743afbc5226bcf3fff756755272d909cd996554e76d277ae84eb28b1"
+    },
+    {
+      "path": "texel/store.py",
+      "sha256": "589d3bd480e6a12f52d669b6c576650eff5eeae1b1cd0624ccbbf9b774a405ad"
+    },
+    {
+      "path": "texel/tables.py",
+      "sha256": "12eb46a33b7d598cadf53b4422ebd9bd84da2b64b3833bb928088316c07f7590"
+    },
+    {
+      "path": "texel/ui/__init__.py",
+      "sha256": "8d6d323fd70bf136a178e276a3cbf6071414e337c4bc131dcd86d26ef0ae4126"
+    },
+    {
+      "path": "texel/ui/actions.py",
+      "sha256": "3c200efa7048f18342abe984a90393bd44185d2053c74d8870d6d3bf452b98a8"
+    },
+    {
+      "path": "texel/ui/advanced.py",
+      "sha256": "141db74cf8b6d306314fe2789060a9ab2e4af18cd15a8dbc3fb2f93e746305e7"
+    },
+    {
+      "path": "texel/ui/app.py",
+      "sha256": "23fccc6153013bac4aea1f134402e88953e3d632f87499a6acddc7ecd797733b"
+    },
+    {
+      "path": "texel/ui/commands.py",
+      "sha256": "8d2cf663e22c5272d6b445dda835a9b4fcd5050eb4aa4f03e19eb0991bb115f4"
+    },
+    {
+      "path": "texel/ui/context_menu.py",
+      "sha256": "2166ac126a1e2d7039f70222179ea36d1465161662a26a24c55b87bcf1689b2a"
+    },
+    {
+      "path": "texel/ui/dialogs.py",
+      "sha256": "da68795dc37ca2aada31dec2e287da16ea08836c327a25634a0eec01e4b749b9"
+    },
+    {
+      "path": "texel/ui/file_dialog.py",
+      "sha256": "3b63da78e69ab30bb53c4011686fa94b59c3c1226536b207e5016929277bac07"
+    },
+    {
+      "path": "texel/ui/grid.py",
+      "sha256": "1c6b4f9454a8a9b3848d074752d0d887adb1e772c996500840c82bb1ea415f0e"
+    },
+    {
+      "path": "texel/ui/grid_render.py",
+      "sha256": "1f991d6fe0bee19493a27cd3a146db39c5d4b4410e50d5d38a5063ad3a6a6076"
+    },
+    {
+      "path": "texel/ui/safe_text.py",
+      "sha256": "6ce5ce482589367b2b1cef83fb27b631ab811ac3cfb615b7c77aa3cfae4cb7f8"
+    },
+    {
+      "path": "texel/values.py",
+      "sha256": "84d2bf0caaad6b15345f33cef2590388dfa670d80e75dc00dce8f56553d51714"
+    }
+  ],
+  "changed_modules": [
+    "texel\\__init__.py",
+    "texel\\criteria.py",
+    "texel\\demo.py",
+    "texel\\diagnostics.py",
+    "texel\\editing.py",
+    "texel\\formula.py",
+    "texel\\function_extensions.py",
+    "texel\\functions.py",
+    "texel\\i18n.py",
+    "texel\\mcp_extensions.py",
+    "texel\\mcp_server.py",
+    "texel\\model.py",
+    "texel\\navigation.py",
+    "texel\\operations.py",
+    "texel\\query.py",
+    "texel\\session.py",
+    "texel\\tables.py",
+    "texel\\ui\\actions.py",
+    "texel\\ui\\advanced.py",
+    "texel\\ui\\app.py",
+    "texel\\ui\\commands.py",
+    "texel\\ui\\dialogs.py",
+    "texel\\ui\\grid.py"
+  ],
+  "original_report_preserved": true,
+  "original_report_sha256": "6fda0e5ba285a55201cc67b296f2be3b220c724848dd2ac0f67b18436acc64d1",
+  "legacy_tests_unchanged": true,
+  "artifacts": [
+    {
+      "path": "C:\\LocalDev\\python\\Texel\\output\\texel_tui-0.3.0-py3-none-any.whl",
+      "bytes": 98388,
+      "sha256": "7a9e8f7dccc8f217b6f0655d5e1e3d2b19418528e45d812d29145758a6c7e41c"
+    },
+    {
+      "path": "C:\\LocalDev\\python\\Texel\\output\\Texel-0.3.0-win64-20261015-154810.zip",
+      "bytes": 33220311,
+      "sha256": "db7ec7376489f4dc1162d676b69bf8d83ee1dcc523e1964f72b9dda9b11bd0a7"
+    }
+  ]
+}

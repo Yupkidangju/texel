@@ -1,0 +1,18 @@
+{
+  "output/texel_tui-0.3.0-py3-none-any.whl": {
+    "modules": 37,
+    "same": 35,
+    "changed_since_release": [
+      "texel/google_sheets.py",
+      "texel/store.py"
+    ]
+  },
+  "output/Texel-0.3.0-win64-20261015-154810.zip": {
+    "modules": 37,
+    "same": 35,
+    "changed_since_release": [
+      "texel/google_sheets.py",
+      "texel/store.py"
+    ]
+  }
+}
