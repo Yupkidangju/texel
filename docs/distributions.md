@@ -1,6 +1,18 @@
-# 로컬 배포물 목록
+# 배포물 목록
 
-갱신: 2026-10-16. 공개 배포 현재 기준은 [0.3.1 결과](releases/0.3.1-results.md)와 [GitHub Releases](https://github.com/Yupkidangju/texel/releases)이다. 게시 전에는 결과 문서의 진행 상태를 따른다. 아래 0.3.0은 당시 로컬 검증 산출물과 유지보수 경계의 기록이다.
+갱신: 2026-10-16. 현재 공개판은 [v0.3.1](https://github.com/Yupkidangju/texel/releases/tag/v0.3.1)이다. [검증 결과](releases/0.3.1-results.md)에 자동 릴리스와 다운로드 대조를 기록했다. 아래 0.3.0은 당시 로컬 검증 산출물과 유지보수 경계의 기록이다.
+
+## 현재 공개판: 0.3.1
+
+| 공개 파일 | bytes | SHA256 |
+|---|---:|---|
+| texel_tui-0.3.1-py3-none-any.whl | 103,104 | 6724b15fa61219c65dcb4fc28c0b28231d602252e3d59dd0bd7700b72d957307 |
+| texel_tui-0.3.1.tar.gz | 1,158,564 | addd519ca488bb70e7e34fd15886e10b0f6daeb75d9feec6d9bb4570cda6dce7 |
+| Texel-0.3.1-win64-20261016-051942.zip | 33,227,964 | 9292cbfa79072d65d71be6948724a55cbdeb3ee21295aafeaf09016f3b32f0cf |
+
+SHA256SUMS.txt와 위 파일은 Release에서 제공하며 다운로드 검증본은 output/github-release-v0.3.1/에 있다. Python3.14+ 공통 wheel, Windows x64만 런타임 포함 portable이다. Windows ARM64는 x64 Python wheel 에뮬레이션, Mac Intel은 Xcode/Rust/OpenSSL 설치 전제가 있다. ZIP 이름 시각은 GitHub UTC이다.
+
+root output/의 0.3.1 wheel/sdist 및 Texel-0.3.1-win64-20261016-140238는 로컬 사전 빌드이며 공개 자산과 구분한다. 공개판은 위 해시와 Release 경로로 선택한다. 기존 자료는 삭제하지 않았다.
 
 ## 2026-10-15 당시 마지막 검증 배포본: 0.3.0
 

@@ -2,7 +2,9 @@
 
 ## 공통 설치와 자동 배포
 
-Windows11 ARM64는 x64 Python/portable 에뮬레이션 경로를 사용합니다. Windows ARM64 네이티브는 cryptography의 공식 wheel 부재로 지원하지 않습니다. Linux/macOS ARM64는 네이티브 CI 대상입니다.
+Windows11 ARM64는 x64 Python 에뮬레이션에서 공통 wheel을 검증합니다. portable ZIP의 실행 검증 대상은 Windows x64입니다. Windows ARM64 네이티브는 cryptography의 공식 wheel 부재로 지원하지 않습니다. Linux/macOS ARM64는 네이티브 CI 대상입니다.
+
+macOS Intel은 cryptography50.0.2를 소스 빌드하므로 Xcode Command Line Tools, Rust, OpenSSL 개발 도구가 필요합니다. `xcode-select --install`, `brew install rust openssl@3` 후 공통 wheel을 설치합니다. 필요하면 `OPENSSL_DIR="$(brew --prefix openssl@3)" python -m pip install <wheel>`로 경로를 지정합니다. GitHub Intel 러너에서도 같은 의존성 소스 빌드를 거쳐 전체 검사를 통과했습니다. Python 제품 코드가 공통이어도 모든 전이 의존성이 순수 Python인 것은 아닙니다.
 
 Python 3.14+가 있는 Windows/Linux/macOS x64·ARM64에서는 Release의 공통 wheel을 `python -m pip install <wheel>`로 설치합니다. Windows x64 portable만 Python 런타임을 포함합니다. 잠금 파일은 pywin32를 Windows로 제한하며 제품/개발 버전은 동일하게 고정합니다. 소스 개발은 `python -m pip install -r requirements.lock`, `python -m pytest -q`, `python -m ruff check texel tests scripts`, `python -m hatchling build`로 수행할 수 있습니다.
 

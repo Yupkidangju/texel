@@ -1,0 +1,426 @@
+﻿2026-10-16T05:16:59.2655196Z Current runner version: '2.337.0'
+2026-10-16T05:16:59.2687163Z ##[group]Runner Image Provisioner
+2026-10-16T05:16:59.2688150Z Hosted Compute Agent
+2026-10-16T05:16:59.2688935Z Version: 20261002.596
+2026-10-16T05:16:59.2689686Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-16T05:16:59.2690957Z Build Date: 2026-10-02T22:28:27Z
+2026-10-16T05:16:59.2691830Z Worker ID: {52652026-4335-467e-a6d4-14f88d111524}
+2026-10-16T05:16:59.2692683Z Region: eastus
+2026-10-16T05:16:59.2693366Z Cloud: Azure
+2026-10-16T05:16:59.2694000Z ##[endgroup]
+2026-10-16T05:16:59.2695710Z ##[group]Operating System
+2026-10-16T05:16:59.2696530Z Microsoft Windows Server 2025
+2026-10-16T05:16:59.2697317Z 10.0.26100
+2026-10-16T05:16:59.2698000Z Datacenter
+2026-10-16T05:16:59.2698637Z ##[endgroup]
+2026-10-16T05:16:59.2699299Z ##[group]Runner Image
+2026-10-16T05:16:59.2700044Z Image: windows-2025-vs2026
+2026-10-16T05:16:59.2700770Z Version: 20261007.264.1
+2026-10-16T05:16:59.2702717Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261007.264/images/windows/Windows2025-VS2026-Readme.md
+2026-10-16T05:16:59.2705031Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261007.264
+2026-10-16T05:16:59.2706396Z ##[endgroup]
+2026-10-16T05:16:59.2707817Z ##[group]GITHUB_TOKEN Permissions
+2026-10-16T05:16:59.2709979Z Contents: read
+2026-10-16T05:16:59.2711146Z Metadata: read
+2026-10-16T05:16:59.2711833Z ##[endgroup]
+2026-10-16T05:16:59.2714405Z Secret source: Actions
+2026-10-16T05:16:59.2715561Z Cache mode: write
+2026-10-16T05:16:59.2716424Z Prepare workflow directory
+2026-10-16T05:16:59.3091743Z Prepare all required actions
+2026-10-16T05:16:59.3136173Z Getting action download info
+2026-10-16T05:16:59.4484004Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-16T05:16:59.5873353Z Download action repository 'actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97' (SHA:5fda3b95a4ea91299a34e894583c3862153e4b97)
+2026-10-16T05:16:59.7866254Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-10-16T05:17:00.1071211Z Complete job name: portable
+2026-10-16T05:17:00.2819602Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-10-16T05:17:00.2820740Z with:
+2026-10-16T05:17:00.2821102Z   persist-credentials: false
+2026-10-16T05:17:00.2821553Z   repository: Yupkidangju/texel
+2026-10-16T05:17:00.2824896Z   token: ***
+2026-10-16T05:17:00.2825230Z   ssh-strict: true
+2026-10-16T05:17:00.2825567Z   ssh-user: git
+2026-10-16T05:17:00.2825887Z   clean: true
+2026-10-16T05:17:00.2826235Z   sparse-checkout-cone-mode: true
+2026-10-16T05:17:00.2826651Z   fetch-depth: 1
+2026-10-16T05:17:00.2826975Z   fetch-tags: false
+2026-10-16T05:17:00.2827333Z   show-progress: true
+2026-10-16T05:17:00.2827675Z   lfs: false
+2026-10-16T05:17:00.2827989Z   submodules: false
+2026-10-16T05:17:00.2828896Z   set-safe-directory: true
+2026-10-16T05:17:00.2829475Z   allow-unsafe-pr-checkout: false
+2026-10-16T05:17:00.2830150Z env:
+2026-10-16T05:17:00.2830451Z   PYTHONUTF8: 1
+2026-10-16T05:17:00.2830798Z   PYTHONIOENCODING: utf-8
+2026-10-16T05:17:00.2831206Z ##[endgroup]
+2026-10-16T05:17:00.4204002Z Syncing repository: Yupkidangju/texel
+2026-10-16T05:17:00.4205434Z ##[group]Getting Git version info
+2026-10-16T05:17:00.4205906Z Working directory is 'D:\a\texel\texel'
+2026-10-16T05:17:00.4823254Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-16T05:17:01.0235122Z git version 2.56.0.windows.2
+2026-10-16T05:17:01.0278716Z ##[endgroup]
+2026-10-16T05:17:01.0292328Z Temporarily overriding HOME='D:\a\_temp\501e853d-8aa3-4d87-8c5d-2d910bbf4daa' before making global git config changes
+2026-10-16T05:17:01.0294131Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-16T05:17:01.0301034Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\texel\texel
+2026-10-16T05:17:01.1728304Z Deleting the contents of 'D:\a\texel\texel'
+2026-10-16T05:17:01.1732771Z ##[group]Determining repository object format
+2026-10-16T05:17:01.1734569Z ##[endgroup]
+2026-10-16T05:17:01.1736345Z ##[group]Initializing the repository
+2026-10-16T05:17:01.1742684Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\texel\texel
+2026-10-16T05:17:01.4698823Z Initialized empty Git repository in D:/a/texel/texel/.git/
+2026-10-16T05:17:01.4752528Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Yupkidangju/texel
+2026-10-16T05:17:01.5435979Z ##[endgroup]
+2026-10-16T05:17:01.5436585Z ##[group]Disabling automatic garbage collection
+2026-10-16T05:17:01.5444286Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-16T05:17:01.5775074Z ##[endgroup]
+2026-10-16T05:17:01.5775868Z ##[group]Setting up auth
+2026-10-16T05:17:01.5776513Z Removing SSH command configuration
+2026-10-16T05:17:01.5785167Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T05:17:01.6108894Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-16T05:17:03.8020049Z Removing HTTP extra header
+2026-10-16T05:17:03.8033312Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T05:17:03.8354809Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-16T05:17:04.3188363Z Removing includeIf entries pointing to credentials config files
+2026-10-16T05:17:04.3198668Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-16T05:17:04.3539952Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-16T05:17:04.8429850Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-16T05:17:04.8750965Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/texel/texel/.git.path D:\a\_temp\git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:04.9626518Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/texel/texel/.git/worktrees/*.path D:\a\_temp\git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:05.0039289Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:05.0403885Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:05.0744750Z ##[endgroup]
+2026-10-16T05:17:05.0745286Z ##[group]Fetching the repository
+2026-10-16T05:17:05.0756193Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/tags/v0.3.1:refs/tags/v0.3.1
+2026-10-16T05:17:06.5842379Z From https://github.com/Yupkidangju/texel
+2026-10-16T05:17:06.5842968Z  * [new tag]         v0.3.1     -> v0.3.1
+2026-10-16T05:17:06.5897049Z [command]"C:\Program Files\Git\bin\git.exe" tag --list v0.3.1
+2026-10-16T05:17:06.6246909Z v0.3.1
+2026-10-16T05:17:06.6286836Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse refs/tags/v0.3.1^{commit}
+2026-10-16T05:17:06.6634603Z de79a87e88ab596f2195dadb5b6fe9915eb4ad35
+2026-10-16T05:17:06.6666284Z ##[endgroup]
+2026-10-16T05:17:06.6666773Z ##[group]Determining the checkout info
+2026-10-16T05:17:06.6668222Z ##[endgroup]
+2026-10-16T05:17:06.6675934Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-16T05:17:06.7077581Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-16T05:17:06.7402051Z ##[group]Checking out the ref
+2026-10-16T05:17:06.7409849Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/tags/v0.3.1
+2026-10-16T05:17:06.9659991Z Note: switching to 'refs/tags/v0.3.1'.
+2026-10-16T05:17:06.9660380Z 
+2026-10-16T05:17:06.9660784Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-16T05:17:06.9661363Z changes and commit them, and you can discard any commits you make in this
+2026-10-16T05:17:06.9662409Z state without impacting any branches by switching back to a branch.
+2026-10-16T05:17:06.9663045Z 
+2026-10-16T05:17:06.9663475Z If you want to create a new branch to retain commits you create, you may
+2026-10-16T05:17:06.9664009Z do so (now or later) by using -c with the switch command. Example:
+2026-10-16T05:17:06.9664279Z 
+2026-10-16T05:17:06.9664496Z   git switch -c <new-branch-name>
+2026-10-16T05:17:06.9664708Z 
+2026-10-16T05:17:06.9664825Z Or undo this operation with:
+2026-10-16T05:17:06.9665078Z 
+2026-10-16T05:17:06.9665365Z   git switch -
+2026-10-16T05:17:06.9665811Z 
+2026-10-16T05:17:06.9666141Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-16T05:17:06.9666546Z 
+2026-10-16T05:17:06.9666950Z HEAD is now at de79a87 chore: finalize 0.3.1 release checks and platform documentation
+2026-10-16T05:17:06.9779857Z ##[endgroup]
+2026-10-16T05:17:07.0265427Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-16T05:17:07.0588143Z de79a87e88ab596f2195dadb5b6fe9915eb4ad35
+2026-10-16T05:17:07.0632562Z ##[group]Removing auth
+2026-10-16T05:17:07.0632879Z Removing SSH command configuration
+2026-10-16T05:17:07.0640704Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T05:17:07.0963997Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-16T05:17:07.6022313Z Removing HTTP extra header
+2026-10-16T05:17:07.6031181Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T05:17:07.6368823Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-16T05:17:08.1071792Z Removing includeIf entries pointing to credentials config files
+2026-10-16T05:17:08.1080711Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-16T05:17:08.1384306Z includeif.gitdir:D:/a/texel/texel/.git.path
+2026-10-16T05:17:08.1385516Z includeif.gitdir:D:/a/texel/texel/.git/worktrees/*.path
+2026-10-16T05:17:08.1386076Z includeif.gitdir:/github/workspace/.git.path
+2026-10-16T05:17:08.1386510Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-16T05:17:08.1435064Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/texel/texel/.git.path
+2026-10-16T05:17:08.1735906Z D:\a\_temp\git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:08.1781284Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/texel/texel/.git.path D\:\\a\\_temp\\git\-credentials\-d8747e85\-85e8\-4440\-9ccf\-6e73aac5318f\.config
+2026-10-16T05:17:08.2133622Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/texel/texel/.git/worktrees/*.path
+2026-10-16T05:17:08.2442851Z D:\a\_temp\git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:08.2484743Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/texel/texel/.git/worktrees/*.path D\:\\a\\_temp\\git\-credentials\-d8747e85\-85e8\-4440\-9ccf\-6e73aac5318f\.config
+2026-10-16T05:17:08.2830959Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-16T05:17:08.3135083Z /github/runner_temp/git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:08.3178735Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-d8747e85\-85e8\-4440\-9ccf\-6e73aac5318f\.config
+2026-10-16T05:17:08.3529254Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-16T05:17:08.3826604Z /github/runner_temp/git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config
+2026-10-16T05:17:08.3866158Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-d8747e85\-85e8\-4440\-9ccf\-6e73aac5318f\.config
+2026-10-16T05:17:08.4195013Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-16T05:17:08.9334114Z Removing credentials config 'D:\a\_temp\git-credentials-d8747e85-85e8-4440-9ccf-6e73aac5318f.config'
+2026-10-16T05:17:08.9346828Z ##[endgroup]
+2026-10-16T05:17:08.9831061Z ##[group]Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+2026-10-16T05:17:08.9831538Z with:
+2026-10-16T05:17:08.9831811Z   python-version: 3.14
+2026-10-16T05:17:08.9832106Z   check-latest: false
+2026-10-16T05:17:08.9834475Z   token: ***
+2026-10-16T05:17:08.9834660Z   update-environment: true
+2026-10-16T05:17:08.9834886Z   allow-prereleases: false
+2026-10-16T05:17:08.9835076Z   freethreaded: false
+2026-10-16T05:17:08.9835244Z env:
+2026-10-16T05:17:08.9835386Z   PYTHONUTF8: 1
+2026-10-16T05:17:08.9835557Z   PYTHONIOENCODING: utf-8
+2026-10-16T05:17:08.9835737Z ##[endgroup]
+2026-10-16T05:17:09.1241478Z ##[group]Installed versions
+2026-10-16T05:17:09.1448292Z Successfully set up CPython (3.14.8)
+2026-10-16T05:17:09.1448941Z ##[endgroup]
+2026-10-16T05:17:09.1803519Z ##[group]Run python -m pip install uv==0.11.33
+2026-10-16T05:17:09.1804061Z [36;1mpython -m pip install uv==0.11.33[0m
+2026-10-16T05:17:09.2614391Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-16T05:17:09.2614733Z env:
+2026-10-16T05:17:09.2614914Z   PYTHONUTF8: 1
+2026-10-16T05:17:09.2615116Z   PYTHONIOENCODING: utf-8
+2026-10-16T05:17:09.2615403Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:09.2615830Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.14.8\x64/lib/pkgconfig
+2026-10-16T05:17:09.2616238Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:09.2616577Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:09.2616895Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:09.2617146Z ##[endgroup]
+2026-10-16T05:17:14.9490722Z Collecting uv==0.11.33
+2026-10-16T05:17:14.9840655Z   Downloading uv-0.11.33-py3-none-win_amd64.whl.metadata (11 kB)
+2026-10-16T05:17:15.0262732Z Downloading uv-0.11.33-py3-none-win_amd64.whl (20.2 MB)
+2026-10-16T05:17:15.4109548Z    ---------------------------------------- 20.2/20.2 MB 54.7 MB/s  0:00:00
+2026-10-16T05:17:15.6541011Z Installing collected packages: uv
+2026-10-16T05:17:16.5191671Z Successfully installed uv-0.11.33
+2026-10-16T05:17:16.7183842Z ##[group]Run ./build.ps1
+2026-10-16T05:17:16.7184141Z [36;1m./build.ps1[0m
+2026-10-16T05:17:16.7254772Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-16T05:17:16.7255255Z env:
+2026-10-16T05:17:16.7255404Z   PYTHONUTF8: 1
+2026-10-16T05:17:16.7255570Z   PYTHONIOENCODING: utf-8
+2026-10-16T05:17:16.7255819Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:16.7256175Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.14.8\x64/lib/pkgconfig
+2026-10-16T05:17:16.7256518Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:16.7256825Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:16.7257158Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:17:16.7257420Z ##[endgroup]
+2026-10-16T05:17:19.0546924Z Using CPython 3.15.0 interpreter at: .runtime\python315\python.exe
+2026-10-16T05:17:19.3695295Z Resolved 53 packages in 317ms
+2026-10-16T05:17:19.3975820Z Downloading pygments (1.2MiB)
+2026-10-16T05:17:19.3989129Z Downloading pydantic-core (2.1MiB)
+2026-10-16T05:17:19.3993168Z Downloading pywin32 (6.7MiB)
+2026-10-16T05:17:19.4012340Z Downloading cryptography (3.9MiB)
+2026-10-16T05:17:19.4026502Z Downloading ruff (9.6MiB)
+2026-10-16T05:17:19.6951244Z  Downloaded pydantic-core
+2026-10-16T05:17:19.7741548Z  Downloaded ruff
+2026-10-16T05:17:19.8222623Z  Downloaded cryptography
+2026-10-16T05:17:20.3407014Z  Downloaded pygments
+2026-10-16T05:17:20.4379168Z  Downloaded pywin32
+2026-10-16T05:17:20.4385077Z Prepared 53 packages in 1.06s
+2026-10-16T05:17:20.6633492Z Installed 53 packages in 224ms
+2026-10-16T05:17:20.6635854Z  + annotated-types==0.8.0
+2026-10-16T05:17:20.6640935Z  + anyio==4.15.1
+2026-10-16T05:17:20.6645671Z  + attrs==26.1.0
+2026-10-16T05:17:20.6650556Z  + cffi==2.1.1
+2026-10-16T05:17:20.6655800Z  + click==8.5.0
+2026-10-16T05:17:20.6661436Z  + colorama==0.4.6
+2026-10-16T05:17:20.6665911Z  + cryptography==50.0.2
+2026-10-16T05:17:20.6670477Z  + defusedxml==0.7.1
+2026-10-16T05:17:20.6675964Z  + et-xmlfile==2.0.0
+2026-10-16T05:17:20.6681007Z  + h11==0.16.0
+2026-10-16T05:17:20.6685993Z  + hatchling==1.32.4
+2026-10-16T05:17:20.6689941Z  + httpcore2==2.13.1
+2026-10-16T05:17:20.6694189Z  + httpx2==2.13.1
+2026-10-16T05:17:20.6698787Z  + idna==3.20
+2026-10-16T05:17:20.6702904Z  + iniconfig==2.3.1
+2026-10-16T05:17:20.6708709Z  + jsonschema==4.26.0
+2026-10-16T05:17:20.6719628Z  + jsonschema-specifications==2025.9.1
+2026-10-16T05:17:20.6727195Z  + linkify-it-py==2.2.0
+2026-10-16T05:17:20.6734758Z  + markdown-it-py==4.2.0
+2026-10-16T05:17:20.6740525Z  + mcp==2.3.0
+2026-10-16T05:17:20.6746648Z  + mcp-types==2.3.0
+2026-10-16T05:17:20.6752563Z  + mdit-py-plugins==0.6.1
+2026-10-16T05:17:20.6757419Z  + mdurl==0.1.2
+2026-10-16T05:17:20.6762097Z  + openpyxl==3.1.5
+2026-10-16T05:17:20.6767131Z  + opentelemetry-api==1.45.1
+2026-10-16T05:17:20.6771954Z  + packaging==26.3
+2026-10-16T05:17:20.6777042Z  + pathspec==1.1.1
+2026-10-16T05:17:20.6782174Z  + platformdirs==4.12.4
+2026-10-16T05:17:20.6787628Z  + pluggy==1.6.0
+2026-10-16T05:17:20.6792821Z  + pycparser==3.11
+2026-10-16T05:17:20.6797065Z  + pydantic==2.14.0
+2026-10-16T05:17:20.6801697Z  + pydantic-core==2.50.0
+2026-10-16T05:17:20.6806591Z  + pygments==2.21.0
+2026-10-16T05:17:20.6812273Z  + pyjwt==2.15.1
+2026-10-16T05:17:20.6817323Z  + pytest==9.1.1
+2026-10-16T05:17:20.6822438Z  + pytest-asyncio==1.4.0
+2026-10-16T05:17:20.6827889Z  + python-multipart==0.0.32
+2026-10-16T05:17:20.6833024Z  + pywin32==312
+2026-10-16T05:17:20.6838335Z  + referencing==0.37.0
+2026-10-16T05:17:20.6842668Z  + rich==15.0.0
+2026-10-16T05:17:20.6848100Z  + rpds-py==2026.9.1
+2026-10-16T05:17:20.6852486Z  + ruff==0.17.0
+2026-10-16T05:17:20.6857263Z  + sse-starlette==3.5.0
+2026-10-16T05:17:20.6861877Z  + starlette==1.7.0
+2026-10-16T05:17:20.6866952Z  + textual==8.2.8
+2026-10-16T05:17:20.6871405Z  + tomlkit==0.15.1
+2026-10-16T05:17:20.6876319Z  + trove-classifiers==2026.9.21.13
+2026-10-16T05:17:20.6882928Z  + truststore==0.10.4
+2026-10-16T05:17:20.6886746Z  + typing-extensions==4.16.0
+2026-10-16T05:17:20.6891706Z  + typing-inspection==0.4.4
+2026-10-16T05:17:20.6896338Z  + uvicorn==0.54.0
+2026-10-16T05:17:20.6901185Z  + xlrd==2.0.2
+2026-10-16T05:17:20.6905944Z  + xlwt==1.3.0
+2026-10-16T05:17:20.7035754Z Python 3.15.0
+2026-10-16T05:17:20.7310738Z Python 3.15.0
+2026-10-16T05:18:54.6474777Z ........................................................................ [ 23%]
+2026-10-16T05:19:02.9970060Z ........................................................................ [ 47%]
+2026-10-16T05:19:16.2693429Z ........................................................................ [ 71%]
+2026-10-16T05:19:29.3684852Z ........................................................................ [ 94%]
+2026-10-16T05:19:40.5561504Z ................                                                         [100%]
+2026-10-16T05:19:40.5561989Z 304 passed in 138.34s (0:02:18)
+2026-10-16T05:19:42.1259332Z All checks passed!
+2026-10-16T05:19:42.2189747Z 73 files already formatted
+2026-10-16T05:19:42.5638867Z output\texel_tui-0.3.1-py3-none-any.whl
+2026-10-16T05:19:42.9920134Z Using CPython 3.15.0 interpreter at: output\Texel-0.3.1-win64-20261016-051942\python\python.exe
+2026-10-16T05:19:43.0120250Z Resolved 41 packages in 18ms
+2026-10-16T05:19:43.2058461Z Installed 41 packages in 189ms
+2026-10-16T05:19:43.2060729Z  + annotated-types==0.8.0
+2026-10-16T05:19:43.2061481Z  + anyio==4.15.1
+2026-10-16T05:19:43.2063357Z  + attrs==26.1.0
+2026-10-16T05:19:43.2065658Z  + cffi==2.1.1
+2026-10-16T05:19:43.2066598Z  + click==8.5.0
+2026-10-16T05:19:43.2067908Z  + cryptography==50.0.2
+2026-10-16T05:19:43.2069036Z  + defusedxml==0.7.1
+2026-10-16T05:19:43.2070242Z  + et-xmlfile==2.0.0
+2026-10-16T05:19:43.2071479Z  + h11==0.16.0
+2026-10-16T05:19:43.2072714Z  + httpcore2==2.13.1
+2026-10-16T05:19:43.2073911Z  + httpx2==2.13.1
+2026-10-16T05:19:43.2074968Z  + idna==3.20
+2026-10-16T05:19:43.2076235Z  + jsonschema==4.26.0
+2026-10-16T05:19:43.2077416Z  + jsonschema-specifications==2025.9.1
+2026-10-16T05:19:43.2078675Z  + linkify-it-py==2.2.0
+2026-10-16T05:19:43.2080004Z  + markdown-it-py==4.2.0
+2026-10-16T05:19:43.2081257Z  + mcp==2.3.0
+2026-10-16T05:19:43.2082279Z  + mcp-types==2.3.0
+2026-10-16T05:19:43.2083606Z  + mdit-py-plugins==0.6.1
+2026-10-16T05:19:43.2084653Z  + mdurl==0.1.2
+2026-10-16T05:19:43.2085811Z  + openpyxl==3.1.5
+2026-10-16T05:19:43.2086994Z  + opentelemetry-api==1.45.1
+2026-10-16T05:19:43.2088230Z  + platformdirs==4.12.4
+2026-10-16T05:19:43.2089144Z  + pycparser==3.11
+2026-10-16T05:19:43.2090224Z  + pydantic==2.14.0
+2026-10-16T05:19:43.2091593Z  + pydantic-core==2.50.0
+2026-10-16T05:19:43.2093016Z  + pygments==2.21.0
+2026-10-16T05:19:43.2093640Z  + pyjwt==2.15.1
+2026-10-16T05:19:43.2095676Z  + python-multipart==0.0.32
+2026-10-16T05:19:43.2096097Z  + pywin32==312
+2026-10-16T05:19:43.2098013Z  + referencing==0.37.0
+2026-10-16T05:19:43.2098878Z  + rich==15.0.0
+2026-10-16T05:19:43.2099869Z  + rpds-py==2026.9.1
+2026-10-16T05:19:43.2101436Z  + sse-starlette==3.5.0
+2026-10-16T05:19:43.2101928Z  + starlette==1.7.0
+2026-10-16T05:19:43.2103171Z  + textual==8.2.8
+2026-10-16T05:19:43.2104388Z  + truststore==0.10.4
+2026-10-16T05:19:43.2105700Z  + typing-extensions==4.16.0
+2026-10-16T05:19:43.2106859Z  + typing-inspection==0.4.4
+2026-10-16T05:19:43.2108074Z  + uvicorn==0.54.0
+2026-10-16T05:19:43.2109238Z  + xlrd==2.0.2
+2026-10-16T05:19:43.3261416Z Texel 0.3.1
+2026-10-16T05:19:45.6123098Z Portable: D:\a\texel\texel\output\Texel-0.3.1-win64-20261016-051942
+2026-10-16T05:19:45.6123699Z ZIP: D:\a\texel\texel\output\Texel-0.3.1-win64-20261016-051942.zip (33,227,964 bytes)
+2026-10-16T05:19:45.6748370Z ##[group]Run $bundles = @(Get-ChildItem output -Directory -Filter 'Texel-*-win64-*')
+2026-10-16T05:19:45.6749064Z [36;1m$bundles = @(Get-ChildItem output -Directory -Filter 'Texel-*-win64-*')[0m
+2026-10-16T05:19:45.6749570Z [36;1mif ($bundles.Count -ne 1) { throw 'Expected exactly one portable folder' }[0m
+2026-10-16T05:19:45.6750005Z [36;1m$bundle = $bundles[0][0m
+2026-10-16T05:19:45.6750573Z [36;1m& "$($bundle.FullName)/python/python.exe" scripts/verify_distribution.py --package-root $bundle.FullName --evidence .cache/portable-check[0m
+2026-10-16T05:19:45.6751446Z [36;1mif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }[0m
+2026-10-16T05:19:45.6751911Z [36;1m& ./.runtime/python315/python.exe scripts/check_portable.py --bundle $bundle.FullName[0m
+2026-10-16T05:19:45.6752372Z [36;1mif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }[0m
+2026-10-16T05:19:45.6818829Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-16T05:19:45.6819435Z env:
+2026-10-16T05:19:45.6819821Z   PYTHONUTF8: 1
+2026-10-16T05:19:45.6820063Z   PYTHONIOENCODING: utf-8
+2026-10-16T05:19:45.6820373Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:45.6820798Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.14.8\x64/lib/pkgconfig
+2026-10-16T05:19:45.6821221Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:45.6821612Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:45.6822003Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:45.6822449Z ##[endgroup]
+2026-10-16T05:19:55.2291659Z {"python": "D:\\a\\texel\\texel\\output\\Texel-0.3.1-win64-20261016-051942\\python\\python.exe", "module": "D:\\a\\texel\\texel\\output\\Texel-0.3.1-win64-20261016-051942\\texel\\__init__.py", "version": "0.3.1", "cli_csv_source_and_save_default": true, "draft_click": {"A1": 42, "B3": 7}, "borders_actual_apply_80x24": true, "context_tail_mouse_once": true, "merged_enter": "A4", "native_invalid_read_preserved": true, "advanced_sort_filter_f4": true, "mcp_tools": 39, "mcp_series_reopened": 9007199254740995, "mcp_protected_delete_rejected": true, "mcp_batch_preview_apply_undo": true, "mcp_read_ranges_and_formula": true, "formula_functions": 89}
+2026-10-16T05:19:55.8239748Z Verified 39 source/license files in portable and ZIP
+2026-10-16T05:19:55.8992155Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-10-16T05:19:55.8992627Z with:
+2026-10-16T05:19:55.8992872Z   name: windows-portable
+2026-10-16T05:19:55.8993145Z   path: output/Texel-*-win64-*.zip
+2026-10-16T05:19:55.8993421Z   if-no-files-found: error
+2026-10-16T05:19:55.8993672Z   retention-days: 14
+2026-10-16T05:19:55.8993962Z   compression-level: 6
+2026-10-16T05:19:55.8994328Z   overwrite: false
+2026-10-16T05:19:55.8994542Z   include-hidden-files: false
+2026-10-16T05:19:55.8994760Z   archive: true
+2026-10-16T05:19:55.8995033Z env:
+2026-10-16T05:19:55.8995223Z   PYTHONUTF8: 1
+2026-10-16T05:19:55.8995434Z   PYTHONIOENCODING: utf-8
+2026-10-16T05:19:55.8995740Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:55.8996174Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.14.8\x64/lib/pkgconfig
+2026-10-16T05:19:55.8996604Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:55.8997099Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:55.8997536Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:55.8997908Z ##[endgroup]
+2026-10-16T05:19:56.0683169Z With the provided path, there will be 1 file uploaded
+2026-10-16T05:19:56.0687749Z Artifact name is valid!
+2026-10-16T05:19:56.0688885Z Root directory input is valid!
+2026-10-16T05:19:56.2707770Z Uploading artifact: windows-portable.zip
+2026-10-16T05:19:56.2765903Z Beginning upload of artifact content to blob storage
+2026-10-16T05:19:56.6795410Z Uploaded bytes 8388608
+2026-10-16T05:19:56.9398390Z Uploaded bytes 16777216
+2026-10-16T05:19:57.1835859Z Uploaded bytes 25165824
+2026-10-16T05:19:57.4332710Z Uploaded bytes 32600108
+2026-10-16T05:19:57.4467475Z Finished uploading artifact content to blob storage!
+2026-10-16T05:19:57.4468688Z SHA256 digest of uploaded artifact is a93099b75e606c7933a496e018aeb86352a74e2a17dced4703521fedaada1f78
+2026-10-16T05:19:57.4469538Z Finalizing artifact upload
+2026-10-16T05:19:57.6800374Z Artifact windows-portable successfully finalized. Artifact ID 12027241712
+2026-10-16T05:19:57.6801919Z Artifact windows-portable has been successfully uploaded! Final size is 32600108 bytes. Artifact ID is 12027241712
+2026-10-16T05:19:57.6809136Z Artifact download URL: https://github.com/Yupkidangju/texel/actions/runs/38854400347/artifacts/12027241712
+2026-10-16T05:19:57.7124958Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-10-16T05:19:57.7125471Z with:
+2026-10-16T05:19:57.7125719Z   name: portable-report
+2026-10-16T05:19:57.7126034Z   path: .cache/portable-check/result.json
+2026-10-16T05:19:57.7126341Z   include-hidden-files: true
+2026-10-16T05:19:57.7126600Z   if-no-files-found: warn
+2026-10-16T05:19:57.7126854Z   retention-days: 14
+2026-10-16T05:19:57.7127113Z   compression-level: 6
+2026-10-16T05:19:57.7127579Z   overwrite: false
+2026-10-16T05:19:57.7127818Z   archive: true
+2026-10-16T05:19:57.7128008Z env:
+2026-10-16T05:19:57.7128182Z   PYTHONUTF8: 1
+2026-10-16T05:19:57.7128364Z   PYTHONIOENCODING: utf-8
+2026-10-16T05:19:57.7128658Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:57.7129058Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.14.8\x64/lib/pkgconfig
+2026-10-16T05:19:57.7129439Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:57.7129834Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:57.7130175Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.14.8\x64
+2026-10-16T05:19:57.7130441Z ##[endgroup]
+2026-10-16T05:19:57.8972858Z With the provided path, there will be 1 file uploaded
+2026-10-16T05:19:57.8978152Z Artifact name is valid!
+2026-10-16T05:19:57.8979355Z Root directory input is valid!
+2026-10-16T05:19:58.1041015Z Uploading artifact: portable-report.zip
+2026-10-16T05:19:58.1081248Z Beginning upload of artifact content to blob storage
+2026-10-16T05:19:58.1621275Z Uploaded bytes 503
+2026-10-16T05:19:58.1740383Z Finished uploading artifact content to blob storage!
+2026-10-16T05:19:58.1741468Z SHA256 digest of uploaded artifact is d1ea3d1d5a3a9d5c4c5767f9cc5c6542cac46520dec16b2010f8c60dd34f13cc
+2026-10-16T05:19:58.1742322Z Finalizing artifact upload
+2026-10-16T05:19:58.4510316Z Artifact portable-report successfully finalized. Artifact ID 12026154962
+2026-10-16T05:19:58.4511436Z Artifact portable-report has been successfully uploaded! Final size is 503 bytes. Artifact ID is 12026154962
+2026-10-16T05:19:58.4520006Z Artifact download URL: https://github.com/Yupkidangju/texel/actions/runs/38854400347/artifacts/12026154962
+2026-10-16T05:19:58.4836640Z Post job cleanup.
+2026-10-16T05:19:58.6484353Z Post job cleanup.
+2026-10-16T05:19:58.8304124Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-16T05:19:58.8696829Z git version 2.56.0.windows.2
+2026-10-16T05:19:58.8769842Z Temporarily overriding HOME='D:\a\_temp\285126bf-0f4a-4c89-ba21-c6ac3bcda0d6' before making global git config changes
+2026-10-16T05:19:58.8770846Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-16T05:19:58.8780996Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\texel\texel
+2026-10-16T05:19:58.9139839Z Removing SSH command configuration
+2026-10-16T05:19:58.9151907Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-16T05:19:58.9522069Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-16T05:19:59.4921801Z Removing HTTP extra header
+2026-10-16T05:19:59.4936171Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-16T05:19:59.5316515Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-16T05:20:00.0671350Z Removing includeIf entries pointing to credentials config files
+2026-10-16T05:20:00.0682895Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-16T05:20:00.1052034Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-16T05:20:00.6876476Z Cleaning up orphan processes

@@ -6,6 +6,8 @@
 
 현재 제품은 **Texel 0.3.1**이며 **89개 함수 / MCP 39개 도구**를 제공한다. 공개 저장소·라이선스·교차 플랫폼 CI·태그 릴리스는 [0.3.1 계획](docs/releases/0.3.1-plan.md)과 [결과](docs/releases/0.3.1-results.md)를 따른다. 현재 배포 경로는 [배포 목록](docs/distributions.md)에 구분한다.
 
+공개 GitHub Yupkidangju/texel 및 Apache-2.0, v0.3.1 자동 릴리스 완료. 태그 CI7환경 각각304개와 Windows portable 자체 Python3.15 전체304개/Ruff·설치본 검증을 통과했다. 공개 파일 다운로드 해시 및 제품37개 Git 태그 bytes 일치, 실제 Windows 공개 portable ConPTY42+Enter 저장/정상 종료를 확인했다. Windows ARM64는 x64 Python wheel 에뮬레이션, Mac Intel은 Xcode/Rust/OpenSSL 전제를 명시한다. 자세한 범위와 NOTICE 개행 차이는 위 결과를 따른다.
+
 0.3.0 배포 후 2026-10-15 유지보수 당시 검증은 전체 **299 passed / 184.47초**, Ruff check/format **68 files already formatted**였다. 당시 원본 감사·기능표·기존 wheel/ZIP 해시를 보존했고 Git 첫 커밋/재빌드는 수행하지 않았다. 그 시점의 원본 기록은 [유지보수 결과](docs/maintenance/2026-10-15-consistency.md)에 보존한다. 이후 0.3.1의 새 커밋/빌드/게시 결과는 위 공개 배포 결과 문서를 기준으로 한다.
 
 ### 0.3.0 기본 기능 고도화 — 2026-10-15

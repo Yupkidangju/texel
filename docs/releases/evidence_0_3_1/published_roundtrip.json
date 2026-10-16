@@ -1,0 +1,40 @@
+{
+  "release_url": "https://github.com/Yupkidangju/texel/releases/tag/v0.3.1",
+  "published_at": "2026-10-16T05:20:16Z",
+  "tag": "v0.3.1",
+  "commit": "de79a87e88ab596f2195dadb5b6fe9915eb4ad35",
+  "verified_assets": {
+    "Texel-0.3.1-win64-20261016-051942.zip": {
+      "bytes": 33227964,
+      "sha256": "9292cbfa79072d65d71be6948724a55cbdeb3ee21295aafeaf09016f3b32f0cf",
+      "url": "https://github.com/Yupkidangju/texel/releases/download/v0.3.1/Texel-0.3.1-win64-20261016-051942.zip"
+    },
+    "texel_tui-0.3.1-py3-none-any.whl": {
+      "bytes": 103104,
+      "sha256": "6724b15fa61219c65dcb4fc28c0b28231d602252e3d59dd0bd7700b72d957307",
+      "url": "https://github.com/Yupkidangju/texel/releases/download/v0.3.1/texel_tui-0.3.1-py3-none-any.whl"
+    },
+    "texel_tui-0.3.1.tar.gz": {
+      "bytes": 1158564,
+      "sha256": "addd519ca488bb70e7e34fd15886e10b0f6daeb75d9feec6d9bb4570cda6dce7",
+      "url": "https://github.com/Yupkidangju/texel/releases/download/v0.3.1/texel_tui-0.3.1.tar.gz"
+    }
+  },
+  "product_modules_matched_git_tag_bytes": 37,
+  "archives_checked": [
+    "wheel",
+    "sdist",
+    "portable"
+  ],
+  "license": "Apache-2.0",
+  "copyright": "Copyright 2026 yupkidangju@gmail.com",
+  "notice_eol_differences": [
+    {
+      "archive": "portable",
+      "path": "NOTICE",
+      "difference": "Windows CRLF versus Git LF only",
+      "git_sha256": "e003b8be6317f80fc3dbec3c02f9b2b43470feb667fd531d03d61cd6aa1322b1",
+      "archive_sha256": "83e008a0bfdf76f4f6cf9cf139c62c22d3f232e11ff29f3e2202b7b4cf21e54c"
+    }
+  ]
+}

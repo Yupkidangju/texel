@@ -1,0 +1,240 @@
+[
+  {
+    "environment": "macos-15-3.14",
+    "tests": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "304",
+      "time": "163.975",
+      "timestamp": "2026-10-16T05:02:23.042461+00:00",
+      "hostname": "sjc22-bm208-02f64627-a2b9-473e-b3aa-0bfe403460e7-2AFA666A8445.local"
+    },
+    "wheel_runtime": {
+      "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python",
+      "module": "/Users/runner/work/texel/texel/.cache/wheel-check/installed/texel/__init__.py",
+      "version": "0.3.1",
+      "cli_csv_source_and_save_default": true,
+      "draft_click": {
+        "A1": 42,
+        "B3": 7
+      },
+      "borders_actual_apply_80x24": true,
+      "context_tail_mouse_once": true,
+      "merged_enter": "A4",
+      "native_invalid_read_preserved": true,
+      "advanced_sort_filter_f4": true,
+      "mcp_tools": 39,
+      "mcp_series_reopened": 9007199254740995,
+      "mcp_protected_delete_rejected": true,
+      "mcp_batch_preview_apply_undo": true,
+      "mcp_read_ranges_and_formula": true,
+      "formula_functions": 89
+    }
+  },
+  {
+    "environment": "macos-15-intel-3.14",
+    "tests": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "304",
+      "time": "268.450",
+      "timestamp": "2026-10-16T05:05:07.489227+00:00",
+      "hostname": "sjc20-cw752-6e74bbe2-7da7-4f9e-bb0e-c352ecdc5bfb-6E191039148C.local"
+    },
+    "wheel_runtime": {
+      "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python",
+      "module": "/Users/runner/work/texel/texel/.cache/wheel-check/installed/texel/__init__.py",
+      "version": "0.3.1",
+      "cli_csv_source_and_save_default": true,
+      "draft_click": {
+        "A1": 42,
+        "B3": 7
+      },
+      "borders_actual_apply_80x24": true,
+      "context_tail_mouse_once": true,
+      "merged_enter": "A4",
+      "native_invalid_read_preserved": true,
+      "advanced_sort_filter_f4": true,
+      "mcp_tools": 39,
+      "mcp_series_reopened": 9007199254740995,
+      "mcp_protected_delete_rejected": true,
+      "mcp_batch_preview_apply_undo": true,
+      "mcp_read_ranges_and_formula": true,
+      "formula_functions": 89
+    }
+  },
+  {
+    "environment": "ubuntu-24.04-3.14",
+    "tests": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "304",
+      "time": "171.252",
+      "timestamp": "2026-10-16T05:02:11.590118+00:00",
+      "hostname": "runnervm8k3b6"
+    },
+    "wheel_runtime": {
+      "python": "/opt/hostedtoolcache/Python/3.14.8/x64/bin/python",
+      "module": "/home/runner/work/texel/texel/.cache/wheel-check/installed/texel/__init__.py",
+      "version": "0.3.1",
+      "cli_csv_source_and_save_default": true,
+      "draft_click": {
+        "A1": 42,
+        "B3": 7
+      },
+      "borders_actual_apply_80x24": true,
+      "context_tail_mouse_once": true,
+      "merged_enter": "A4",
+      "native_invalid_read_preserved": true,
+      "advanced_sort_filter_f4": true,
+      "mcp_tools": 39,
+      "mcp_series_reopened": 9007199254740995,
+      "mcp_protected_delete_rejected": true,
+      "mcp_batch_preview_apply_undo": true,
+      "mcp_read_ranges_and_formula": true,
+      "formula_functions": 89
+    }
+  },
+  {
+    "environment": "ubuntu-24.04-3.15",
+    "tests": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "304",
+      "time": "144.447",
+      "timestamp": "2026-10-16T05:02:08.834140+00:00",
+      "hostname": "runnervm8k3b6"
+    },
+    "wheel_runtime": {
+      "python": "/opt/hostedtoolcache/Python/3.15.0/x64/bin/python",
+      "module": "/home/runner/work/texel/texel/.cache/wheel-check/installed/texel/__init__.py",
+      "version": "0.3.1",
+      "cli_csv_source_and_save_default": true,
+      "draft_click": {
+        "A1": 42,
+        "B3": 7
+      },
+      "borders_actual_apply_80x24": true,
+      "context_tail_mouse_once": true,
+      "merged_enter": "A4",
+      "native_invalid_read_preserved": true,
+      "advanced_sort_filter_f4": true,
+      "mcp_tools": 39,
+      "mcp_series_reopened": 9007199254740995,
+      "mcp_protected_delete_rejected": true,
+      "mcp_batch_preview_apply_undo": true,
+      "mcp_read_ranges_and_formula": true,
+      "formula_functions": 89
+    }
+  },
+  {
+    "environment": "ubuntu-24.04-arm-3.14",
+    "tests": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "304",
+      "time": "158.495",
+      "timestamp": "2026-10-16T05:02:11.974041+00:00",
+      "hostname": "runnervmidgih"
+    },
+    "wheel_runtime": {
+      "python": "/opt/hostedtoolcache/Python/3.14.8/arm64/bin/python",
+      "module": "/home/runner/work/texel/texel/.cache/wheel-check/installed/texel/__init__.py",
+      "version": "0.3.1",
+      "cli_csv_source_and_save_default": true,
+      "draft_click": {
+        "A1": 42,
+        "B3": 7
+      },
+      "borders_actual_apply_80x24": true,
+      "context_tail_mouse_once": true,
+      "merged_enter": "A4",
+      "native_invalid_read_preserved": true,
+      "advanced_sort_filter_f4": true,
+      "mcp_tools": 39,
+      "mcp_series_reopened": 9007199254740995,
+      "mcp_protected_delete_rejected": true,
+      "mcp_batch_preview_apply_undo": true,
+      "mcp_read_ranges_and_formula": true,
+      "formula_functions": 89
+    }
+  },
+  {
+    "environment": "windows-11-arm-3.14",
+    "tests": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "304",
+      "time": "238.472",
+      "timestamp": "2026-10-15T22:04:46.758518-07:00",
+      "hostname": "runnervmso2ns"
+    },
+    "wheel_runtime": {
+      "python": "C:\\hostedtoolcache\\windows\\Python\\3.14.8\\x64\\python.exe",
+      "module": "C:\\a\\texel\\texel\\.cache\\wheel-check\\installed\\texel\\__init__.py",
+      "version": "0.3.1",
+      "cli_csv_source_and_save_default": true,
+      "draft_click": {
+        "A1": 42,
+        "B3": 7
+      },
+      "borders_actual_apply_80x24": true,
+      "context_tail_mouse_once": true,
+      "merged_enter": "A4",
+      "native_invalid_read_preserved": true,
+      "advanced_sort_filter_f4": true,
+      "mcp_tools": 39,
+      "mcp_series_reopened": 9007199254740995,
+      "mcp_protected_delete_rejected": true,
+      "mcp_batch_preview_apply_undo": true,
+      "mcp_read_ranges_and_formula": true,
+      "formula_functions": 89
+    }
+  },
+  {
+    "environment": "windows-2025-3.14",
+    "tests": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "304",
+      "time": "140.337",
+      "timestamp": "2026-10-16T05:02:40.612027+00:00",
+      "hostname": "runnervm0xl3a"
+    },
+    "wheel_runtime": {
+      "python": "C:\\hostedtoolcache\\windows\\Python\\3.14.8\\x64\\python.exe",
+      "module": "D:\\a\\texel\\texel\\.cache\\wheel-check\\installed\\texel\\__init__.py",
+      "version": "0.3.1",
+      "cli_csv_source_and_save_default": true,
+      "draft_click": {
+        "A1": 42,
+        "B3": 7
+      },
+      "borders_actual_apply_80x24": true,
+      "context_tail_mouse_once": true,
+      "merged_enter": "A4",
+      "native_invalid_read_preserved": true,
+      "advanced_sort_filter_f4": true,
+      "mcp_tools": 39,
+      "mcp_series_reopened": 9007199254740995,
+      "mcp_protected_delete_rejected": true,
+      "mcp_batch_preview_apply_undo": true,
+      "mcp_read_ranges_and_formula": true,
+      "formula_functions": 89
+    }
+  }
+]

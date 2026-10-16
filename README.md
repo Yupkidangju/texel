@@ -8,23 +8,27 @@ Python 3.15 기반 로컬 TUI 스프레드시트와 데이터 분석용 MCP 서�
 
 ## 실행
 
-Windows x64, Linux·macOS x64/ARM64에서 **Python 3.14 이상**을 설치한 뒤 릴리스의 공통 wheel을 설치합니다. **Windows11 ARM64는 x64 Python/portable 에뮬레이션 경로**를 사용합니다. Windows ARM64 네이티브는 의존성 wheel 제약으로 지원 범위에 포함하지 않습니다.
+Windows x64, Linux·macOS x64/ARM64에서 **Python 3.14 이상**을 설치한 뒤 릴리스의 공통 wheel을 설치합니다. **Windows11 ARM64는 x64 Python 에뮬레이션에서 공통 wheel**을 검증했습니다. Windows ARM64 네이티브는 의존성 wheel 제약으로 지원 범위에 포함하지 않습니다. portable ZIP의 실행 검증 대상은 Windows x64입니다.
 
 ```sh
 python -m pip install texel_tui-0.3.1-py3-none-any.whl
 texel tui --demo
 ```
 
+CI와 같은 전이 의존성 버전을 재현하려면 해당 태그의 잠금 파일을 적용합니다: `python -m pip install -c https://raw.githubusercontent.com/Yupkidangju/texel/v0.3.1/requirements-runtime.lock texel_tui-0.3.1-py3-none-any.whl`. 일반 설치는 pyproject의 직접 의존성만 고정합니다.
+
 Windows x64 portable ZIP은 Python을 포함하며 Run.cmd/Demo.cmd로 실행합니다. 다른 OS/CPU에는 Python 런타임이 필요합니다. 최초 의존성 설치에는 인터넷이 필요하고 로컬 문서는 설치 후 오프라인 동작합니다. Python 3.14에서 6개 OS/CPU 조합, Ubuntu x64의 Python 3.15를 CI 대상으로 지정했습니다. 실제 호스팅 검증 결과와 장비 검증 한계는 [공개 배포 기록](docs/releases/0.3.1-results.md)에 기록합니다.
 
 | 실행 환경 | Python 아키텍처 | 배포 형태 |
 |---|---|---|
 | Windows x64 | x64 | 공통 wheel / 런타임 포함 portable |
-| Windows11 ARM64 | x64 에뮬레이션 | 공통 wheel / x64 portable |
+| Windows11 ARM64 | x64 에뮬레이션 | 공통 wheel |
 | Linux x64 | x64 네이티브 | 공통 wheel |
 | Linux ARM64 | ARM64 네이티브 | 공통 wheel |
 | macOS Intel | x64 네이티브 | 공통 wheel |
 | macOS Apple Silicon | ARM64 네이티브 | 공통 wheel |
+
+macOS Intel에서는 현재 고정 의존성 cryptography의 소스 빌드가 필요합니다. Xcode Command Line Tools와 Rust/OpenSSL을 준비하세요: `xcode-select --install`, `brew install rust openssl@3`. [공식 빌드 안내](https://cryptography.io/en/latest/installation/#building-cryptography-on-macos)를 따르며 설치 오류가 나면 `OPENSSL_DIR="$(brew --prefix openssl@3)" python -m pip install <wheel>`로 OpenSSL 위치를 지정합니다. CI에서도 이 의존성을 실제 컴파일해 검증했습니다.
 
 Windows 소스 개발 환경:
 
