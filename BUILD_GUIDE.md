@@ -2,6 +2,8 @@
 
 ## 공통 설치와 자동 배포
 
+Windows11 ARM64는 x64 Python/portable 에뮬레이션 경로를 사용합니다. Windows ARM64 네이티브는 cryptography의 공식 wheel 부재로 지원하지 않습니다. Linux/macOS ARM64는 네이티브 CI 대상입니다.
+
 Python 3.14+가 있는 Windows/Linux/macOS x64·ARM64에서는 Release의 공통 wheel을 `python -m pip install <wheel>`로 설치합니다. Windows x64 portable만 Python 런타임을 포함합니다. 잠금 파일은 pywin32를 Windows로 제한하며 제품/개발 버전은 동일하게 고정합니다. 소스 개발은 `python -m pip install -r requirements.lock`, `python -m pytest -q`, `python -m ruff check texel tests scripts`, `python -m hatchling build`로 수행할 수 있습니다.
 
 main push/PR은 .github/workflows/ci.yml의 7환경 검증을 실행합니다. 버전 상수·pyproject·CHANGELOG를 동기화하고 `vX.Y.Z` 태그를 push하면 release.yml이 동일 CI와 Windows portable의 전체 검사/설치본 검증을 거쳐 wheel/sdist/portable/SHA256SUMS.txt를 GitHub Release에 게시합니다. PyPI 게시나 추가 비밀 키는 필요하지 않습니다. 태그 버전이 패키지와 다르면 차단하며 기존 태그/릴리스를 덮어쓰지 않습니다. 실패 시 로그를 확인해 수정한 뒤 새 검증을 수행합니다. 정확한 결과는 docs/releases/0.3.1-results.md를 참고하세요.

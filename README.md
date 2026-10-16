@@ -8,7 +8,7 @@ Python 3.15 기반 로컬 TUI 스프레드시트와 데이터 분석용 MCP 서�
 
 ## 실행
 
-Windows·Linux·macOS의 x64/ARM64에서 **Python 3.14 이상**을 설치한 뒤 릴리스의 공통 wheel을 설치합니다.
+Windows x64, Linux·macOS x64/ARM64에서 **Python 3.14 이상**을 설치한 뒤 릴리스의 공통 wheel을 설치합니다. **Windows11 ARM64는 x64 Python/portable 에뮬레이션 경로**를 사용합니다. Windows ARM64 네이티브는 의존성 wheel 제약으로 지원 범위에 포함하지 않습니다.
 
 ```sh
 python -m pip install texel_tui-0.3.1-py3-none-any.whl

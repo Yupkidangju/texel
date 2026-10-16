@@ -2,7 +2,7 @@
 
 ## 0.3.1 공개 배포 (2026-10-16)
 
-공통 wheel+sdist와 6개 OS/CPU 네이티브 CI를 사용한다. Windows x64 portable 경로를 유지하며 다른 OS에 런타임 포함 패키지를 약속하지 않는다. 기존 pywin32 고정 버전은 Windows marker로 제한한다. 태그 릴리스는 전체 CI와 설치본 검증을 통과한 같은 소스로만 게시한다. 라이선스/공개 범위/복구 기준은 docs/releases/0.3.1-plan.md를 따른다.
+공통 wheel+sdist와 6개 OS/CPU 환경 CI를 사용한다. Linux/macOS ARM64는 네이티브, Windows11 ARM64는 의존성 wheel 제약에 따라 x64 Python 에뮬레이션 경로를 검증한다. Windows x64 portable 경로를 유지하며 다른 OS에 런타임 포함 패키지를 약속하지 않는다. 기존 pywin32 고정 버전은 Windows marker로 제한한다. 태그 릴리스는 전체 CI와 설치본 검증을 통과한 같은 소스로만 게시한다. 라이선스/공개 범위/복구 기준은 docs/releases/0.3.1-plan.md를 따른다.
 
 2026-10-10, spec.md 기준.
 
