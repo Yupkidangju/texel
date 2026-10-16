@@ -8,6 +8,8 @@
 
 공개 GitHub Yupkidangju/texel 및 Apache-2.0, v0.3.1 자동 릴리스 완료. 태그 CI7환경 각각304개와 Windows portable 자체 Python3.15 전체304개/Ruff·설치본 검증을 통과했다. 공개 파일 다운로드 해시 및 제품37개 Git 태그 bytes 일치, 실제 Windows 공개 portable ConPTY42+Enter 저장/정상 종료를 확인했다. Windows ARM64는 x64 Python wheel 에뮬레이션, Mac Intel은 Xcode/Rust/OpenSSL 전제를 명시한다. 자세한 범위와 NOTICE 개행 차이는 위 결과를 따른다.
 
+후속 저장소 위생 교정은 [2026-10-16 기록](docs/maintenance/2026-10-16-repo-hygiene.md)을 따른다. 생성 입력/구버전 wheel/before 복사본342파일의 현재 추적을 제거하고 Ruff 기본 경로를 명시했다. 제품/기존 테스트/배포 Python73파일은 불변이며 로컬 전체304개와 소스·새 wheel 설치본 검증을 통과했다. 기존 v0.3.1 태그/공개 파일은 당시 스냅샷으로 보존한다.
+
 0.3.0 배포 후 2026-10-15 유지보수 당시 검증은 전체 **299 passed / 184.47초**, Ruff check/format **68 files already formatted**였다. 당시 원본 감사·기능표·기존 wheel/ZIP 해시를 보존했고 Git 첫 커밋/재빌드는 수행하지 않았다. 그 시점의 원본 기록은 [유지보수 결과](docs/maintenance/2026-10-15-consistency.md)에 보존한다. 이후 0.3.1의 새 커밋/빌드/게시 결과는 위 공개 배포 결과 문서를 기준으로 한다.
 
 ### 0.3.0 기본 기능 고도화 — 2026-10-15

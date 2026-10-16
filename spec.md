@@ -174,3 +174,7 @@ batch는 최대 50작업/10,000셀 처리 및 변경, multi-read는 20요청/합
 ## 0.3.1 공개 배포 (2026-10-16)
 
 사용자 요청은 공개 GitHub `Yupkidangju/texel`의 커밋·푸시·태그·자동 릴리스를 명시적으로 허용한다. 현재 공개 배포 기준은 [0.3.1 계획](docs/releases/0.3.1-plan.md)이다. Apache-2.0, Copyright 2026 yupkidangju@gmail.com을 적용하고 Windows/Linux/macOS x64·ARM64의 공통 wheel 및 CI 검증을 제공한다. Windows x64 portable만 Python 런타임을 포함한다. 기존 정책의 자동 커밋/원격 미수행은 이번 명시 요청 전의 기준이며, 미검증 실제 장비 경계는 유지한다.
+
+## 저장소 위생 교정 (2026-10-16)
+
+[교정 기준](docs/maintenance/2026-10-16-repo-hygiene.md)에 따라 문서 증거의 생성 입력/구버전 wheel/중복 before 소스를 현재 추적 트리에서 제거하고 Ruff/pytest 기본 탐색을 명시한다. 제품/기존 테스트/배포 구현, 원본 감사, 결과 증거, 공개 v0.3.1 및 Git 이력은 보존한다. 새 테스트 입력과 설치 검증 작업물은 docs에 보관하지 않는다.

@@ -65,6 +65,8 @@
 
 모든 새 증거: docs/audit/evidence_remediation_1/. 원본 evidence_1의 결과 JSON/log를 덮어쓰지 않았다. 새 fixture와 초기 실패 기록을 삭제하지 않았다. 첫 0.2.1 bundle/ZIP은 중간 검증본이며 `wheel_initial_0.2.1.whl`도 사본으로 보존한다. 기존 0.1.0/0.2.0 artifact는 그대로 둔다.
 
+2026-10-16 추적 정리 보충: 위 문단은 당시 보존 상태다. 재생성 입력/pytest 임시물 및 wheel_initial_0.2.1.whl은 현재 Git 트리에서 제외했고 결과 JSON/log/화면 및 생성 코드는 유지했다. 기존 파일은 c5235b9의 같은 경로에서 복구할 수 있다. 상세 목록·해시·검증은 docs/maintenance/2026-10-16-repo-hygiene.md와 removal_manifest_20261016.json을 따른다.
+
 ```powershell
 & .\.runtime\python315\python.exe -m pytest -q --basetemp docs/audit/evidence_remediation_1/recheck_new
 & .\.runtime\python315\python.exe -m pytest -q docs/audit/evidence_1/test_audit_regressions.py --basetemp docs/audit/evidence_remediation_1/original_recheck_new

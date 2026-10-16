@@ -1,5 +1,7 @@
 # 설치와 빌드
 
+검증 스코프: 인자 없는 Ruff도 texel/tests/scripts의 Python 파일만 검사하고 docs는 명시적으로 제외합니다. pytest 기본 수집은 tests이며 루트 재귀 탐색에서도 docs/output을 제외합니다. pytest 작업 입력은 시스템 임시 경로 또는 .cache 아래에 두고 결과 요약만 docs에 남깁니다. 과거 생성 입력/복사본 정리와 복구 경로는 docs/maintenance/2026-10-16-repo-hygiene.md를 참고하세요.
+
 ## 공통 설치와 자동 배포
 
 Windows11 ARM64는 x64 Python 에뮬레이션에서 공통 wheel을 검증합니다. portable ZIP의 실행 검증 대상은 Windows x64입니다. Windows ARM64 네이티브는 cryptography의 공식 wheel 부재로 지원하지 않습니다. Linux/macOS ARM64는 네이티브 CI 대상입니다.

@@ -17,3 +17,21 @@ data/
 !.env.example
 *.pem
 *.key
+
+# 테스트 작업물과 배포물은 Git 증거 대신 생성 경로에 둔다.
+**/pytest_temp/
+**/*_tmp/
+**/*_temp/
+*.whl
+docs/**/mcp-*/
+docs/**/portable-*/
+docs/**/domain-*/
+docs/**/sweep-*/
+docs/**/fixtures-*/
+docs/**/extra-*/
+docs/maintenance/evidence_consistency_20261015/before/
+docs/**/*_check/**/*.csv
+docs/**/*_check/**/*.tsv
+docs/**/*_check/**/*.xlsx
+docs/**/*_check/**/*.xls
+docs/**/*_check/**/*.gsheet

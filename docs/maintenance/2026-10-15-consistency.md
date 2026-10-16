@@ -46,6 +46,6 @@ Python 3.14+ except 문법, TODO 부재, 미검증 IME/폰트/접근성/장시�
 & .\.runtime\python315\python.exe -m ruff format --check texel tests scripts
 ```
 
-수정 파일: IMPLEMENTATION_SUMMARY.md, spec.md, README.md, BUILD_GUIDE.md, CHANGELOG.md, texel/google_sheets.py, texel/store.py. 추가: tests/test_version_metadata.py, docs/distributions.md, 이 작업 기록/증거, output/README.md와 로컬 .git 메타데이터. 수정 전 summary/제품 2파일과 diff는 before/ 및 changes.patch에 보존한다. 원래 감사 기능표의 30도구/69함수는 당시 값이므로 고치지 않았다.
+수정 파일: IMPLEMENTATION_SUMMARY.md, spec.md, README.md, BUILD_GUIDE.md, CHANGELOG.md, texel/google_sheets.py, texel/store.py. 추가: tests/test_version_metadata.py, docs/distributions.md, 이 작업 기록/증거, output/README.md와 로컬 .git 메타데이터. 현재 트리의 변경 이력은 evidence_consistency_20261015/changes.patch로 단일화했다. 2026-10-16 저장소 위생 교정으로 before/ 복사본은 제거했으며 필요한 원문은 c5235b9의 같은 경로에서 복구할 수 있다. 원래 감사 기능표의 30도구/69함수는 당시 값이므로 고치지 않았다.
 
 잔여 범위: Git 첫 커밋이 없어 파일은 아직 untracked이며 과거 이력/되돌리기는 생기지 않았다. AGENTS.md의 명시적 커밋 요청 경계에 따라 커밋은 수행하지 않았다. 이번 수정은 Unreleased이며 재빌드/새 버전/외부 배포를 수행하지 않았다. 기존 Windows 실제 입력·portable 실행 증거는 0.3.0 배포 시점 기록이고 이번 수정 후 재실행 결과가 아니다. 사람의 IME/폰트/접근성/장시간, Linux/macOS 실제 터미널 한계는 그대로다. 과거 이력과 미검증 항목을 완료로 승격하지 않는다.

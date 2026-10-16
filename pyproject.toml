@@ -38,11 +38,22 @@ directory = "output"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+norecursedirs = [
+  "*.egg", ".*", "_darcs", "build", "CVS", "dist", "node_modules", "venv", "{arch}",
+  "docs", "output",
+]
 asyncio_mode = "auto"
 
 [tool.ruff]
 target-version = "py314"
 line-length = 100
+include = [
+  "texel/**/*.py", "texel/**/*.pyi", "texel/**/*.ipynb",
+  "tests/**/*.py", "tests/**/*.pyi", "tests/**/*.ipynb",
+  "scripts/**/*.py", "scripts/**/*.pyi", "scripts/**/*.ipynb",
+]
+extend-exclude = ["docs", ".runtime", ".cache", "output", "build"]
+force-exclude = true
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "I", "B"]
