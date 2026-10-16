@@ -17,6 +17,15 @@ texel tui --demo
 
 Windows x64 portable ZIP은 Python을 포함하며 Run.cmd/Demo.cmd로 실행합니다. 다른 OS/CPU에는 Python 런타임이 필요합니다. 최초 의존성 설치에는 인터넷이 필요하고 로컬 문서는 설치 후 오프라인 동작합니다. Python 3.14에서 6개 OS/CPU 조합, Ubuntu x64의 Python 3.15를 CI 대상으로 지정했습니다. 실제 호스팅 검증 결과와 장비 검증 한계는 [공개 배포 기록](docs/releases/0.3.1-results.md)에 기록합니다.
 
+| 실행 환경 | Python 아키텍처 | 배포 형태 |
+|---|---|---|
+| Windows x64 | x64 | 공통 wheel / 런타임 포함 portable |
+| Windows11 ARM64 | x64 에뮬레이션 | 공통 wheel / x64 portable |
+| Linux x64 | x64 네이티브 | 공통 wheel |
+| Linux ARM64 | ARM64 네이티브 | 공통 wheel |
+| macOS Intel | x64 네이티브 | 공통 wheel |
+| macOS Apple Silicon | ARM64 네이티브 | 공통 wheel |
+
 Windows 소스 개발 환경:
 
 ```powershell

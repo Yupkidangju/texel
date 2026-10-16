@@ -44,7 +44,15 @@ def main():
     if importlib.util.find_spec("pip"):
         installer = [sys.executable, "-m", "pip", "install", "--no-compile"]
     elif uv := shutil.which("uv"):
-        installer = [uv, "pip", "install", "--python", sys.executable]
+        installer = [
+            uv,
+            "--cache-dir",
+            str(ROOT / ".cache/uv"),
+            "pip",
+            "install",
+            "--python",
+            sys.executable,
+        ]
     else:
         raise RuntimeError("Wheel verification requires pip or uv")
     subprocess.run(

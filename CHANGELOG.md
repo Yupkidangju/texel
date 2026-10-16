@@ -5,7 +5,7 @@
 ### Added
 
 - 공개 GitHub 저장소와 Apache-2.0 라이선스, wheel/sdist 및 portable의 LICENSE/NOTICE 포함.
-- Windows/Linux/macOS x64·ARM64 6환경과 Python 3.15 추가 CI, 실제 wheel 설치본의 CLI/UI/MCP 검증.
+- Windows/Linux/macOS 6환경과 Python 3.15 추가 CI, 실제 wheel 설치본의 CLI/UI/MCP 검증. Linux/macOS ARM64는 네이티브이며 Windows11 ARM64는 x64 Python 에뮬레이션 경로.
 - v* 태그에 전체 검증·Windows portable 빌드·해시 생성 후 GitHub Release 자동 게시.
 
 ### Fixed

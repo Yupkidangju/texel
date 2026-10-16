@@ -35,7 +35,7 @@ Windows x64, PowerShell, uv가 필요합니다. 기존 Python 설치를 변경�
 
 마지막 검증 배포본은 [배포 목록](docs/distributions.md)의 명시적 경로와 해시로 식별합니다. `output/`의 최신 수정 시각이나 공용 JSON 파일만으로 선택하지 마세요. 과거 배포물·실패 후보·wheel-check 설치 폴더를 보존하며, 배포 후 유지보수 소스는 재빌드 전까지 기존 배포물과 같다고 간주하지 않습니다.
 
-0.3.0은 입력 스키마에 기존 runtime lock의 Pydantic 2.14.0을 직접 사용합니다. 추가 다운로드 버전 변경 없이 pyproject의 직접 의존성으로 명시했습니다. `scripts/verify_distribution.py`는 39개 도구, 원자적 batch/preview·다중 범위·추가 함수까지 검사합니다. 0.3.0의 현재 검증 기록은 `docs/upgrades/0.3.0-results.md`입니다.
+0.3.x는 입력 스키마에 기존 runtime lock의 Pydantic 2.14.0을 직접 사용합니다. `scripts/verify_distribution.py`는 39개 도구, 원자적 batch/preview·다중 범위·추가 함수까지 검사합니다. 0.3.0 당시 검증 기록은 `docs/upgrades/0.3.0-results.md`, 현재 0.3.1 공개 배포 기록은 `docs/releases/0.3.1-results.md`입니다.
 
 Portable 폴더: `python/python.exe`, `texel/`, `Run.cmd`, `Demo.cmd`, `MCP.cmd`, 문서, build.json. `Run.cmd`는 기본 data/Workbook.texel을 생성하고, `Demo.cmd`는 기존 데이터를 바꾸지 않는 새 예제 문서를 만듭니다.
 
@@ -52,7 +52,7 @@ Python 3.14 이상에서 `python -m pip install .` 후 `texel tui` / `texel mcp 
 
 ## 변경 이력 관리
 
-2026-10-15에 프로젝트 루트의 로컬 Git 저장소를 main 브랜치로 초기화했습니다. 첫 커밋과 원격은 없으므로 현재 파일은 아직 추적되지 않으며 과거 이력 조회·되돌리기를 제공하지 않습니다. 커밋/푸시/태그는 사용자의 명시적 요청에 따라 수행합니다. 기존 .gitignore가 runtime/cache/output/data/.env를 제외합니다. 이번 수정 전 파일·diff·보존 해시는 docs/maintenance/evidence_consistency_20261015/에 있습니다.
+2026-10-15 로컬 main 저장소 초기화 후, 2026-10-16 사용자 요청으로 공개 GitHub Yupkidangju/texel에 최초 커밋 d8e24b8과 후속 수정을 push했습니다. 커밋 이전의 Git 이력을 복원한 것은 아닙니다. .gitignore가 runtime/cache/output/data/.env를 제외하며 최초 커밋 전 파일·diff·보존 해시는 docs/maintenance/evidence_consistency_20261015/에 있습니다. 이후 커밋/태그/공개 검증 결과는 docs/releases/0.3.1-results.md를 따릅니다.
 
 ## 복구
 

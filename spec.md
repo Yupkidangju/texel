@@ -8,8 +8,8 @@ Texel은 키보드와 마우스로 사용하는 오프라인 스프레드시트�
 
 - 이름: Texel (Assumption: 현재 폴더 이름에서 유래).
 - 최초 패키지 버전: 0.1.0 (Assumption: 기존 제품/버전 없음).
-- Python: 3.15 대상, 코드 문법은 3.14 이상. 실행 검증 버전을 명시한다.
-- 환경: Windows 10/11 + Windows Terminal 우선. Linux/macOS는 동일한 Python 코드로 실행하되 직접 검증 전에는 호환성 보장을 주장하지 않는다.
+- Python: 3.14 이상, Windows portable 런타임은 3.15. 실행 검증 버전을 명시한다.
+- 환경: Windows + Windows Terminal 우선, Linux/macOS x64·ARM64 네이티브와 Windows11 ARM64의 x64 Python 에뮬레이션을 CI로 검증한다. Windows ARM64 네이티브는 의존성 wheel 제약으로 제외한다. 실제 터미널/장비 검증은 CI와 구분한다.
 - UI 언어: 한국어 기본, 영어 전환. 문서: 한국어. 이는 대화 언어를 따른 선택이며 OS 표시 언어를 탐지했다고 주장하지 않는다.
 - 저장 형식: `.texel` SQLite, CSV/TSV와 XLSX 가져오기/내보내기.
 - 사용자가 말한 '완벽'은 아래의 기능/경계/검증 기준으로 구체화한다. Excel의 모든 기능과 동일하다는 의미로 확대하지 않는다.
